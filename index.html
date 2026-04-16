@@ -509,12 +509,12 @@
     <div class="lc-step" style="background:var(--accent-soi)">
       <div class="lc-name" style="color:var(--accent-soi-text)">SOI</div>
       <div class="lc-count" style="color:var(--accent-soi-text)">5</div>
-      <div class="lc-desc">email na LP, nepotvrdil</div>
+      <div class="lc-desc">email on LP, not confirmed</div>
     </div>
     <div class="lc-step" style="background:var(--accent-doi)">
       <div class="lc-name" style="color:var(--accent-doi-text)">DOI</div>
       <div class="lc-count" style="color:var(--accent-doi-text)">2</div>
-      <div class="lc-desc">potvrdil, bez profilu</div>
+      <div class="lc-desc">confirmed, no profile</div>
     </div>
     <div class="lc-step" style="background:var(--accent-toi)">
       <div class="lc-name" style="color:var(--accent-toi-text)">TOI</div>
@@ -539,7 +539,7 @@
     <div class="lc-step" style="background:var(--accent-exp)">
       <div class="lc-name" style="color:var(--accent-exp-text)">EXPIRED</div>
       <div class="lc-count" style="color:var(--accent-exp-text)">2</div>
-      <div class="lc-desc">po dni 365, reaktivace</div>
+      <div class="lc-desc">after day 365, reactivation</div>
     </div>
   </div>
 
@@ -551,12 +551,12 @@
       <div class="seg-header">
         <span class="seg-badge col-soi">SOI</span>
         <div class="seg-title">Single Opt-In</div>
-        <div class="seg-sub">Vyplnil email na LP, ale nepotvrdil registraci</div>
+        <div class="seg-sub">Entered email on LP, but did not confirm registration</div>
       </div>
       <div class="seg-body">
         <div class="email-row"><span class="prio p-high"></span><div><div class="email-code">REG-WEB-01</div><div class="email-desc">Registration confirmation</div><div class="email-rule">immediately</div></div></div>
-        <div class="email-row"><span class="prio p-high"></span><div><div class="email-code">REG-WEB-02</div><div class="email-desc">2nd follow-up confirmation</div><div class="email-rule">5 min po SOI – bez aktivace</div></div></div>
-        <div class="email-row"><span class="prio p-high"></span><div><div class="email-code">REG-WEB-03</div><div class="email-desc">3rd follow-up confirmation</div><div class="email-rule">10 min po SOI – bez aktivace</div></div></div>
+        <div class="email-row"><span class="prio p-high"></span><div><div class="email-code">REG-WEB-02</div><div class="email-desc">2nd follow-up confirmation</div><div class="email-rule">5 min after SOI – no activation</div></div></div>
+        <div class="email-row"><span class="prio p-high"></span><div><div class="email-code">REG-WEB-03</div><div class="email-desc">3rd follow-up confirmation</div><div class="email-rule">10 min after SOI – no activation</div></div></div>
         <div class="email-row"><span class="prio p-low"></span><div><div class="email-code">REG-WEB-04</div><div class="email-desc">4. follow-up</div><div class="email-rule">1 hour after SOI, still only SOI</div></div></div>
         <div class="email-row"><span class="prio p-low"></span><div><div class="email-code">REG-WEB-05</div><div class="email-desc">5. follow-up</div><div class="email-rule">24 hours after SOI, still only SOI</div></div></div>
       </div>
@@ -569,7 +569,7 @@
         <div class="seg-sub">Confirmed email, but did not complete registration (no TOI)</div>
       </div>
       <div class="seg-body">
-        <div class="email-row"><span class="prio p-mid"></span><div><div class="email-code">REG-CONTINUE</div><div class="email-desc">Complete registration – profile</div><div class="email-rule">1h, 24h, 48h po DOI bez TOI</div></div></div>
+        <div class="email-row"><span class="prio p-mid"></span><div><div class="email-code">REG-CONTINUE</div><div class="email-desc">Complete registration – profile</div><div class="email-rule">1h, 24h, 48h after DOI without TOI</div></div></div>
         <div class="email-row"><span class="prio p-high"></span><div><div class="email-code">REG-CONTINUE-EXISTING</div><div class="email-desc">Existing DOI returned to landing page</div><div class="email-rule">enters email again on LP</div></div></div>
       </div>
     </div>
@@ -619,7 +619,7 @@
       </div>
       <div class="seg-body">
         <div class="email-row"><span class="prio p-low"></span><div><div class="email-code">FNL-H-VIP-OFFR</div><div class="email-desc">VIP benefits – reminder</div><div class="email-rule">day 30</div></div></div>
-        <div class="email-row"><span class="prio p-mid"></span><div><div class="email-code">FNL-N-INNACT-REM</div><div class="email-desc">Low profile activity</div><div class="email-rule">day 30 po registraci</div></div></div>
+        <div class="email-row"><span class="prio p-mid"></span><div><div class="email-code">FNL-N-INNACT-REM</div><div class="email-desc">Low profile activity</div><div class="email-rule">day 30 after registration</div></div></div>
         <div class="email-row"><span class="prio p-high"></span><div><div class="email-code">NOTIF-50DISCOUNT</div><div class="email-desc">50% VIP discount – urgency burst</div><div class="email-rule">day 45, 46, 47, 48, 49, 50, 51</div></div></div>
         <div class="email-row"><span class="prio p-low"></span><div><div class="email-code">NOTIF-ALLINONE-FREE15</div><div class="email-desc">Account activity digest</div><div class="email-rule">day 45 → day 365, every 7 days</div></div></div>
         <div class="email-row"><span class="prio p-mid"></span><div><div class="email-code">NOTIF-FAW / NOTIF-MATCH-FREE</div><div class="email-desc">Hotlist, match notifications</div><div class="email-rule">event trigger</div></div></div>
@@ -800,7 +800,7 @@
       <div class="funnel-stage-body">
         <div class="ov-chip intent-convert">
           <span class="ov-name">Early 20% discount</span>
-          <span class="ov-trigger">Den 5 po registraci (8:00)</span>
+          <span class="ov-trigger">Day 5 after registration (8:00)</span>
         </div>
         <div class="ov-chip intent-convert">
           <span class="ov-name">Successful VIP payment</span>
@@ -836,7 +836,7 @@
         </div>
         <div class="ov-chip intent-convert">
           <span class="ov-name">Limited flirt (VIP-only member)</span>
-          <span class="ov-trigger">Flirt s profilem "Only VIP can contact"</span>
+          <span class="ov-trigger">Flirt with profile set to "Only VIP can contact"</span>
         </div>
         <div class="ov-chip intent-convert">
           <span class="ov-name">Response Blocked</span>
@@ -903,7 +903,7 @@
       <tbody>
         <tr>
           <td class="ov-name-cell">Welcome message</td>
-          <td class="ov-trigger-cell">After each login (jednou)</td>
+          <td class="ov-trigger-cell">After each login (once)</td>
           <td><span class="badge-audience badge-all">ALL</span></td>
           <td><span class="intent-dot dot-inform"></span><span class="intent-label">Information</span></td>
         </tr>
@@ -945,7 +945,7 @@
         </tr>
         <tr>
           <td class="ov-name-cell">Forbidden flirt (mismatch)</td>
-          <td class="ov-trigger-cell">PAttempt to flirt with a profile seeking a different gender</td>
+          <td class="ov-trigger-cell">Attempt to flirt with a profile seeking a different gender</td>
           <td><span class="badge-audience badge-all">ALL</span></td>
           <td><span class="intent-dot dot-inform"></span><span class="intent-label">Blocking / information</span></td>
         </tr>
@@ -957,7 +957,7 @@
         </tr>
         <tr>
           <td class="ov-name-cell">No perfect match ratings left</td>
-          <td class="ov-trigger-cell">FREE: po 20 likes/dislikes · VIP: po 40 likes/dislikes</td>
+          <td class="ov-trigger-cell">FREE: after 20 likes/dislikes · VIP: after 40 likes/dislikes</td>
           <td><span class="badge-audience badge-all">ALL</span></td>
           <td><span class="intent-dot dot-convert"></span><span class="intent-label">Conversion (FREE) / blocking (VIP)</span></td>
         </tr>
@@ -969,7 +969,7 @@
         </tr>
         <tr>
           <td class="ov-name-cell">Successful Auto coin refill</td>
-          <td class="ov-trigger-cell">Automatic coin refill pod nastavenou hranici</td>
+          <td class="ov-trigger-cell">Automatic coin refill below set threshold</td>
           <td><span class="badge-audience badge-all">ALL</span></td>
           <td><span class="intent-dot dot-inform"></span><span class="intent-label">Transaction confirmation</span></td>
         </tr>
