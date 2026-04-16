@@ -562,11 +562,24 @@
     color: var(--text);
   }
 
+  .ev-desc {
+    font-size: 12.5px;
+    color: var(--text);
+    line-height: 1.45;
+  }
+
+  .ev-trigger {
+    font-size: 12px;
+    color: var(--text-2);
+    line-height: 1.45;
+    font-style: italic;
+  }
+
   .ev-props {
     font-size: 11px;
     color: var(--text-3);
     font-family: 'DM Mono', monospace;
-    margin-top: 2px;
+    line-height: 1.5;
   }
 
 </style>
@@ -1266,22 +1279,22 @@
   <div class="section-label">Topbar</div>
   <div class="ov-table-wrap" style="margin-bottom:32px">
     <table class="ov-table">
-      <thead><tr><th>Event</th><th>Key properties</th><th>Signal</th></tr></thead>
+      <thead><tr><th>Event</th><th>Description</th><th>Trigger</th><th>Key properties</th><th>Signal</th></tr></thead>
       <tbody>
-        <tr><td><div class="ev-name">topbar_livechat_clicked</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">topbar_perfect_match_clicked</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">topbar_nearby_clicked</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">topbar_new_members_clicked</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">topbar_language_switcher_clicked</div></td><td><div class="ev-props">from, to</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">topbar_dropdown_opened</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">topbar_dropdown_system_messages_clicked</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">topbar_dropdown_my_profile_clicked</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">topbar_dropdown_my_photos_clicked</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">topbar_dropdown_profile_settings_clicked</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">topbar_dropdown_notification_settings_clicked</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">topbar_dropdown_change_password_clicked</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">topbar_dropdown_technical_support_clicked</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">topbar_dropdown_logout_clicked</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">topbar_livechat_clicked</div></td><td><div class="ev-desc">Navigates to Live Chat</div></td><td><div class="ev-trigger">Clicks "Live Chat" in top navigation</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">topbar_perfect_match_clicked</div></td><td><div class="ev-desc">Navigates to Perfect Match</div></td><td><div class="ev-trigger">Clicks "Perfect Match" in top navigation</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">topbar_nearby_clicked</div></td><td><div class="ev-desc">Navigates to Nearby / homepage</div></td><td><div class="ev-trigger">Clicks "Nearby" in top navigation</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">topbar_new_members_clicked</div></td><td><div class="ev-desc">Navigates to New Members section</div></td><td><div class="ev-trigger">Clicks "New Members" in top navigation</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">topbar_language_switcher_clicked</div></td><td><div class="ev-desc">Changes the display language</div></td><td><div class="ev-trigger">Clicks language flag / selector</div></td><td><div class="ev-props">from, to</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">topbar_dropdown_opened</div></td><td><div class="ev-desc">Opens the profile dropdown menu</div></td><td><div class="ev-trigger">Clicks on username or avatar</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">topbar_dropdown_system_messages_clicked</div></td><td><div class="ev-desc">Opens system messages inbox</div></td><td><div class="ev-trigger">Clicks "System messages" in dropdown</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">topbar_dropdown_my_profile_clicked</div></td><td><div class="ev-desc">Opens own profile editor</div></td><td><div class="ev-trigger">Clicks "My profile" in dropdown</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">topbar_dropdown_my_photos_clicked</div></td><td><div class="ev-desc">Opens photo management tab</div></td><td><div class="ev-trigger">Clicks "My photos" in dropdown</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">topbar_dropdown_profile_settings_clicked</div></td><td><div class="ev-desc">Opens profile settings tab</div></td><td><div class="ev-trigger">Clicks "Profile settings" in dropdown</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">topbar_dropdown_notification_settings_clicked</div></td><td><div class="ev-desc">Opens notification preferences</div></td><td><div class="ev-trigger">Clicks "Notification settings" in dropdown</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">topbar_dropdown_change_password_clicked</div></td><td><div class="ev-desc">Opens password change form</div></td><td><div class="ev-trigger">Clicks "Change password" in dropdown</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">topbar_dropdown_technical_support_clicked</div></td><td><div class="ev-desc">Opens support / help page</div></td><td><div class="ev-trigger">Clicks "Technical support" in dropdown</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">topbar_dropdown_logout_clicked</div></td><td><div class="ev-desc">Logs the user out of the app</div></td><td><div class="ev-trigger">Clicks "Logout" in dropdown</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -1290,20 +1303,20 @@
   <div class="section-label">Sidebar</div>
   <div class="ov-table-wrap" style="margin-bottom:32px">
     <table class="ov-table">
-      <thead><tr><th>Event</th><th>Key properties</th><th>Signal</th></tr></thead>
+      <thead><tr><th>Event</th><th>Description</th><th>Trigger</th><th>Key properties</th><th>Signal</th></tr></thead>
       <tbody>
-        <tr><td><div class="ev-name">sidebar_messages_indicator_clicked</div></td><td><div class="ev-props">messages_remaining</div></td><td><span class="sig-badge sig-engagement">Engagement</span></td></tr>
-        <tr><td><div class="ev-name">sidebar_likes_indicator_clicked</div></td><td><div class="ev-props">likes_remaining</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">sidebar_coins_indicator_clicked</div></td><td><div class="ev-props">coins_balance</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">sidebar_vip_banner_clicked</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
-        <tr><td><div class="ev-name">sidebar_livechat_clicked</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">sidebar_messages_clicked</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">sidebar_perfect_match_clicked</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">sidebar_who_wants_me_clicked</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">sidebar_recent_visitors_clicked</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">sidebar_hotlist_clicked</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">sidebar_superpowers_clicked</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">sidebar_push_banner_clicked</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">sidebar_messages_indicator_clicked</div></td><td><div class="ev-desc">User checks remaining message allowance</div></td><td><div class="ev-trigger">Clicks the messages counter (e.g. 0/10)</div></td><td><div class="ev-props">messages_remaining</div></td><td><span class="sig-badge sig-engagement">Engagement</span></td></tr>
+        <tr><td><div class="ev-name">sidebar_likes_indicator_clicked</div></td><td><div class="ev-desc">User checks remaining likes</div></td><td><div class="ev-trigger">Clicks the likes counter (e.g. 20/20)</div></td><td><div class="ev-props">likes_remaining</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">sidebar_coins_indicator_clicked</div></td><td><div class="ev-desc">User checks their coin balance</div></td><td><div class="ev-trigger">Clicks the coins counter</div></td><td><div class="ev-props">coins_balance</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">sidebar_vip_banner_clicked</div></td><td><div class="ev-desc">User navigates to VIP payment gate</div></td><td><div class="ev-trigger">Clicks "Activate" on the VIP banner in sidebar</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">sidebar_livechat_clicked</div></td><td><div class="ev-desc">Navigates to Live Chat</div></td><td><div class="ev-trigger">Clicks "Live Chat" in sidebar</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">sidebar_messages_clicked</div></td><td><div class="ev-desc">Navigates to Messages inbox</div></td><td><div class="ev-trigger">Clicks "Messages" in sidebar</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">sidebar_perfect_match_clicked</div></td><td><div class="ev-desc">Navigates to Perfect Match results</div></td><td><div class="ev-trigger">Clicks "Perfect match results" in sidebar</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">sidebar_who_wants_me_clicked</div></td><td><div class="ev-desc">Navigates to Who Wants Me section</div></td><td><div class="ev-trigger">Clicks "Who wants me" in sidebar</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">sidebar_recent_visitors_clicked</div></td><td><div class="ev-desc">Navigates to Recent Profile Visitors</div></td><td><div class="ev-trigger">Clicks "Recent profile visitors" in sidebar</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">sidebar_hotlist_clicked</div></td><td><div class="ev-desc">Navigates to Hotlist</div></td><td><div class="ev-trigger">Clicks "Hotlist" in sidebar</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">sidebar_superpowers_clicked</div></td><td><div class="ev-desc">Navigates to Superpowers</div></td><td><div class="ev-trigger">Clicks "Superpowers" in sidebar</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">sidebar_push_banner_clicked</div></td><td><div class="ev-desc">User engages with push notification prompt</div></td><td><div class="ev-trigger">Clicks "Enable" on push notifications banner</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -1312,16 +1325,16 @@
   <div class="section-label">Nearby</div>
   <div class="ov-table-wrap" style="margin-bottom:32px">
     <table class="ov-table">
-      <thead><tr><th>Event</th><th>Key properties</th><th>Signal</th></tr></thead>
+      <thead><tr><th>Event</th><th>Description</th><th>Trigger</th><th>Key properties</th><th>Signal</th></tr></thead>
       <tbody>
-        <tr><td><div class="ev-name">page_viewed</div></td><td><div class="ev-props">page: 'nearby'</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">profile_completion_banner_viewed</div></td><td><div class="ev-props">missing: ['photo', 'details', 'description']</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">profile_completion_cta_clicked</div></td><td><div class="ev-props">cta: 'add_photo' | 'profile_details' | 'short_description'</div></td><td><span class="sig-badge sig-engagement">Engagement</span></td></tr>
-        <tr><td><div class="ev-name">nearby_filter_changed</div></td><td><div class="ev-props">gender, age_min, age_max, country, region, city</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">nearby_sort_changed</div></td><td><div class="ev-props">sort_by</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">nearby_view_toggled</div></td><td><div class="ev-props">view: 'grid' | 'list'</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">profile_detail_clicked</div></td><td><div class="ev-props">profile_id, position, has_top_badge, has_photo, age, city</div></td><td><span class="sig-badge sig-engagement">Engagement</span></td></tr>
-        <tr><td><div class="ev-name">nearby_page_changed</div></td><td><div class="ev-props">page</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">page_viewed</div></td><td><div class="ev-desc">Nearby page loaded</div></td><td><div class="ev-trigger">User navigates to Nearby / homepage</div></td><td><div class="ev-props">page: 'nearby'</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">profile_completion_banner_viewed</div></td><td><div class="ev-desc">Incomplete profile banner is shown</div></td><td><div class="ev-trigger">Page loads when profile is missing photo, details, or bio</div></td><td><div class="ev-props">missing: ['photo', 'details', 'description']</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">profile_completion_cta_clicked</div></td><td><div class="ev-desc">User starts completing their profile</div></td><td><div class="ev-trigger">Clicks a link in the yellow completion banner</div></td><td><div class="ev-props">cta: 'add_photo' | 'profile_details' | 'short_description'</div></td><td><span class="sig-badge sig-engagement">Engagement</span></td></tr>
+        <tr><td><div class="ev-name">nearby_filter_changed</div></td><td><div class="ev-desc">User adjusts search filters</div></td><td><div class="ev-trigger">Changes gender, age range, or location filter</div></td><td><div class="ev-props">gender, age_min, age_max, country, region, city</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">nearby_sort_changed</div></td><td><div class="ev-desc">User changes sorting of profile grid</div></td><td><div class="ev-trigger">Clicks sort selector</div></td><td><div class="ev-props">sort_by</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">nearby_view_toggled</div></td><td><div class="ev-desc">User switches between grid and list view</div></td><td><div class="ev-trigger">Clicks the grid / list toggle icon</div></td><td><div class="ev-props">view: 'grid' | 'list'</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">profile_detail_clicked</div></td><td><div class="ev-desc">User opens a profile detail page</div></td><td><div class="ev-trigger">Clicks on a profile card in the grid</div></td><td><div class="ev-props">profile_id, position, has_top_badge, has_photo, age, city</div></td><td><span class="sig-badge sig-engagement">Engagement</span></td></tr>
+        <tr><td><div class="ev-name">nearby_page_changed</div></td><td><div class="ev-desc">User browses to another page of profiles</div></td><td><div class="ev-trigger">Clicks page number or "Next"</div></td><td><div class="ev-props">page</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -1330,19 +1343,19 @@
   <div class="section-label">Profile Detail</div>
   <div class="ov-table-wrap" style="margin-bottom:32px">
     <table class="ov-table">
-      <thead><tr><th>Event</th><th>Key properties</th><th>Signal</th></tr></thead>
+      <thead><tr><th>Event</th><th>Description</th><th>Trigger</th><th>Key properties</th><th>Signal</th></tr></thead>
       <tbody>
-        <tr><td><div class="ev-name">profile_detail_viewed</div></td><td><div class="ev-props">profile_id, age, city, has_photo, photo_count</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">profile_photo_browsed</div></td><td><div class="ev-props">profile_id, photo_index, total_photos</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">profile_liked</div></td><td><div class="ev-props">profile_id, source: 'profile_detail' | 'perfect_match'</div></td><td><span class="sig-badge sig-engagement">Engagement</span></td></tr>
-        <tr><td><div class="ev-name">profile_disliked</div></td><td><div class="ev-props">profile_id, source</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">profile_gift_clicked</div></td><td><div class="ev-props">profile_id, source</div></td><td><span class="sig-badge sig-engagement">Engagement</span></td></tr>
-        <tr><td><div class="ev-name">profile_chat_clicked</div></td><td><div class="ev-props">profile_id, source</div></td><td><span class="sig-badge sig-engagement">Engagement</span></td></tr>
-        <tr><td><div class="ev-name">profile_hotlist_clicked</div></td><td><div class="ev-props">profile_id, source</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">profile_report_clicked</div></td><td><div class="ev-props">profile_id</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">flirt_message_started</div></td><td><div class="ev-props">profile_id</div></td><td><span class="sig-badge sig-engagement">Engagement</span></td></tr>
-        <tr><td><div class="ev-name">flirt_suggestion_clicked</div></td><td><div class="ev-props">profile_id</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">flirt_message_sent</div></td><td><div class="ev-props">profile_id, message_length, used_suggestion</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">profile_detail_viewed</div></td><td><div class="ev-desc">User opens a full profile page</div></td><td><div class="ev-trigger">Clicks on a profile card or link to view full profile</div></td><td><div class="ev-props">profile_id, age, city, has_photo, photo_count</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">profile_photo_browsed</div></td><td><div class="ev-desc">User browses through profile photos</div></td><td><div class="ev-trigger">Swipes or clicks through photos on a profile page</div></td><td><div class="ev-props">profile_id, photo_index, total_photos</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">profile_liked</div></td><td><div class="ev-desc">User expresses interest in a profile</div></td><td><div class="ev-trigger">Clicks the like / heart button on a profile</div></td><td><div class="ev-props">profile_id, source: 'profile_detail' | 'perfect_match'</div></td><td><span class="sig-badge sig-engagement">Engagement</span></td></tr>
+        <tr><td><div class="ev-name">profile_disliked</div></td><td><div class="ev-desc">User passes on a profile</div></td><td><div class="ev-trigger">Clicks the dislike / X button on a profile</div></td><td><div class="ev-props">profile_id, source</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">profile_gift_clicked</div></td><td><div class="ev-desc">User initiates the gift-sending flow</div></td><td><div class="ev-trigger">Clicks the gift button on a profile detail page</div></td><td><div class="ev-props">profile_id, source</div></td><td><span class="sig-badge sig-engagement">Engagement</span></td></tr>
+        <tr><td><div class="ev-name">profile_chat_clicked</div></td><td><div class="ev-desc">User navigates to chat with a profile</div></td><td><div class="ev-trigger">Clicks the chat / message button on a profile</div></td><td><div class="ev-props">profile_id, source</div></td><td><span class="sig-badge sig-engagement">Engagement</span></td></tr>
+        <tr><td><div class="ev-name">profile_hotlist_clicked</div></td><td><div class="ev-desc">User adds or removes profile from their hotlist</div></td><td><div class="ev-trigger">Clicks the hotlist (star/bookmark) button on a profile</div></td><td><div class="ev-props">profile_id, source</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">profile_report_clicked</div></td><td><div class="ev-desc">User opens the report dialog for a profile</div></td><td><div class="ev-trigger">Clicks "Report this user" on a profile page</div></td><td><div class="ev-props">profile_id</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">flirt_message_started</div></td><td><div class="ev-desc">User starts composing a flirt message</div></td><td><div class="ev-trigger">Taps into the flirt message input field</div></td><td><div class="ev-props">profile_id</div></td><td><span class="sig-badge sig-engagement">Engagement</span></td></tr>
+        <tr><td><div class="ev-name">flirt_suggestion_clicked</div></td><td><div class="ev-desc">User picks a pre-written flirt suggestion</div></td><td><div class="ev-trigger">Clicks one of the suggested flirt phrases</div></td><td><div class="ev-props">profile_id</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">flirt_message_sent</div></td><td><div class="ev-desc">User successfully sends a flirt message</div></td><td><div class="ev-trigger">Submits the flirt message form</div></td><td><div class="ev-props">profile_id, message_length, used_suggestion</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -1351,28 +1364,28 @@
   <div class="section-label">Live Chat</div>
   <div class="ov-table-wrap" style="margin-bottom:32px">
     <table class="ov-table">
-      <thead><tr><th>Event</th><th>Key properties</th><th>Signal</th></tr></thead>
+      <thead><tr><th>Event</th><th>Description</th><th>Trigger</th><th>Key properties</th><th>Signal</th></tr></thead>
       <tbody>
-        <tr><td><div class="ev-name">livechat_page_viewed</div></td><td><div class="ev-props">coin_balance</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">livechat_tab_clicked</div></td><td><div class="ev-props">tab: 'active_chats' | 'pinned_chats' | 'online_list'</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">livechat_filter_changed</div></td><td><div class="ev-props">...</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">livechat_view_toggled</div></td><td><div class="ev-props">view: 'grid' | 'list'</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">livechat_profile_clicked</div></td><td><div class="ev-props">profile_id, position, age, is_online</div></td><td><span class="sig-badge sig-engagement">Engagement</span></td></tr>
-        <tr><td><div class="ev-name">livechat_page_changed</div></td><td><div class="ev-props">page</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">livechat_onboarding_viewed</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">livechat_onboarding_cta_clicked</div></td><td><div class="ev-props">cta: 'join_community'</div></td><td><span class="sig-badge sig-engagement">Engagement</span></td></tr>
-        <tr><td><div class="ev-name">livechat_profile_panel_viewed</div></td><td><div class="ev-props">profile_id, age</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">livechat_wink_overlay_shown</div></td><td><div class="ev-props">profile_id, cost_coins</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
-        <tr><td><div class="ev-name">livechat_wink_confirmed</div></td><td><div class="ev-props">profile_id, cost_coins</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
-        <tr><td><div class="ev-name">livechat_gift_overlay_shown</div></td><td><div class="ev-props">profile_id, cost_coins</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
-        <tr><td><div class="ev-name">livechat_gift_confirmed</div></td><td><div class="ev-props">profile_id, cost_coins</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
-        <tr><td><div class="ev-name">livechat_profile_pinned</div></td><td><div class="ev-props">profile_id</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">livechat_profile_unpinned</div></td><td><div class="ev-props">profile_id</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">livechat_profile_reported</div></td><td><div class="ev-props">profile_id, reason</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">livechat_message_started</div></td><td><div class="ev-props">profile_id</div></td><td><span class="sig-badge sig-engagement">Engagement</span></td></tr>
-        <tr><td><div class="ev-name">livechat_message_send_attempted</div></td><td><div class="ev-props">profile_id, user_type: 'free'</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
-        <tr><td><div class="ev-name">livechat_vip_overlay_shown</div></td><td><div class="ev-props">profile_id, trigger: 'send_message'</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
-        <tr><td><div class="ev-name">livechat_message_sent</div></td><td><div class="ev-props">profile_id, message_length</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">livechat_page_viewed</div></td><td><div class="ev-desc">User lands on the Live Chat page</div></td><td><div class="ev-trigger">Navigates to the Live Chat section</div></td><td><div class="ev-props">coin_balance</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">livechat_tab_clicked</div></td><td><div class="ev-desc">User switches between chat list tabs</div></td><td><div class="ev-trigger">Clicks Active Chats, Pinned or Online List tab</div></td><td><div class="ev-props">tab: 'active_chats' | 'pinned_chats' | 'online_list'</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">livechat_filter_changed</div></td><td><div class="ev-desc">User applies a filter to the chat list</div></td><td><div class="ev-trigger">Selects a filter option in Live Chat</div></td><td><div class="ev-props">filter</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">livechat_view_toggled</div></td><td><div class="ev-desc">User switches between grid and list view</div></td><td><div class="ev-trigger">Clicks the view toggle button</div></td><td><div class="ev-props">view: 'grid' | 'list'</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">livechat_profile_clicked</div></td><td><div class="ev-desc">User opens a profile's chat panel</div></td><td><div class="ev-trigger">Clicks on a profile card in the Live Chat list</div></td><td><div class="ev-props">profile_id, position, age, is_online</div></td><td><span class="sig-badge sig-engagement">Engagement</span></td></tr>
+        <tr><td><div class="ev-name">livechat_page_changed</div></td><td><div class="ev-desc">User navigates to another page in the chat list</div></td><td><div class="ev-trigger">Clicks a page number or next/prev arrow</div></td><td><div class="ev-props">page</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">livechat_onboarding_viewed</div></td><td><div class="ev-desc">User sees the Live Chat onboarding screen</div></td><td><div class="ev-trigger">Lands on Live Chat for the first time</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">livechat_onboarding_cta_clicked</div></td><td><div class="ev-desc">User clicks the onboarding call-to-action</div></td><td><div class="ev-trigger">Clicks "Join community" or similar CTA on onboarding</div></td><td><div class="ev-props">cta: 'join_community'</div></td><td><span class="sig-badge sig-engagement">Engagement</span></td></tr>
+        <tr><td><div class="ev-name">livechat_profile_panel_viewed</div></td><td><div class="ev-desc">User opens the side panel for a profile</div></td><td><div class="ev-trigger">Selects a profile from the chat list</div></td><td><div class="ev-props">profile_id, age</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">livechat_wink_overlay_shown</div></td><td><div class="ev-desc">Wink confirmation overlay appears with coin cost</div></td><td><div class="ev-trigger">Clicks the wink button on a profile panel</div></td><td><div class="ev-props">profile_id, cost_coins</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">livechat_wink_confirmed</div></td><td><div class="ev-desc">User confirms sending a wink (coins spent)</div></td><td><div class="ev-trigger">Clicks confirm on the wink overlay</div></td><td><div class="ev-props">profile_id, cost_coins</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">livechat_gift_overlay_shown</div></td><td><div class="ev-desc">Gift confirmation overlay appears with coin cost</div></td><td><div class="ev-trigger">Clicks the gift button on a profile panel</div></td><td><div class="ev-props">profile_id, cost_coins</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">livechat_gift_confirmed</div></td><td><div class="ev-desc">User confirms sending a gift (coins spent)</div></td><td><div class="ev-trigger">Clicks confirm on the gift overlay</div></td><td><div class="ev-props">profile_id, cost_coins</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">livechat_profile_pinned</div></td><td><div class="ev-desc">User pins a profile to the pinned tab</div></td><td><div class="ev-trigger">Clicks "Pin profile" in the profile panel</div></td><td><div class="ev-props">profile_id</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">livechat_profile_unpinned</div></td><td><div class="ev-desc">User unpins a previously pinned profile</div></td><td><div class="ev-trigger">Clicks "Unpin" on a pinned profile</div></td><td><div class="ev-props">profile_id</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">livechat_profile_reported</div></td><td><div class="ev-desc">User reports another user's profile</div></td><td><div class="ev-trigger">Clicks "Report user" in the profile panel</div></td><td><div class="ev-props">profile_id, reason</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">livechat_message_started</div></td><td><div class="ev-desc">User starts typing a live chat message</div></td><td><div class="ev-trigger">Taps into the message input field</div></td><td><div class="ev-props">profile_id</div></td><td><span class="sig-badge sig-engagement">Engagement</span></td></tr>
+        <tr><td><div class="ev-name">livechat_message_send_attempted</div></td><td><div class="ev-desc">FREE user tries to send a message (blocked)</div></td><td><div class="ev-trigger">Clicks Send while not having VIP membership</div></td><td><div class="ev-props">profile_id, user_type: 'free'</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">livechat_vip_overlay_shown</div></td><td><div class="ev-desc">VIP paywall overlay appears in Live Chat</div></td><td><div class="ev-trigger">FREE user attempts to send a message</div></td><td><div class="ev-props">profile_id, trigger: 'send_message'</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">livechat_message_sent</div></td><td><div class="ev-desc">User successfully sends a live chat message</div></td><td><div class="ev-trigger">VIP user clicks Send in the chat input</div></td><td><div class="ev-props">profile_id, message_length</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -1381,22 +1394,22 @@
   <div class="section-label">Messages</div>
   <div class="ov-table-wrap" style="margin-bottom:32px">
     <table class="ov-table">
-      <thead><tr><th>Event</th><th>Key properties</th><th>Signal</th></tr></thead>
+      <thead><tr><th>Event</th><th>Description</th><th>Trigger</th><th>Key properties</th><th>Signal</th></tr></thead>
       <tbody>
-        <tr><td><div class="ev-name">messages_push_banner_clicked</div></td><td><div class="ev-props">cta: 'turn_on_notifications'</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">messages_all_tab_viewed</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">messages_unread_tab_viewed</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">messages_unanswered_tab_viewed</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">messages_favorites_tab_viewed</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">messages_system_tab_viewed</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">conversation_opened</div></td><td><div class="ev-props">profile_id, is_unread, conversation_age_days</div></td><td><span class="sig-badge sig-engagement">Engagement</span></td></tr>
-        <tr><td><div class="ev-name">conversation_deleted</div></td><td><div class="ev-props">profile_id</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">messages_page_changed</div></td><td><div class="ev-props">page</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">message_started</div></td><td><div class="ev-props">profile_id</div></td><td><span class="sig-badge sig-engagement">Engagement</span></td></tr>
-        <tr><td><div class="ev-name">message_unlock_attempted</div></td><td><div class="ev-props">profile_id, user_type: 'free'</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
-        <tr><td><div class="ev-name">message_vip_overlay_shown</div></td><td><div class="ev-props">profile_id, trigger: 'unlock_message' | 'reply'</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
-        <tr><td><div class="ev-name">message_send_attempted</div></td><td><div class="ev-props">profile_id, user_type: 'free'</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
-        <tr><td><div class="ev-name">message_sent</div></td><td><div class="ev-props">profile_id, message_length</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">messages_push_banner_clicked</div></td><td><div class="ev-desc">User clicks the push notification enable banner</div></td><td><div class="ev-trigger">Clicks "Turn on notifications" banner in Messages</div></td><td><div class="ev-props">cta: 'turn_on_notifications'</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">messages_all_tab_viewed</div></td><td><div class="ev-desc">User views the All messages tab</div></td><td><div class="ev-trigger">Clicks the "All" tab in Messages inbox</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">messages_unread_tab_viewed</div></td><td><div class="ev-desc">User views the Unread messages tab</div></td><td><div class="ev-trigger">Clicks the "Unread" tab in Messages inbox</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">messages_unanswered_tab_viewed</div></td><td><div class="ev-desc">User views the Unanswered messages tab</div></td><td><div class="ev-trigger">Clicks the "Unanswered" tab in Messages inbox</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">messages_favorites_tab_viewed</div></td><td><div class="ev-desc">User views chats with their hotlisted profiles</div></td><td><div class="ev-trigger">Clicks the "Favorites" tab in Messages inbox</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">messages_system_tab_viewed</div></td><td><div class="ev-desc">User views the system / automated messages tab</div></td><td><div class="ev-trigger">Clicks the "System" tab in Messages inbox</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">conversation_opened</div></td><td><div class="ev-desc">User opens a conversation thread</div></td><td><div class="ev-trigger">Clicks on a message preview in the inbox list</div></td><td><div class="ev-props">profile_id, is_unread, conversation_age_days</div></td><td><span class="sig-badge sig-engagement">Engagement</span></td></tr>
+        <tr><td><div class="ev-name">conversation_deleted</div></td><td><div class="ev-desc">User removes a conversation from their inbox</div></td><td><div class="ev-trigger">Clicks delete on a conversation in the inbox</div></td><td><div class="ev-props">profile_id</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">messages_page_changed</div></td><td><div class="ev-desc">User navigates to another page in the inbox</div></td><td><div class="ev-trigger">Clicks a page number or next/prev in Messages</div></td><td><div class="ev-props">page</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">message_started</div></td><td><div class="ev-desc">User starts composing a reply</div></td><td><div class="ev-trigger">Clicks into the message text input field</div></td><td><div class="ev-props">profile_id</div></td><td><span class="sig-badge sig-engagement">Engagement</span></td></tr>
+        <tr><td><div class="ev-name">message_unlock_attempted</div></td><td><div class="ev-desc">FREE user tries to read a locked / blurred message</div></td><td><div class="ev-trigger">Clicks on a partially hidden received message</div></td><td><div class="ev-props">profile_id, user_type: 'free'</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">message_vip_overlay_shown</div></td><td><div class="ev-desc">VIP paywall overlay appears in Messages</div></td><td><div class="ev-trigger">FREE user attempts to unlock or reply to a message</div></td><td><div class="ev-props">profile_id, trigger: 'unlock_message' | 'reply'</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">message_send_attempted</div></td><td><div class="ev-desc">FREE user tries to send a message (blocked)</div></td><td><div class="ev-trigger">Clicks Send without VIP membership</div></td><td><div class="ev-props">profile_id, user_type: 'free'</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">message_sent</div></td><td><div class="ev-desc">User successfully sends a message</div></td><td><div class="ev-trigger">VIP user clicks Send in the conversation</div></td><td><div class="ev-props">profile_id, message_length</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -1405,15 +1418,15 @@
   <div class="section-label">Perfect Match – Game</div>
   <div class="ov-table-wrap" style="margin-bottom:32px">
     <table class="ov-table">
-      <thead><tr><th>Event</th><th>Key properties</th><th>Signal</th></tr></thead>
+      <thead><tr><th>Event</th><th>Description</th><th>Trigger</th><th>Key properties</th><th>Signal</th></tr></thead>
       <tbody>
-        <tr><td><div class="ev-name">perfect_match_page_viewed</div></td><td><div class="ev-props">likes_remaining</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">perfect_match_profile_viewed</div></td><td><div class="ev-props">profile_id, age, city, position_in_session</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">perfect_match_profile_liked</div></td><td><div class="ev-props">profile_id, position_in_session</div></td><td><span class="sig-badge sig-engagement">Engagement</span></td></tr>
-        <tr><td><div class="ev-name">perfect_match_profile_disliked</div></td><td><div class="ev-props">profile_id, position_in_session</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">perfect_match_mutual_match</div></td><td><div class="ev-props">profile_id</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
-        <tr><td><div class="ev-name">perfect_match_limit_reached</div></td><td><div class="ev-props">likes_used, user_type</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
-        <tr><td><div class="ev-name">perfect_match_vip_overlay_shown</div></td><td><div class="ev-props">trigger: 'limit_reached'</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">perfect_match_page_viewed</div></td><td><div class="ev-desc">User lands on the Perfect Match game page</div></td><td><div class="ev-trigger">Navigates to Perfect Match</div></td><td><div class="ev-props">likes_remaining</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">perfect_match_profile_viewed</div></td><td><div class="ev-desc">A new profile card is shown in the swipe stack</div></td><td><div class="ev-trigger">Game automatically loads the next profile to rate</div></td><td><div class="ev-props">profile_id, age, city, position_in_session</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">perfect_match_profile_liked</div></td><td><div class="ev-desc">User likes a profile in the Perfect Match game</div></td><td><div class="ev-trigger">Clicks the like button or swipes right</div></td><td><div class="ev-props">profile_id, position_in_session</div></td><td><span class="sig-badge sig-engagement">Engagement</span></td></tr>
+        <tr><td><div class="ev-name">perfect_match_profile_disliked</div></td><td><div class="ev-desc">User passes on a profile in the Perfect Match game</div></td><td><div class="ev-trigger">Clicks the dislike button or swipes left</div></td><td><div class="ev-props">profile_id, position_in_session</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">perfect_match_mutual_match</div></td><td><div class="ev-desc">Both users liked each other — a mutual match occurred</div></td><td><div class="ev-trigger">System detects a mutual like from both sides</div></td><td><div class="ev-props">profile_id</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">perfect_match_limit_reached</div></td><td><div class="ev-desc">User has consumed all their daily likes</div></td><td><div class="ev-trigger">Last available like is used in the session</div></td><td><div class="ev-props">likes_used, user_type</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">perfect_match_vip_overlay_shown</div></td><td><div class="ev-desc">VIP upgrade overlay shown after daily limit hit</div></td><td><div class="ev-trigger">Like limit reached for a FREE user</div></td><td><div class="ev-props">trigger: 'limit_reached'</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -1422,11 +1435,11 @@
   <div class="section-label">Perfect Match – Results</div>
   <div class="ov-table-wrap" style="margin-bottom:32px">
     <table class="ov-table">
-      <thead><tr><th>Event</th><th>Key properties</th><th>Signal</th></tr></thead>
+      <thead><tr><th>Event</th><th>Description</th><th>Trigger</th><th>Key properties</th><th>Signal</th></tr></thead>
       <tbody>
-        <tr><td><div class="ev-name">perfect_match_results_page_viewed</div></td><td><div class="ev-props">mutual_matches_count</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">perfect_match_results_tab_clicked</div></td><td><div class="ev-props">tab: 'perfect_match_results' | 'who_wants_me'</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">perfect_match_play_game_clicked</div></td><td><div class="ev-props">source: 'banner' | 'text_link', mutual_matches_count</div></td><td><span class="sig-badge sig-engagement">Engagement</span></td></tr>
+        <tr><td><div class="ev-name">perfect_match_results_page_viewed</div></td><td><div class="ev-desc">User lands on the Perfect Match results page</div></td><td><div class="ev-trigger">Navigates to Perfect Match Results section</div></td><td><div class="ev-props">mutual_matches_count</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">perfect_match_results_tab_clicked</div></td><td><div class="ev-desc">User switches between result tabs</div></td><td><div class="ev-trigger">Clicks "Perfect Match Results" or "Who Wants Me" tab</div></td><td><div class="ev-props">tab: 'perfect_match_results' | 'who_wants_me'</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">perfect_match_play_game_clicked</div></td><td><div class="ev-desc">User clicks to start or replay the Perfect Match game</div></td><td><div class="ev-trigger">Clicks "Play game" banner or text link on results page</div></td><td><div class="ev-props">source: 'banner' | 'text_link', mutual_matches_count</div></td><td><span class="sig-badge sig-engagement">Engagement</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -1435,13 +1448,13 @@
   <div class="section-label">Who Wants Me</div>
   <div class="ov-table-wrap" style="margin-bottom:32px">
     <table class="ov-table">
-      <thead><tr><th>Event</th><th>Key properties</th><th>Signal</th></tr></thead>
+      <thead><tr><th>Event</th><th>Description</th><th>Trigger</th><th>Key properties</th><th>Signal</th></tr></thead>
       <tbody>
-        <tr><td><div class="ev-name">who_wants_me_page_viewed</div></td><td><div class="ev-props">likes_received_count, user_type</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">who_wants_me_vip_banner_viewed</div></td><td><div class="ev-props">likes_received_count</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
-        <tr><td><div class="ev-name">who_wants_me_activate_vip_clicked</div></td><td><div class="ev-props">likes_received_count, source: 'banner'</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
-        <tr><td><div class="ev-name">who_wants_me_locked_profile_clicked</div></td><td><div class="ev-props">profile_id, user_type: 'free'</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
-        <tr><td><div class="ev-name">who_wants_me_vip_overlay_shown</div></td><td><div class="ev-props">trigger: 'locked_profile', likes_received_count</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">who_wants_me_page_viewed</div></td><td><div class="ev-desc">User lands on the Who Wants Me page</div></td><td><div class="ev-trigger">Navigates to Who Wants Me section</div></td><td><div class="ev-props">likes_received_count, user_type</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">who_wants_me_vip_banner_viewed</div></td><td><div class="ev-desc">FREE user sees the VIP upgrade banner over locked profiles</div></td><td><div class="ev-trigger">Page loads with blurred profiles for FREE user</div></td><td><div class="ev-props">likes_received_count</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">who_wants_me_activate_vip_clicked</div></td><td><div class="ev-desc">User clicks the VIP activation CTA from the banner</div></td><td><div class="ev-trigger">Clicks "Activate VIP" on the banner overlay</div></td><td><div class="ev-props">likes_received_count, source: 'banner'</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">who_wants_me_locked_profile_clicked</div></td><td><div class="ev-desc">FREE user taps on a blurred / hidden profile card</div></td><td><div class="ev-trigger">Clicks on a locked profile card</div></td><td><div class="ev-props">profile_id, user_type: 'free'</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">who_wants_me_vip_overlay_shown</div></td><td><div class="ev-desc">VIP paywall overlay appears after tapping locked profile</div></td><td><div class="ev-trigger">FREE user clicks a locked profile card</div></td><td><div class="ev-props">trigger: 'locked_profile', likes_received_count</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -1450,11 +1463,11 @@
   <div class="section-label">Recent Profile Visitors</div>
   <div class="ov-table-wrap" style="margin-bottom:32px">
     <table class="ov-table">
-      <thead><tr><th>Event</th><th>Key properties</th><th>Signal</th></tr></thead>
+      <thead><tr><th>Event</th><th>Description</th><th>Trigger</th><th>Key properties</th><th>Signal</th></tr></thead>
       <tbody>
-        <tr><td><div class="ev-name">recent_visitors_page_viewed</div></td><td><div class="ev-props">visitors_count</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">recent_visitors_photo_cta_clicked</div></td><td><div class="ev-props">source: 'empty_state'</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">recent_visitors_profile_clicked</div></td><td><div class="ev-props">profile_id, visited_days_ago</div></td><td><span class="sig-badge sig-engagement">Engagement</span></td></tr>
+        <tr><td><div class="ev-name">recent_visitors_page_viewed</div></td><td><div class="ev-desc">User lands on the Recent Profile Visitors page</div></td><td><div class="ev-trigger">Navigates to Recent Profile Visitors</div></td><td><div class="ev-props">visitors_count</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">recent_visitors_photo_cta_clicked</div></td><td><div class="ev-desc">User clicks the add-photo CTA in the empty state</div></td><td><div class="ev-trigger">Clicks "Add photo" in the empty/no-visitors state</div></td><td><div class="ev-props">source: 'empty_state'</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">recent_visitors_profile_clicked</div></td><td><div class="ev-desc">User opens a profile of someone who visited them</div></td><td><div class="ev-trigger">Clicks on a profile card in the visitors list</div></td><td><div class="ev-props">profile_id, visited_days_ago</div></td><td><span class="sig-badge sig-engagement">Engagement</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -1463,13 +1476,13 @@
   <div class="section-label">Hotlist</div>
   <div class="ov-table-wrap" style="margin-bottom:32px">
     <table class="ov-table">
-      <thead><tr><th>Event</th><th>Key properties</th><th>Signal</th></tr></thead>
+      <thead><tr><th>Event</th><th>Description</th><th>Trigger</th><th>Key properties</th><th>Signal</th></tr></thead>
       <tbody>
-        <tr><td><div class="ev-name">hotlist_page_viewed</div></td><td><div class="ev-props">my_hotlist_count</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">hotlist_tab_clicked</div></td><td><div class="ev-props">tab: 'in_hotlist_from' | 'my_hotlist'</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">hotlist_search_cta_clicked</div></td><td><div class="ev-props">source: 'empty_state'</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">hotlist_profile_clicked</div></td><td><div class="ev-props">profile_id</div></td><td><span class="sig-badge sig-engagement">Engagement</span></td></tr>
-        <tr><td><div class="ev-name">hotlist_profile_removed</div></td><td><div class="ev-props">profile_id</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">hotlist_page_viewed</div></td><td><div class="ev-desc">User lands on the Hotlist page</div></td><td><div class="ev-trigger">Navigates to Hotlist</div></td><td><div class="ev-props">my_hotlist_count</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">hotlist_tab_clicked</div></td><td><div class="ev-desc">User switches between Hotlist tabs</div></td><td><div class="ev-trigger">Clicks "In hotlist from" or "My hotlist" tab</div></td><td><div class="ev-props">tab: 'in_hotlist_from' | 'my_hotlist'</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">hotlist_search_cta_clicked</div></td><td><div class="ev-desc">User clicks CTA to find profiles to add to hotlist</div></td><td><div class="ev-trigger">Clicks "Search profiles" in the empty hotlist state</div></td><td><div class="ev-props">source: 'empty_state'</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">hotlist_profile_clicked</div></td><td><div class="ev-desc">User opens a profile from the Hotlist</div></td><td><div class="ev-trigger">Clicks on a profile card in the Hotlist</div></td><td><div class="ev-props">profile_id</div></td><td><span class="sig-badge sig-engagement">Engagement</span></td></tr>
+        <tr><td><div class="ev-name">hotlist_profile_removed</div></td><td><div class="ev-desc">User removes a profile from their hotlist</div></td><td><div class="ev-trigger">Clicks the remove / X button on a hotlisted profile</div></td><td><div class="ev-props">profile_id</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -1478,13 +1491,13 @@
   <div class="section-label">Superpowers</div>
   <div class="ov-table-wrap" style="margin-bottom:32px">
     <table class="ov-table">
-      <thead><tr><th>Event</th><th>Key properties</th><th>Signal</th></tr></thead>
+      <thead><tr><th>Event</th><th>Description</th><th>Trigger</th><th>Key properties</th><th>Signal</th></tr></thead>
       <tbody>
-        <tr><td><div class="ev-name">superpowers_page_viewed</div></td><td><div class="ev-props">credits_balance</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">superpowers_buy_credits_clicked</div></td><td><div class="ev-props">credits_balance</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
-        <tr><td><div class="ev-name">superpower_use_clicked</div></td><td><div class="ev-props">type: 'multi_notification' | 'super_perfect_match' | 'highlight', credits_balance</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
-        <tr><td><div class="ev-name">superpower_activated</div></td><td><div class="ev-props">type, cost_credits, active_for_days</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
-        <tr><td><div class="ev-name">superpower_no_credits_overlay_shown</div></td><td><div class="ev-props">type, trigger: 'use_power'</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">superpowers_page_viewed</div></td><td><div class="ev-desc">User lands on the Superpowers page</div></td><td><div class="ev-trigger">Navigates to Superpowers</div></td><td><div class="ev-props">credits_balance</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">superpowers_buy_credits_clicked</div></td><td><div class="ev-desc">User clicks to purchase more credits</div></td><td><div class="ev-trigger">Clicks "Buy credits" button on Superpowers page</div></td><td><div class="ev-props">credits_balance</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">superpower_use_clicked</div></td><td><div class="ev-desc">User clicks to activate a specific superpower</div></td><td><div class="ev-trigger">Clicks "Use" button on a superpower card</div></td><td><div class="ev-props">type: 'multi_notification' | 'super_perfect_match' | 'highlight', credits_balance</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">superpower_activated</div></td><td><div class="ev-desc">A superpower is successfully activated with credits</div></td><td><div class="ev-trigger">Confirms activation after the cost is deducted</div></td><td><div class="ev-props">type, cost_credits, active_for_days</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">superpower_no_credits_overlay_shown</div></td><td><div class="ev-desc">Overlay shown when user doesn't have enough credits</div></td><td><div class="ev-trigger">User tries to activate a superpower without sufficient credits</div></td><td><div class="ev-props">type, trigger: 'use_power'</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -1493,28 +1506,28 @@
   <div class="section-label">My Profile</div>
   <div class="ov-table-wrap" style="margin-bottom:32px">
     <table class="ov-table">
-      <thead><tr><th>Event</th><th>Key properties</th><th>Signal</th></tr></thead>
+      <thead><tr><th>Event</th><th>Description</th><th>Trigger</th><th>Key properties</th><th>Signal</th></tr></thead>
       <tbody>
-        <tr><td><div class="ev-name">my_profile_details_viewed</div></td><td><div class="ev-props">profile_complete</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">my_profile_push_banner_clicked</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">my_profile_field_updated</div></td><td><div class="ev-props">field: 'searching_for' | 'sexual_orientation' | 'height' | ...</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">my_profile_description_updated</div></td><td><div class="ev-props">char_count</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">my_profile_details_saved</div></td><td><div class="ev-props">fields_filled, total_fields</div></td><td><span class="sig-badge sig-engagement">Engagement</span></td></tr>
-        <tr><td><div class="ev-name">my_profile_photo_viewed</div></td><td><div class="ev-props">has_photo</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">my_profile_photo_select_clicked</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-engagement">Engagement</span></td></tr>
-        <tr><td><div class="ev-name">my_profile_photo_uploaded</div></td><td><div class="ev-props">photo_count</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
-        <tr><td><div class="ev-name">my_profile_settings_viewed</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">my_profile_status_changed</div></td><td><div class="ev-props">status: 'active' | 'hidden'</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">my_profile_nickname_changed</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">my_profile_contact_permission_changed</div></td><td><div class="ev-props">value: 'anyone' | 'nobody' | ...</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">my_profile_language_changed</div></td><td><div class="ev-props">from, to</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">my_profile_settings_saved</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">my_profile_social_unlinked</div></td><td><div class="ev-props">provider: 'google'</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">my_profile_delete_account_clicked</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
-        <tr><td><div class="ev-name">my_profile_notifications_viewed</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">notification_preference_changed</div></td><td><div class="ev-props">category, channel: 'email' | 'push', enabled</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
-        <tr><td><div class="ev-name">notifications_email_unsubscribe_clicked</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
-        <tr><td><div class="ev-name">notifications_push_subscribe_clicked</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-engagement">Engagement</span></td></tr>
+        <tr><td><div class="ev-name">my_profile_details_viewed</div></td><td><div class="ev-desc">User views their own profile details form</div></td><td><div class="ev-trigger">Navigates to My Profile → Details tab</div></td><td><div class="ev-props">profile_complete</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">my_profile_push_banner_clicked</div></td><td><div class="ev-desc">User interacts with the push notification enable banner</div></td><td><div class="ev-trigger">Clicks "Enable" on the push notifications banner</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">my_profile_field_updated</div></td><td><div class="ev-desc">User updates a profile attribute field</div></td><td><div class="ev-trigger">Edits a dropdown or picker field (height, orientation, etc.)</div></td><td><div class="ev-props">field: 'searching_for' | 'sexual_orientation' | 'height' | ...</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">my_profile_description_updated</div></td><td><div class="ev-desc">User edits their About me / bio text</div></td><td><div class="ev-trigger">Types or edits the profile description text area</div></td><td><div class="ev-props">char_count</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">my_profile_details_saved</div></td><td><div class="ev-desc">User saves their profile details form</div></td><td><div class="ev-trigger">Clicks "Save" on the Details tab</div></td><td><div class="ev-props">fields_filled, total_fields</div></td><td><span class="sig-badge sig-engagement">Engagement</span></td></tr>
+        <tr><td><div class="ev-name">my_profile_photo_viewed</div></td><td><div class="ev-desc">User views their own photo settings</div></td><td><div class="ev-trigger">Navigates to My Profile → Photos tab</div></td><td><div class="ev-props">has_photo</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">my_profile_photo_select_clicked</div></td><td><div class="ev-desc">User initiates photo upload flow</div></td><td><div class="ev-trigger">Clicks "Choose photo" or the upload area</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-engagement">Engagement</span></td></tr>
+        <tr><td><div class="ev-name">my_profile_photo_uploaded</div></td><td><div class="ev-desc">User successfully uploads a profile photo</div></td><td><div class="ev-trigger">Photo file is selected and upload completes</div></td><td><div class="ev-props">photo_count</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">my_profile_settings_viewed</div></td><td><div class="ev-desc">User views their account settings</div></td><td><div class="ev-trigger">Navigates to My Profile → Settings tab</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">my_profile_status_changed</div></td><td><div class="ev-desc">User changes their profile visibility</div></td><td><div class="ev-trigger">Toggles the Active / Hidden status switch</div></td><td><div class="ev-props">status: 'active' | 'hidden'</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">my_profile_nickname_changed</div></td><td><div class="ev-desc">User changes their display name</div></td><td><div class="ev-trigger">Edits and saves the nickname field</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">my_profile_contact_permission_changed</div></td><td><div class="ev-desc">User changes who is allowed to contact them</div></td><td><div class="ev-trigger">Changes the "Who can contact me" setting</div></td><td><div class="ev-props">value: 'anyone' | 'nobody' | ...</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">my_profile_language_changed</div></td><td><div class="ev-desc">User switches the interface language</div></td><td><div class="ev-trigger">Selects a different language in settings</div></td><td><div class="ev-props">from, to</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">my_profile_settings_saved</div></td><td><div class="ev-desc">User saves their account settings</div></td><td><div class="ev-trigger">Clicks "Save" on the Settings tab</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">my_profile_social_unlinked</div></td><td><div class="ev-desc">User disconnects a linked social account</div></td><td><div class="ev-trigger">Clicks "Unlink" on a connected social login</div></td><td><div class="ev-props">provider: 'google'</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">my_profile_delete_account_clicked</div></td><td><div class="ev-desc">User initiates account deletion</div></td><td><div class="ev-trigger">Clicks "Delete account" in settings</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">my_profile_notifications_viewed</div></td><td><div class="ev-desc">User views their notification preferences</div></td><td><div class="ev-trigger">Navigates to My Profile → Notifications tab</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">notification_preference_changed</div></td><td><div class="ev-desc">User changes a notification channel preference</div></td><td><div class="ev-trigger">Toggles a notification on/off for email or push</div></td><td><div class="ev-props">category, channel: 'email' | 'push', enabled</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">notifications_email_unsubscribe_clicked</div></td><td><div class="ev-desc">User opts out of all marketing emails</div></td><td><div class="ev-trigger">Clicks "Unsubscribe from all emails"</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">notifications_push_subscribe_clicked</div></td><td><div class="ev-desc">User enables browser push notifications</div></td><td><div class="ev-trigger">Clicks "Enable push notifications"</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-engagement">Engagement</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -1523,17 +1536,17 @@
   <div class="section-label">Payment Gate – VIP Membership</div>
   <div class="ov-table-wrap" style="margin-bottom:32px">
     <table class="ov-table">
-      <thead><tr><th>Event</th><th>Key properties</th><th>Signal</th></tr></thead>
+      <thead><tr><th>Event</th><th>Description</th><th>Trigger</th><th>Key properties</th><th>Signal</th></tr></thead>
       <tbody>
-        <tr><td><div class="ev-name">vip_payment_gate_viewed</div></td><td><div class="ev-props">source: 'sidebar_banner' | 'overlay' | 'who_wants_me' | ...</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
-        <tr><td><div class="ev-name">vip_payment_method_selected</div></td><td><div class="ev-props">method: 'card' | 'bank_transfer' | 'apple_pay' | 'google_pay'</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
-        <tr><td><div class="ev-name">vip_payment_plan_selected</div></td><td><div class="ev-props">plan: '1_month' | '3_months' | '6_months' | '12_months', price_per_month, currency</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
-        <tr><td><div class="ev-name">vip_payment_terms_accepted</div></td><td><div class="ev-props">plan</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
-        <tr><td><div class="ev-name">vip_payment_initiated</div></td><td><div class="ev-props">method, plan, amount, currency</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
-        <tr><td><div class="ev-name">vip_payment_completed</div></td><td><div class="ev-props">method, plan, amount, currency</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
-        <tr><td><div class="ev-name">vip_payment_failed</div></td><td><div class="ev-props">method, plan, error_type</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
-        <tr><td><div class="ev-name">vip_payment_abandoned</div></td><td><div class="ev-props">plan, last_step: 'method_select' | 'plan_select' | 'card_form'</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
-        <tr><td><div class="ev-name">vip_payment_support_clicked</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">vip_payment_gate_viewed</div></td><td><div class="ev-desc">User lands on the VIP subscription payment page</div></td><td><div class="ev-trigger">Navigated from a paywall trigger or sidebar banner</div></td><td><div class="ev-props">source: 'sidebar_banner' | 'overlay' | 'who_wants_me' | ...</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">vip_payment_method_selected</div></td><td><div class="ev-desc">User picks a payment method</div></td><td><div class="ev-trigger">Clicks a payment method option (card, PayPal, etc.)</div></td><td><div class="ev-props">method: 'card' | 'bank_transfer' | 'apple_pay' | 'google_pay'</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">vip_payment_plan_selected</div></td><td><div class="ev-desc">User selects a subscription duration plan</div></td><td><div class="ev-trigger">Clicks a plan option (1, 3, 6 or 12 months)</div></td><td><div class="ev-props">plan: '1_month' | '3_months' | '6_months' | '12_months', price_per_month, currency</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">vip_payment_terms_accepted</div></td><td><div class="ev-desc">User accepts the payment terms and conditions</div></td><td><div class="ev-trigger">Checks the terms &amp; conditions checkbox</div></td><td><div class="ev-props">plan</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">vip_payment_initiated</div></td><td><div class="ev-desc">User submits the payment form</div></td><td><div class="ev-trigger">Clicks "Pay now" or confirm button</div></td><td><div class="ev-props">method, plan, amount, currency</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">vip_payment_completed</div></td><td><div class="ev-desc">VIP subscription purchase successfully completed</div></td><td><div class="ev-trigger">Payment provider returns success response</div></td><td><div class="ev-props">method, plan, amount, currency</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">vip_payment_failed</div></td><td><div class="ev-desc">VIP payment attempt failed</div></td><td><div class="ev-trigger">Payment provider returns an error response</div></td><td><div class="ev-props">method, plan, error_type</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">vip_payment_abandoned</div></td><td><div class="ev-desc">User leaves the payment flow without completing</div></td><td><div class="ev-trigger">Closes or navigates away mid-checkout</div></td><td><div class="ev-props">plan, last_step: 'method_select' | 'plan_select' | 'card_form'</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">vip_payment_support_clicked</div></td><td><div class="ev-desc">User clicks support link on the payment page</div></td><td><div class="ev-trigger">Clicks "Contact support" on VIP payment gate</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -1542,17 +1555,17 @@
   <div class="section-label">Payment Gate – Coins</div>
   <div class="ov-table-wrap" style="margin-bottom:32px">
     <table class="ov-table">
-      <thead><tr><th>Event</th><th>Key properties</th><th>Signal</th></tr></thead>
+      <thead><tr><th>Event</th><th>Description</th><th>Trigger</th><th>Key properties</th><th>Signal</th></tr></thead>
       <tbody>
-        <tr><td><div class="ev-name">coins_payment_gate_viewed</div></td><td><div class="ev-props">source: 'sidebar' | 'overlay' | 'superpowers' | ...</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
-        <tr><td><div class="ev-name">coins_payment_method_selected</div></td><td><div class="ev-props">method: 'card' | 'bank_transfer' | 'apple_pay' | 'google_pay'</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
-        <tr><td><div class="ev-name">coins_package_selected</div></td><td><div class="ev-props">credits: 80 | 225 | 625 | 1450 | 5550, price, currency, badge: 'bonus' | 'best_offer' | null</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
-        <tr><td><div class="ev-name">coins_payment_terms_accepted</div></td><td><div class="ev-props">credits</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
-        <tr><td><div class="ev-name">coins_payment_initiated</div></td><td><div class="ev-props">method, credits, amount, currency</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
-        <tr><td><div class="ev-name">coins_payment_completed</div></td><td><div class="ev-props">method, credits, amount, currency</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
-        <tr><td><div class="ev-name">coins_payment_failed</div></td><td><div class="ev-props">method, credits, error_type</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
-        <tr><td><div class="ev-name">coins_payment_abandoned</div></td><td><div class="ev-props">credits, last_step: 'method_select' | 'package_select' | 'card_form'</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
-        <tr><td><div class="ev-name">coins_payment_support_clicked</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">coins_payment_gate_viewed</div></td><td><div class="ev-desc">User lands on the coins purchase page</div></td><td><div class="ev-trigger">Navigated from a sidebar, overlay or Superpowers page</div></td><td><div class="ev-props">source: 'sidebar' | 'overlay' | 'superpowers' | ...</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">coins_payment_method_selected</div></td><td><div class="ev-desc">User picks a payment method for coins</div></td><td><div class="ev-trigger">Clicks a payment method option</div></td><td><div class="ev-props">method: 'card' | 'bank_transfer' | 'apple_pay' | 'google_pay'</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">coins_package_selected</div></td><td><div class="ev-desc">User selects a coins bundle to purchase</div></td><td><div class="ev-trigger">Clicks a coins package option</div></td><td><div class="ev-props">credits: 80 | 225 | 625 | 1450 | 5550, price, currency, badge: 'bonus' | 'best_offer' | null</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">coins_payment_terms_accepted</div></td><td><div class="ev-desc">User accepts the terms for coins purchase</div></td><td><div class="ev-trigger">Checks the terms &amp; conditions checkbox</div></td><td><div class="ev-props">credits</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">coins_payment_initiated</div></td><td><div class="ev-desc">User submits the coins payment form</div></td><td><div class="ev-trigger">Clicks "Pay now" or confirm button</div></td><td><div class="ev-props">method, credits, amount, currency</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">coins_payment_completed</div></td><td><div class="ev-desc">Coins purchase successfully completed</div></td><td><div class="ev-trigger">Payment provider returns success response</div></td><td><div class="ev-props">method, credits, amount, currency</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">coins_payment_failed</div></td><td><div class="ev-desc">Coins payment attempt failed</div></td><td><div class="ev-trigger">Payment provider returns an error response</div></td><td><div class="ev-props">method, credits, error_type</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">coins_payment_abandoned</div></td><td><div class="ev-desc">User leaves the coins checkout without completing</div></td><td><div class="ev-trigger">Closes or navigates away mid-checkout</div></td><td><div class="ev-props">credits, last_step: 'method_select' | 'package_select' | 'card_form'</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">coins_payment_support_clicked</div></td><td><div class="ev-desc">User clicks support link on the coins payment page</div></td><td><div class="ev-trigger">Clicks "Contact support" on coins payment gate</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
       </tbody>
     </table>
   </div>
