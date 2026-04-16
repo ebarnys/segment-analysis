@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SK3 – Segmentation & Funnels Overview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f6f2;
+    --surface: #ffffff;
+    --border: rgba(0,0,0,0.08);
+    --border-strong: rgba(0,0,0,0.15);
+    --text: #1a1a18;
+    --text-2: #5a5a56;
+    --text-3: #9a9a94;
+    --accent-soi: #dbeafe;
+    --accent-soi-text: #1e40af;
+    --accent-doi: #ede9fe;
+    --accent-doi-text: #5b21b6;
+    --accent-toi: #dcfce7;
+    --accent-toi-text: #166534;
+    --accent-free1: #d1fae5;
+    --accent-free1-text: #065f46;
+    --accent-free15: #fef3c7;
+    --accent-free15-text: #92400e;
+    --accent-vip: #fce7f3;
+    --accent-vip-text: #9d174d;
+    --accent-exp: #f3f4f6;
+    --accent-exp-text: #374151;
+    --accent-all: #fee2e2;
+    --accent-all-text: #991b1b;
+    --gap-red: #ef4444;
+    --gap-amber: #f59e0b;
+    --gap-green: #22c55e;
+    --radius: 14px;
+    --radius-sm: 8px;
+    --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.04);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  .page-header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 36px 48px 28px;
+    display: flex;
+    align-items: flex-end;
+    gap: 24px;
+    justify-content: space-between;
+  }
+
+  .page-header h1 {
+    font-size: 26px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+  }
+
+  .page-header .meta {
+    font-size: 12px;
+    color: var(--text-3);
+    font-family: 'DM Mono', monospace;
+  }
+
+  .page-header .sub {
+    font-size: 14px;
+    color: var(--text-2);
+    margin-top: 5px;
+  }
+
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 40px 48px;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-3);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .seg-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+    gap: 12px;
+    margin-bottom: 40px;
+  }
+
+  .seg-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+
+  .seg-header {
+    padding: 18px 20px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .seg-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 9px;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.02em;
+  }
+
+  .seg-title {
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .seg-sub {
+    font-size: 12px;
+    color: var(--text-2);
+    margin-top: 3px;
+    line-height: 1.5;
+  }
+
+  .seg-body { padding: 4px 0; }
+
+  .email-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 9px 20px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .email-row:last-child { border-bottom: none; }
+
+  .prio {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    margin-top: 6px;
+    flex-shrink: 0;
+  }
+
+  .p-high { background: #ef4444; }
+  .p-mid  { background: #f59e0b; }
+  .p-low  { background: #22c55e; }
+
+  .email-code {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-3);
+    line-height: 1.4;
+  }
+
+  .email-desc {
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  .email-rule {
+    font-size: 11px;
+    color: var(--text-3);
+    margin-top: 2px;
+    font-style: italic;
+  }
+
+  .col-soi   { background: var(--accent-soi);   color: var(--accent-soi-text); }
+  .col-doi   { background: var(--accent-doi);   color: var(--accent-doi-text); }
+  .col-toi   { background: var(--accent-toi);   color: var(--accent-toi-text); }
+  .col-free1 { background: var(--accent-free1); color: var(--accent-free1-text); }
+  .col-free15{ background: var(--accent-free15);color: var(--accent-free15-text); }
+  .col-vip   { background: var(--accent-vip);   color: var(--accent-vip-text); }
+  .col-exp   { background: var(--accent-exp);   color: var(--accent-exp-text); }
+  .col-all   { background: var(--accent-all);   color: var(--accent-all-text); }
+
+  .gaps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+    gap: 10px;
+    margin-bottom: 40px;
+  }
+
+  .gap-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    border-left-width: 4px;
+    box-shadow: var(--shadow);
+  }
+
+  .gap-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .gap-desc {
+    font-size: 13px;
+    color: var(--text-2);
+    line-height: 1.65;
+  }
+
+  .legend {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    font-size: 12px;
+    color: var(--text-2);
+    padding: 20px 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .legend span {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .lifecycle-bar {
+    display: flex;
+    gap: 0;
+    margin-bottom: 36px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--surface);
+    box-shadow: var(--shadow);
+  }
+
+  .lc-step {
+    flex: 1;
+    padding: 16px 12px;
+    text-align: center;
+    border-right: 1px solid var(--border);
+    font-size: 12px;
+    position: relative;
+  }
+
+  .lc-step:last-child { border-right: none; }
+
+  .lc-name {
+    font-family: 'DM Mono', monospace;
+    font-weight: 600;
+    font-size: 12px;
+    margin-bottom: 4px;
+  }
+
+  .lc-desc {
+    font-size: 11px;
+    color: var(--text-3);
+    line-height: 1.4;
+  }
+
+  .lc-count {
+    font-size: 22px;
+    font-weight: 300;
+    color: var(--text-3);
+    margin-bottom: 3px;
+  }
+
+  @media (max-width: 768px) {
+    .page-header { padding: 20px; }
+    .container { padding: 20px; }
+    .lifecycle-bar { flex-wrap: wrap; }
+    .lc-step { flex: none; width: 50%; }
+  }
+
+  @media print {
+    body { background: white; }
+    .page-header { break-after: avoid; }
+  }
+/* ── OVERLAY FUNNEL FLOW ── */
+  .funnel-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 40px;
+    align-items: stretch;
+    flex-wrap: wrap;
+  }
+
+  .funnel-stage {
+    flex: 1;
+    min-width: 160px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+
+  .funnel-stage-header {
+    padding: 12px 16px;
+    font-size: 11px;
+    font-weight: 600;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.04em;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .funnel-stage-header .count {
+    margin-left: auto;
+    font-size: 10px;
+    color: var(--text-3);
+    font-weight: 400;
+  }
+
+  .funnel-stage-body { padding: 12px; display: flex; flex-direction: column; gap: 7px; }
+
+  .ov-chip {
+    font-size: 12px;
+    padding: 6px 10px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    background: var(--bg);
+    line-height: 1.4;
+  }
+
+  .ov-chip .ov-name { font-weight: 500; display: block; }
+  .ov-chip .ov-trigger { font-size: 11px; color: var(--text-3); display: block; margin-top: 2px; }
+
+  .ov-chip.intent-convert { border-left: 3px solid #ef4444; }
+  .ov-chip.intent-engage  { border-left: 3px solid #3b82f6; }
+  .ov-chip.intent-inform  { border-left: 3px solid #22c55e; }
+  .ov-chip.intent-block   { border-left: 3px solid #f59e0b; }
+  .ov-chip.intent-off     { border-left: 3px solid #d1d5db; opacity: 0.45; }
+
+  /* stage badge colors – reuse segment palette */
+  .st-free  { background: var(--accent-free15); color: var(--accent-free15-text); }
+  .st-vip   { background: var(--accent-vip);    color: var(--accent-vip-text); }
+  .st-all   { background: var(--accent-all);    color: var(--accent-all-text); }
+  .st-new   { background: var(--accent-soi);    color: var(--accent-soi-text); }
+  .st-off   { background: var(--accent-exp);    color: var(--accent-exp-text); }
+
+  /* ── OVERLAY DETAIL TABLE ── */
+  .ov-table-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 40px;
+    box-shadow: var(--shadow);
+  }
+
+  .ov-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+
+  .ov-table thead tr {
+    background: var(--bg);
+    border-bottom: 1px solid var(--border-strong);
+  }
+
+  .ov-table th {
+    padding: 11px 16px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-3);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+  }
+
+  .ov-table td {
+    padding: 11px 16px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+
+  .ov-table tr:last-child td { border-bottom: none; }
+  .ov-table tr:hover td { background: rgba(0,0,0,0.018); }
+
+  .badge-audience {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 20px;
+    font-family: 'DM Mono', monospace;
+    white-space: nowrap;
+  }
+
+  .badge-all   { background: var(--accent-all);   color: var(--accent-all-text); }
+  .badge-free  { background: var(--accent-free15); color: var(--accent-free15-text); }
+  .badge-vip   { background: var(--accent-vip);    color: var(--accent-vip-text); }
+  .badge-new   { background: var(--accent-soi);    color: var(--accent-soi-text); }
+  .badge-off   { background: var(--accent-exp);    color: var(--accent-exp-text); }
+
+  .intent-dot {
+    display: inline-block;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    margin-right: 5px;
+    flex-shrink: 0;
+    vertical-align: middle;
+  }
+  .dot-convert { background: #ef4444; }
+  .dot-engage  { background: #3b82f6; }
+  .dot-inform  { background: #22c55e; }
+  .dot-block   { background: #f59e0b; }
+
+  .intent-label { font-size: 12px; white-space: nowrap; }
+
+  .ov-name-cell { font-weight: 500; font-size: 13px; }
+  .ov-trigger-cell { font-size: 12px; color: var(--text-2); }
+  .ov-off { color: var(--text-3); font-style: italic; }
+
+  /* ── GAPS ── */
+  .gaps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 14px;
+    margin-bottom: 40px;
+  }
+
+  /* ── LEGEND ── */
+  .legend .dot {
+    display: inline-block;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    margin-right: 5px;
+  }
+
+  .tab-bar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 0 48px;
+    display: flex;
+    gap: 4px;
+  }
+
+  .tab-btn {
+    padding: 14px 22px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-2);
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    margin-bottom: -1px;
+    transition: color 0.15s, border-color 0.15s;
+  }
+
+  .tab-btn:hover { color: var(--text); }
+
+  .tab-btn.active {
+    color: var(--text);
+    border-bottom-color: var(--text);
+  }
+
+  .tab-panel { display: block; }
+
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div>
+    <h1>SK3 – Overview about the current segmentation and funnels</h1>
+    <div class="sub">Email templates &amp; overlays across lifecycle segments</div>
+  </div>
+</div>
+
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="switchTab('emails', this)">✉ Email templates</button>
+  <button class="tab-btn" onclick="switchTab('overlays', this)">⧉ Overlays</button>
+</div>
+
+<div id="tab-emails" class="tab-panel">
+<div class="container">
+
+  <div class="section-label" style="margin-bottom:12px">User lifecycle – segment overview</div>
+
+  <div class="lifecycle-bar">
+    <div class="lc-step" style="background:var(--accent-soi)">
+      <div class="lc-name" style="color:var(--accent-soi-text)">SOI</div>
+      <div class="lc-count" style="color:var(--accent-soi-text)">5</div>
+      <div class="lc-desc">email na LP, nepotvrdil</div>
+    </div>
+    <div class="lc-step" style="background:var(--accent-doi)">
+      <div class="lc-name" style="color:var(--accent-doi-text)">DOI</div>
+      <div class="lc-count" style="color:var(--accent-doi-text)">2</div>
+      <div class="lc-desc">potvrdil, bez profilu</div>
+    </div>
+    <div class="lc-step" style="background:var(--accent-toi)">
+      <div class="lc-name" style="color:var(--accent-toi-text)">TOI</div>
+      <div class="lc-count" style="color:var(--accent-toi-text)">6</div>
+      <div class="lc-desc">profile completed, moderation</div>
+    </div>
+    <div class="lc-step" style="background:var(--accent-free1)">
+      <div class="lc-name" style="color:var(--accent-free1-text)">FREE1</div>
+      <div class="lc-count" style="color:var(--accent-free1-text)">12</div>
+      <div class="lc-desc">active trial, days 1–15</div>
+    </div>
+    <div class="lc-step" style="background:var(--accent-free15)">
+      <div class="lc-name" style="color:var(--accent-free15-text)">FREE15</div>
+      <div class="lc-count" style="color:var(--accent-free15-text)">7</div>
+      <div class="lc-desc">trial expired, payment pressure</div>
+    </div>
+    <div class="lc-step" style="background:var(--accent-vip)">
+      <div class="lc-name" style="color:var(--accent-vip-text)">VIP</div>
+      <div class="lc-count" style="color:var(--accent-vip-text)">10</div>
+      <div class="lc-desc">paying member</div>
+    </div>
+    <div class="lc-step" style="background:var(--accent-exp)">
+      <div class="lc-name" style="color:var(--accent-exp-text)">EXPIRED</div>
+      <div class="lc-count" style="color:var(--accent-exp-text)">2</div>
+      <div class="lc-desc">po dni 365, reaktivace</div>
+    </div>
+  </div>
+
+  <div class="section-label">Email templates by segment</div>
+
+  <div class="seg-grid">
+
+    <div class="seg-card">
+      <div class="seg-header">
+        <span class="seg-badge col-soi">SOI</span>
+        <div class="seg-title">Single Opt-In</div>
+        <div class="seg-sub">Vyplnil email na LP, ale nepotvrdil registraci</div>
+      </div>
+      <div class="seg-body">
+        <div class="email-row"><span class="prio p-high"></span><div><div class="email-code">REG-WEB-01</div><div class="email-desc">Registration confirmation</div><div class="email-rule">immediately</div></div></div>
+        <div class="email-row"><span class="prio p-high"></span><div><div class="email-code">REG-WEB-02</div><div class="email-desc">2nd follow-up confirmation</div><div class="email-rule">5 min po SOI – bez aktivace</div></div></div>
+        <div class="email-row"><span class="prio p-high"></span><div><div class="email-code">REG-WEB-03</div><div class="email-desc">3rd follow-up confirmation</div><div class="email-rule">10 min po SOI – bez aktivace</div></div></div>
+        <div class="email-row"><span class="prio p-low"></span><div><div class="email-code">REG-WEB-04</div><div class="email-desc">4. follow-up</div><div class="email-rule">1 hour after SOI, still only SOI</div></div></div>
+        <div class="email-row"><span class="prio p-low"></span><div><div class="email-code">REG-WEB-05</div><div class="email-desc">5. follow-up</div><div class="email-rule">24 hours after SOI, still only SOI</div></div></div>
+      </div>
+    </div>
+
+    <div class="seg-card">
+      <div class="seg-header">
+        <span class="seg-badge col-doi">DOI</span>
+        <div class="seg-title">Double Opt-In</div>
+        <div class="seg-sub">Confirmed email, but did not complete registration (no TOI)</div>
+      </div>
+      <div class="seg-body">
+        <div class="email-row"><span class="prio p-mid"></span><div><div class="email-code">REG-CONTINUE</div><div class="email-desc">Complete registration – profile</div><div class="email-rule">1h, 24h, 48h po DOI bez TOI</div></div></div>
+        <div class="email-row"><span class="prio p-high"></span><div><div class="email-code">REG-CONTINUE-EXISTING</div><div class="email-desc">Existing DOI returned to landing page</div><div class="email-rule">enters email again on LP</div></div></div>
+      </div>
+    </div>
+
+    <div class="seg-card">
+      <div class="seg-header">
+        <span class="seg-badge col-toi">TOI</span>
+        <div class="seg-title">Triple Opt-In</div>
+        <div class="seg-sub">Completed profile – fully registered, awaiting moderation</div>
+      </div>
+      <div class="seg-body">
+        <div class="email-row"><span class="prio p-mid"></span><div><div class="email-code">REG-WELCOME</div><div class="email-desc">Welcome email after completing registration</div><div class="email-rule">immediately after TOI</div></div></div>
+        <div class="email-row"><span class="prio p-mid"></span><div><div class="email-code">REG-CHECK</div><div class="email-desc">Profile approved by moderator</div><div class="email-rule">after LEVEL 1 approval</div></div></div>
+        <div class="email-row"><span class="prio p-mid"></span><div><div class="email-code">REG-DENY / REG-DENY-TEXT</div><div class="email-desc">Profile or text rejected</div><div class="email-rule">on L1 or L3 rejection</div></div></div>
+        <div class="email-row"><span class="prio p-low"></span><div><div class="email-code">NOTIF-PHOTO-UPLOAD</div><div class="email-desc">Photo upload request</div><div class="email-rule">day 1 after TOI</div></div></div>
+        <div class="email-row"><span class="prio p-high"></span><div><div class="email-code">NOTIF-ROB-MSG-TOI</div><div class="email-desc">TOI robot message – first engagement</div><div class="email-rule">shortly after TOI</div></div></div>
+        <div class="email-row"><span class="prio p-high"></span><div><div class="email-code">REG-WEB-EXISTING</div><div class="email-desc">Existing TOI returned to landing page</div><div class="email-rule">enters email again on LP</div></div></div>
+      </div>
+    </div>
+
+    <div class="seg-card">
+      <div class="seg-header">
+        <span class="seg-badge col-free1">FREE1</span>
+        <div class="seg-title">Free – first period</div>
+        <div class="seg-sub">Active free user in the first ~15 days (trial window)</div>
+      </div>
+      <div class="seg-body">
+        <div class="email-row"><span class="prio p-mid"></span><div><div class="email-code">FNL-C-WHY</div><div class="email-desc">Newsletter teaser "why it works"</div><div class="email-rule">day 2</div></div></div>
+        <div class="email-row"><span class="prio p-low"></span><div><div class="email-code">FNL-E-PROF-REM</div><div class="email-desc">Complete profile and add photo</div><div class="email-rule">day 3</div></div></div>
+        <div class="email-row"><span class="prio p-mid"></span><div><div class="email-code">FNL-D-NEW-MSG</div><div class="email-desc">New message waiting</div><div class="email-rule">day 5</div></div></div>
+        <div class="email-row"><span class="prio p-high"></span><div><div class="email-code">NOTIF-20DISCOUNT-EARLY</div><div class="email-desc">20% discount (men only)</div><div class="email-rule">day 5</div></div></div>
+        <div class="email-row"><span class="prio p-low"></span><div><div class="email-code">FNL-H-VIP-OFFR</div><div class="email-desc">VIP benefits reminder</div><div class="email-rule">day 9</div></div></div>
+        <div class="email-row"><span class="prio p-low"></span><div><div class="email-code">NOTIF-CBM-10-REM</div><div class="email-desc">10 chat requests + 20 votes renewed</div><div class="email-rule">every day, first 14 days</div></div></div>
+        <div class="email-row"><span class="prio p-low"></span><div><div class="email-code">FNL-T-GEO / FNL-B-CNT</div><div class="email-desc">Profiles from region / with same interests</div><div class="email-rule">trigger-based</div></div></div>
+        <div class="email-row"><span class="prio p-low"></span><div><div class="email-code">FNL-G-PROF-VISIT</div><div class="email-desc">Someone visited your profile</div><div class="email-rule">on visit (cron / real)</div></div></div>
+        <div class="email-row"><span class="prio p-high"></span><div><div class="email-code">NOTIF-WEB-MSG-FRE</div><div class="email-desc">First message from a real user</div><div class="email-rule">event trigger</div></div></div>
+        <div class="email-row"><span class="prio p-high"></span><div><div class="email-code">NOTIF-UNFINISHED-PAYMENT</div><div class="email-desc">Incomplete payment</div><div class="email-rule">visited payment gate, did not pay</div></div></div>
+        <div class="email-row"><span class="prio p-low"></span><div><div class="email-code">NOTIF-CBM-VIP-REM</div><div class="email-desc">Transition to FREE15 – notification</div><div class="email-rule">on FREE1 → FREE15 transition</div></div></div>
+      </div>
+    </div>
+
+    <div class="seg-card">
+      <div class="seg-header">
+        <span class="seg-badge col-free15">FREE15</span>
+        <div class="seg-title">Free – expiring</div>
+        <div class="seg-sub">Trial expired – maximum pressure to convert to paid</div>
+      </div>
+      <div class="seg-body">
+        <div class="email-row"><span class="prio p-low"></span><div><div class="email-code">FNL-H-VIP-OFFR</div><div class="email-desc">VIP benefits – reminder</div><div class="email-rule">day 30</div></div></div>
+        <div class="email-row"><span class="prio p-mid"></span><div><div class="email-code">FNL-N-INNACT-REM</div><div class="email-desc">Low profile activity</div><div class="email-rule">day 30 po registraci</div></div></div>
+        <div class="email-row"><span class="prio p-high"></span><div><div class="email-code">NOTIF-50DISCOUNT</div><div class="email-desc">50% VIP discount – urgency burst</div><div class="email-rule">day 45, 46, 47, 48, 49, 50, 51</div></div></div>
+        <div class="email-row"><span class="prio p-low"></span><div><div class="email-code">NOTIF-ALLINONE-FREE15</div><div class="email-desc">Account activity digest</div><div class="email-rule">day 45 → day 365, every 7 days</div></div></div>
+        <div class="email-row"><span class="prio p-mid"></span><div><div class="email-code">NOTIF-FAW / NOTIF-MATCH-FREE</div><div class="email-desc">Hotlist, match notifications</div><div class="email-rule">event trigger</div></div></div>
+        <div class="email-row"><span class="prio p-high"></span><div><div class="email-code">NOTIF-WEB-MSG-FRE / NOTIF-WEB-RPL-FRE</div><div class="email-desc">New / replied message</div><div class="email-rule">event trigger</div></div></div>
+        <div class="email-row"><span class="prio p-high"></span><div><div class="email-code">NOTIF-UNFINISHED-PAYMENT</div><div class="email-desc">Incomplete payment</div><div class="email-rule">visited payment gate, did not pay</div></div></div>
+      </div>
+    </div>
+
+    <div class="seg-card">
+      <div class="seg-header">
+        <span class="seg-badge col-vip">VIP / ABO</span>
+        <div class="seg-title">VIP Member</div>
+        <div class="seg-sub">Paying user – onboarding, retention, renewal</div>
+      </div>
+      <div class="seg-body">
+        <div class="email-row"><span class="prio p-low"></span><div><div class="email-code">NOTIF-VIP-WELCOME</div><div class="email-desc">Welcome after first payment (not women, not rebill)</div><div class="email-rule">immediately after VIP activation</div></div></div>
+        <div class="email-row"><span class="prio p-low"></span><div><div class="email-code">TIP1 / TIP2 / TIP3 / TIP4</div><div class="email-desc">Onboarding tips (photo, description, details, focus)</div><div class="email-rule">days 2, 3, 4, 5 (not women)</div></div></div>
+        <div class="email-row"><span class="prio p-mid"></span><div><div class="email-code">NOTIF-ALLINONE-VIP</div><div class="email-desc">Daily activity digest</div><div class="email-rule">day 2 VIP, every day of VIP membership</div></div></div>
+        <div class="email-row"><span class="prio p-low"></span><div><div class="email-code">NOTIF-CBM-30-REM</div><div class="email-desc">30 messages renewal</div><div class="email-rule">every day of VIP membership</div></div></div>
+        <div class="email-row"><span class="prio p-high"></span><div><div class="email-code">NOTIF-WEB-MSG-ABO / NOTIF-WEB-RPL-ABO</div><div class="email-desc">Message / reply from real user</div><div class="email-rule">event trigger</div></div></div>
+        <div class="email-row"><span class="prio p-mid"></span><div><div class="email-code">NOTIF-PRE-MSG-VIP / NOTIF-PR-RPL-VIP</div><div class="email-desc">Predefined message / reply</div><div class="email-rule">event trigger</div></div></div>
+        <div class="email-row"><span class="prio p-high"></span><div><div class="email-code">NOTIF-SURVEY-CANCEL</div><div class="email-desc">Survey after VIP cancellation</div><div class="email-rule">on recurring payment cancellation</div></div></div>
+        <div class="email-row"><span class="prio p-low"></span><div><div class="email-code">FNL-T-GEO-VIP / FNL-G-PROF-VISIT-ABO</div><div class="email-desc">Regional profiles, profile visit</div><div class="email-rule">trigger-based</div></div></div>
+      </div>
+    </div>
+
+    <div class="seg-card">
+      <div class="seg-header">
+        <span class="seg-badge col-exp">FREE_EXPIRED</span>
+        <div class="seg-title">Free Expired</div>
+        <div class="seg-sub">Was FREE15, now fully expired – reactivation</div>
+      </div>
+      <div class="seg-body">
+        <div class="email-row"><span class="prio p-low"></span><div><div class="email-code">NOTIF-ROB-MSG-FREE15</div><div class="email-desc">Robot message for EXPIRED users</div><div class="email-rule">on receiving robot message</div></div></div>
+        <div class="email-row"><span class="prio p-low"></span><div><div class="email-code">NOTIF-ALLINONE-FREE15</div><div class="email-desc">Activity digest (continues)</div><div class="email-rule">every 7 days until day 365</div></div></div>
+        <div class="email-row"><span class="prio p-low"></span><div><div style="font-size:11px;color:#ef4444;font-style:italic">Minimal coverage – identified gap</div></div></div>
+      </div>
+    </div>
+
+    <div class="seg-card">
+      <div class="seg-header">
+        <span class="seg-badge col-all">All Users</span>
+        <div class="seg-title">Cross-segment</div>
+        <div class="seg-sub">Birthday, cross-sell, referrals – regardless of status</div>
+      </div>
+      <div class="seg-body">
+        <div class="email-row"><span class="prio p-low"></span><div><div class="email-code">NOTIF-20DISCOUNT-BRD</div><div class="email-desc">20% birthday discount</div><div class="email-rule">birthday entered at registration</div></div></div>
+        <div class="email-row"><span class="prio p-high"></span><div><div class="email-code">SPC-PROMO-ADULT / SM / MILF</div><div class="email-desc">Cross-sell promo (adult niches)</div><div class="email-rule">controlled by domain settings</div></div></div>
+        <div class="email-row"><span class="prio p-high"></span><div><div class="email-code">SPC-EARN-INVITE</div><div class="email-desc">Friend invite – earn coins</div><div class="email-rule">on invite</div></div></div>
+        <div class="email-row"><span class="prio p-mid"></span><div><div class="email-code">REG-LOGIN</div><div class="email-desc">Passwordless login (magic link)</div><div class="email-rule">wrong password + valid TOI account</div></div></div>
+        <div class="email-row"><span class="prio p-high"></span><div><div class="email-code">REG-PWD-REC / REG-PWD-REC-APP</div><div class="email-desc">Password recovery (web + app)</div><div class="email-rule">on-demand</div></div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="section-label">Identified gaps for Segment.com analysis</div>
+
+  <div class="gaps-grid">
+    <div class="gap-box" style="border-left-color: var(--gap-red)">
+      <div class="gap-title">FREE_EXPIRED – almost no coverage</div>
+      <div class="gap-desc">Users after day 365 receive no communication. Missing reactivation flow: "come back, a lot has changed" with a concrete offer or discount.</div>
+    </div>
+    <div class="gap-box" style="border-left-color: var(--gap-red)">
+      <div class="gap-title">NOTIF-PAYMENT-PROBLEM – NOT SENT</div>
+      <div class="gap-desc">The failed payment template exists (ID 80) but is never sent. Payment recovery email is typically one of the highest-ROI touchpoints in the entire funnel.</div>
+    </div>
+    <div class="gap-box" style="border-left-color: var(--gap-amber)">
+      <div class="gap-title">Days 15–45 – communication gap</div>
+      <div class="gap-desc">FREE15 users receive almost nothing between the FREE1 transition (day 15) and NOTIF-50DISCOUNT (day 45). 30 days of silence = lost conversion momentum.</div>
+    </div>
+    <div class="gap-box" style="border-left-color: var(--gap-amber)">
+      <div class="gap-title">Women – different flow, but not reflected</div>
+      <div class="gap-desc">TIP1–TIP4 and NOTIF-VIP-WELCOME are explicitly "not women", but women have no dedicated onboarding sequence. They likely receive inappropriate generic emails.</div>
+    </div>
+    <div class="gap-box" style="border-left-color: var(--gap-green)">
+      <div class="gap-title">Post-VIP cancel – survey only</div>
+      <div class="gap-desc">After VIP cancellation only NOTIF-SURVEY-CANCEL is sent. Missing win-back flow: offer of a cheaper plan, downgrade option, or timed reactivation emails.</div>
+    </div>
+    <div class="gap-box" style="border-left-color: var(--gap-green)">
+      <div class="gap-title">Birthday discount – underrated touchpoint</div>
+      <div class="gap-desc">NOTIF-20DISCOUNT-BRD is Low priority, despite personalized birthday emails with limited-time offers having above-average CTR and conversion in the dating sector.</div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <span><span class="dot" style="background:#ef4444"></span>High priority – critical for conversion / engagement</span>
+    <span><span class="dot" style="background:#f59e0b"></span>Middle priority – standard operational emails</span>
+    <span><span class="dot" style="background:#22c55e"></span>Low priority – supplementary, low urgency</span>
+    <span style="margin-left:auto;color:#9a9a94;font-size:10px;font-family:'DM Mono',monospace">Intermaxgroup · segment-user-analysis.html</span>
+  </div>
+
+</div>
+
+</div><!-- /tab-emails -->
+
+<div id="tab-overlays" class="tab-panel" style="display:none">
+<div class="container">
+  <!-- ── FUNNEL VIEW ── -->
+  <div class="section-label">Overlays by user funnel stage</div>
+
+  <div class="funnel-row">
+
+    <div class="funnel-stage">
+      <div class="funnel-stage-header st-new">New Users <span class="count">1 overlay</span></div>
+      <div class="funnel-stage-body">
+        <div class="ov-chip intent-engage">
+          <span class="ov-name">Push notification request</span>
+          <span class="ov-trigger">First entry into chat</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="funnel-stage">
+      <div class="funnel-stage-header st-all">All Users <span class="count">15 overlays</span></div>
+      <div class="funnel-stage-body">
+        <div class="ov-chip intent-inform">
+          <span class="ov-name">Welcome message</span>
+          <span class="ov-trigger">After each login</span>
+        </div>
+        <div class="ov-chip intent-convert">
+          <span class="ov-name">Cross-sell promo</span>
+          <span class="ov-trigger">After CoolAdmin period elapses</span>
+        </div>
+        <div class="ov-chip intent-inform">
+          <span class="ov-name">Welcome after Cross-Sell</span>
+          <span class="ov-trigger">After redirect to cross-sell domain</span>
+        </div>
+        <div class="ov-chip intent-inform">
+          <span class="ov-name">Adult content</span>
+          <span class="ov-trigger">Click on photo with adult content</span>
+        </div>
+        <div class="ov-chip intent-block">
+          <span class="ov-name">Blocked flirt (no flirts)</span>
+          <span class="ov-trigger">Sending message without available flirts</span>
+        </div>
+        <div class="ov-chip intent-inform">
+          <span class="ov-name">Forbidden flirt (mismatch)</span>
+          <span class="ov-trigger">Flirt with incompatible orientation</span>
+        </div>
+        <div class="ov-chip intent-engage">
+          <span class="ov-name">New mutual match</span>
+          <span class="ov-trigger">Mutual match with a profile</span>
+        </div>
+        <div class="ov-chip intent-inform">
+          <span class="ov-name">How flirts work</span>
+          <span class="ov-trigger">Click on Free Flirts (available)</span>
+        </div>
+        <div class="ov-chip intent-block">
+          <span class="ov-name">No perfect match ratings left</span>
+          <span class="ov-trigger">FREE: after 20 likes, VIP: after 40 likes</span>
+        </div>
+        <div class="ov-chip intent-convert">
+          <span class="ov-name">Successful VIP payment + Cross-sell</span>
+          <span class="ov-trigger">After VIP payment on cross-sell domain</span>
+        </div>
+        <div class="ov-chip intent-inform">
+          <span class="ov-name">Successful Coins payment</span>
+          <span class="ov-trigger">After coins payment</span>
+        </div>
+        <div class="ov-chip intent-inform">
+          <span class="ov-name">Successful Auto coin refill</span>
+          <span class="ov-trigger">Automatic coin refill</span>
+        </div>
+        <div class="ov-chip intent-block">
+          <span class="ov-name">Terms violation</span>
+          <span class="ov-trigger">Terms violation (phone, email)</span>
+        </div>
+        <div class="ov-chip intent-engage">
+          <span class="ov-name">Coin actions (Gift, Multi-msg, LC gift, Perfect match, TOP profil, Invite friend)</span>
+          <span class="ov-trigger">Various coin actions in member area</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="funnel-stage">
+      <div class="funnel-stage-header st-free">FREE Users Only <span class="count">10 overlays</span></div>
+      <div class="funnel-stage-body">
+        <div class="ov-chip intent-convert">
+          <span class="ov-name">Early 20% discount</span>
+          <span class="ov-trigger">Den 5 po registraci (8:00)</span>
+        </div>
+        <div class="ov-chip intent-convert">
+          <span class="ov-name">Successful VIP payment</span>
+          <span class="ov-trigger">After VIP payment</span>
+        </div>
+        <div class="ov-chip intent-convert">
+          <span class="ov-name">Search (VIP filter)</span>
+          <span class="ov-trigger">Click on VIP-only search filter</span>
+        </div>
+        <div class="ov-chip intent-convert">
+          <span class="ov-name">VIP only (settings)</span>
+          <span class="ov-trigger">Click on VIP-only settings</span>
+        </div>
+        <div class="ov-chip intent-convert">
+          <span class="ov-name">Hotlist (blocked profile)</span>
+          <span class="ov-trigger">Click on a locked profile in the Hotlist</span>
+        </div>
+        <div class="ov-chip intent-convert">
+          <span class="ov-name">Who likes me</span>
+          <span class="ov-trigger">Click on a locked profile – Perfect match</span>
+        </div>
+        <div class="ov-chip intent-convert">
+          <span class="ov-name">Visitors (blocked profile)</span>
+          <span class="ov-trigger">Click on locked profile in Visitors section</span>
+        </div>
+        <div class="ov-chip intent-convert">
+          <span class="ov-name">Read now (blurred message)</span>
+          <span class="ov-trigger">Click on a blurred message in chat</span>
+        </div>
+        <div class="ov-chip intent-convert">
+          <span class="ov-name">Paging limited</span>
+          <span class="ov-trigger">Attempting to view a page without permissions</span>
+        </div>
+        <div class="ov-chip intent-convert">
+          <span class="ov-name">Limited flirt (VIP-only member)</span>
+          <span class="ov-trigger">Flirt s profilem "Only VIP can contact"</span>
+        </div>
+        <div class="ov-chip intent-convert">
+          <span class="ov-name">Response Blocked</span>
+          <span class="ov-trigger">FREE user replying to a message</span>
+        </div>
+        <div class="ov-chip intent-convert">
+          <span class="ov-name">VIP only for Livechat</span>
+          <span class="ov-trigger">FREE user wants to write in LiveChat</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="funnel-stage">
+      <div class="funnel-stage-header st-vip">VIP Only <span class="count">1 overlay</span></div>
+      <div class="funnel-stage-body">
+        <div class="ov-chip intent-block">
+          <span class="ov-name">Response Limited (slow down)</span>
+          <span class="ov-trigger">VIP reached reply limit</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="funnel-stage">
+      <div class="funnel-stage-header st-off">Disabled / Inactive <span class="count">5 items</span></div>
+      <div class="funnel-stage-body">
+        <div class="ov-chip intent-off">
+          <span class="ov-name">Coin Paymentgate</span>
+          <span class="ov-trigger">OFF</span>
+        </div>
+        <div class="ov-chip intent-off">
+          <span class="ov-name">Push request confirmation</span>
+          <span class="ov-trigger">OFF</span>
+        </div>
+        <div class="ov-chip intent-off">
+          <span class="ov-name">Welcome after Auto Migration</span>
+          <span class="ov-trigger">OFF</span>
+        </div>
+        <div class="ov-chip intent-off">
+          <span class="ov-name">Welcome after profile migration</span>
+          <span class="ov-trigger">OFF</span>
+        </div>
+        <div class="ov-chip intent-off">
+          <span class="ov-name">Coin system</span>
+          <span class="ov-trigger">Ask Tomas (OFF)</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── DETAIL TABLE ── -->
+  <div class="section-label">All overlays – detailed view</div>
+
+  <div class="ov-table-wrap">
+    <table class="ov-table">
+      <thead>
+        <tr>
+          <th>Overlay name</th>
+          <th>Trigger / when shown</th>
+          <th>Audience</th>
+          <th>Intent</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="ov-name-cell">Welcome message</td>
+          <td class="ov-trigger-cell">After each login (jednou)</td>
+          <td><span class="badge-audience badge-all">ALL</span></td>
+          <td><span class="intent-dot dot-inform"></span><span class="intent-label">Information</span></td>
+        </tr>
+        <tr>
+          <td class="ov-name-cell">Promotion for Cross-Selling</td>
+          <td class="ov-trigger-cell">After the period set in CoolAdmin elapses</td>
+          <td><span class="badge-audience badge-all">ALL</span></td>
+          <td><span class="intent-dot dot-convert"></span><span class="intent-label">Conversion / upsell</span></td>
+        </tr>
+        <tr>
+          <td class="ov-name-cell">Successful VIP payment + Cross-sell discount</td>
+          <td class="ov-trigger-cell">After successful VIP payment on cross-sell domain</td>
+          <td><span class="badge-audience badge-all">ALL</span></td>
+          <td><span class="intent-dot dot-convert"></span><span class="intent-label">Conversion confirmation</span></td>
+        </tr>
+        <tr>
+          <td class="ov-name-cell">Welcome after Cross-Selling</td>
+          <td class="ov-trigger-cell">After redirect via cross-sell link to new domain</td>
+          <td><span class="badge-audience badge-all">ALL</span></td>
+          <td><span class="intent-dot dot-inform"></span><span class="intent-label">Onboarding</span></td>
+        </tr>
+        <tr>
+          <td class="ov-name-cell">Adult content</td>
+          <td class="ov-trigger-cell">Click on image with adult content (nudity, more photos)</td>
+          <td><span class="badge-audience badge-all">ALL</span></td>
+          <td><span class="intent-dot dot-inform"></span><span class="intent-label">Consent / information</span></td>
+        </tr>
+        <tr>
+          <td class="ov-name-cell">How flirts work</td>
+          <td class="ov-trigger-cell">Click on Free Flirts – flirts are still available</td>
+          <td><span class="badge-audience badge-all">ALL</span></td>
+          <td><span class="intent-dot dot-inform"></span><span class="intent-label">Education</span></td>
+        </tr>
+        <tr>
+          <td class="ov-name-cell">Blocked flirt (no flirts left)</td>
+          <td class="ov-trigger-cell">Sending a message to a new conversation without available flirts</td>
+          <td><span class="badge-audience badge-all">ALL</span></td>
+          <td><span class="intent-dot dot-convert"></span><span class="intent-label">Conversion (expired = always)</span></td>
+        </tr>
+        <tr>
+          <td class="ov-name-cell">Forbidden flirt (mismatch)</td>
+          <td class="ov-trigger-cell">PAttempt to flirt with a profile seeking a different gender</td>
+          <td><span class="badge-audience badge-all">ALL</span></td>
+          <td><span class="intent-dot dot-inform"></span><span class="intent-label">Blocking / information</span></td>
+        </tr>
+        <tr>
+          <td class="ov-name-cell">New mutual match</td>
+          <td class="ov-trigger-cell">Mutual match with another profile</td>
+          <td><span class="badge-audience badge-all">ALL</span></td>
+          <td><span class="intent-dot dot-engage"></span><span class="intent-label">Engagement</span></td>
+        </tr>
+        <tr>
+          <td class="ov-name-cell">No perfect match ratings left</td>
+          <td class="ov-trigger-cell">FREE: po 20 likes/dislikes · VIP: po 40 likes/dislikes</td>
+          <td><span class="badge-audience badge-all">ALL</span></td>
+          <td><span class="intent-dot dot-convert"></span><span class="intent-label">Conversion (FREE) / blocking (VIP)</span></td>
+        </tr>
+        <tr>
+          <td class="ov-name-cell">Successful Coins payment</td>
+          <td class="ov-trigger-cell">After coins payment</td>
+          <td><span class="badge-audience badge-all">ALL</span></td>
+          <td><span class="intent-dot dot-inform"></span><span class="intent-label">Transaction confirmation</span></td>
+        </tr>
+        <tr>
+          <td class="ov-name-cell">Successful Auto coin refill</td>
+          <td class="ov-trigger-cell">Automatic coin refill pod nastavenou hranici</td>
+          <td><span class="badge-audience badge-all">ALL</span></td>
+          <td><span class="intent-dot dot-inform"></span><span class="intent-label">Transaction confirmation</span></td>
+        </tr>
+        <tr>
+          <td class="ov-name-cell">Request Push from hotlist / match / chat</td>
+          <td class="ov-trigger-cell">Push notification not enabled when performing action in the section</td>
+          <td><span class="badge-audience badge-all">ALL</span> <span class="badge-audience badge-new" style="margin-left:4px">NEW</span></td>
+          <td><span class="intent-dot dot-engage"></span><span class="intent-label">Engagement (push opt-in)</span></td>
+        </tr>
+        <tr>
+          <td class="ov-name-cell">Coin Gift / Coin Gift in Livechat</td>
+          <td class="ov-trigger-cell">Click on gift icon on profile or in LiveChat</td>
+          <td><span class="badge-audience badge-all">ALL</span></td>
+          <td><span class="intent-dot dot-engage"></span><span class="intent-label">Engagement / coin monetisation</span></td>
+        </tr>
+        <tr>
+          <td class="ov-name-cell">Coin Multi message</td>
+          <td class="ov-trigger-cell">Sending message via profile redirect</td>
+          <td><span class="badge-audience badge-all">ALL</span></td>
+          <td><span class="intent-dot dot-engage"></span><span class="intent-label">Coin monetisation</span></td>
+        </tr>
+        <tr>
+          <td class="ov-name-cell">Coin Perfect match / Coin TOP profil</td>
+          <td class="ov-trigger-cell">10 likes in PerfectMatch · second page of results</td>
+          <td><span class="badge-audience badge-all">ALL</span></td>
+          <td><span class="intent-dot dot-engage"></span><span class="intent-label">Coin monetisation</span></td>
+        </tr>
+        <tr>
+          <td class="ov-name-cell">Coin Invite Friend</td>
+          <td class="ov-trigger-cell">Superpowers section → Get free coins → Invite by email</td>
+          <td><span class="badge-audience badge-all">ALL</span></td>
+          <td><span class="intent-dot dot-engage"></span><span class="intent-label">Viral growth / coin acquisition</span></td>
+        </tr>
+        <tr>
+          <td class="ov-name-cell">Terms violation</td>
+          <td class="ov-trigger-cell">Sending private contact (phone, email) in a message</td>
+          <td><span class="badge-audience badge-all">ALL</span></td>
+          <td><span class="intent-dot dot-inform"></span><span class="intent-label">Compliance / blocking</span></td>
+        </tr>
+        <tr style="background:rgba(239,68,68,0.04)">
+          <td class="ov-name-cell">Early 20% discount</td>
+          <td class="ov-trigger-cell">Day 5 after registration at 8:00 (selected countries)</td>
+          <td><span class="badge-audience badge-free">FREE</span></td>
+          <td><span class="intent-dot dot-convert"></span><span class="intent-label" style="font-weight:500;color:#ef4444">Conversion – urgency</span></td>
+        </tr>
+        <tr style="background:rgba(239,68,68,0.04)">
+          <td class="ov-name-cell">Successful VIP payment</td>
+          <td class="ov-trigger-cell">After VIP Membership payment</td>
+          <td><span class="badge-audience badge-free">FREE</span></td>
+          <td><span class="intent-dot dot-convert"></span><span class="intent-label">Conversion confirmation</span></td>
+        </tr>
+        <tr style="background:rgba(239,68,68,0.04)">
+          <td class="ov-name-cell">Search – VIP filter</td>
+          <td class="ov-trigger-cell">Changing a search filter available for VIP only</td>
+          <td><span class="badge-audience badge-free">FREE</span></td>
+          <td><span class="intent-dot dot-convert"></span><span class="intent-label">Conversion – feature gate</span></td>
+        </tr>
+        <tr style="background:rgba(239,68,68,0.04)">
+          <td class="ov-name-cell">VIP only (settings)</td>
+          <td class="ov-trigger-cell">Click on VIP-only profile settings</td>
+          <td><span class="badge-audience badge-free">FREE</span></td>
+          <td><span class="intent-dot dot-convert"></span><span class="intent-label">Conversion – feature gate</span></td>
+        </tr>
+        <tr style="background:rgba(239,68,68,0.04)">
+          <td class="ov-name-cell">Hotlist (blocked profile)</td>
+          <td class="ov-trigger-cell">Click on a locked profile in "In hotlist from" section</td>
+          <td><span class="badge-audience badge-free">FREE</span></td>
+          <td><span class="intent-dot dot-convert"></span><span class="intent-label">Conversion – feature gate</span></td>
+        </tr>
+        <tr style="background:rgba(239,68,68,0.04)">
+          <td class="ov-name-cell">Who likes me</td>
+          <td class="ov-trigger-cell">Click on locked profile in Perfect Match → Who likes me</td>
+          <td><span class="badge-audience badge-free">FREE</span></td>
+          <td><span class="intent-dot dot-convert"></span><span class="intent-label">Conversion – feature gate</span></td>
+        </tr>
+        <tr style="background:rgba(239,68,68,0.04)">
+          <td class="ov-name-cell">Visitors (blocked profile)</td>
+          <td class="ov-trigger-cell">Click on locked profile in Visitors section</td>
+          <td><span class="badge-audience badge-free">FREE</span></td>
+          <td><span class="intent-dot dot-convert"></span><span class="intent-label">Conversion – feature gate</span></td>
+        </tr>
+        <tr style="background:rgba(239,68,68,0.04)">
+          <td class="ov-name-cell">Read now (blurred message)</td>
+          <td class="ov-trigger-cell">Click on a blurred message in chat</td>
+          <td><span class="badge-audience badge-free">FREE</span></td>
+          <td><span class="intent-dot dot-convert"></span><span class="intent-label" style="font-weight:500;color:#ef4444">Conversion – highest intent</span></td>
+        </tr>
+        <tr style="background:rgba(239,68,68,0.04)">
+          <td class="ov-name-cell">Response Blocked</td>
+          <td class="ov-trigger-cell">FREE user attempting to reply to a message</td>
+          <td><span class="badge-audience badge-free">FREE</span></td>
+          <td><span class="intent-dot dot-convert"></span><span class="intent-label" style="font-weight:500;color:#ef4444">Conversion – highest intent</span></td>
+        </tr>
+        <tr style="background:rgba(239,68,68,0.04)">
+          <td class="ov-name-cell">Paging limited</td>
+          <td class="ov-trigger-cell">Attempting to view a page without required permissions</td>
+          <td><span class="badge-audience badge-free">FREE</span></td>
+          <td><span class="intent-dot dot-convert"></span><span class="intent-label">Conversion – feature gate</span></td>
+        </tr>
+        <tr style="background:rgba(239,68,68,0.04)">
+          <td class="ov-name-cell">Limited flirt (VIP-only member)</td>
+          <td class="ov-trigger-cell">Flirt with a profile that has "Only VIP can contact me" active</td>
+          <td><span class="badge-audience badge-free">FREE</span></td>
+          <td><span class="intent-dot dot-convert"></span><span class="intent-label">Conversion – social proof</span></td>
+        </tr>
+        <tr style="background:rgba(239,68,68,0.04)">
+          <td class="ov-name-cell">VIP only for Livechat</td>
+          <td class="ov-trigger-cell">FREE user attempting to write in LiveChat</td>
+          <td><span class="badge-audience badge-free">FREE</span></td>
+          <td><span class="intent-dot dot-convert"></span><span class="intent-label">Conversion – feature gate</span></td>
+        </tr>
+        <tr>
+          <td class="ov-name-cell">Response Limited (slow down)</td>
+          <td class="ov-trigger-cell">VIP reached reply limit in conversation</td>
+          <td><span class="badge-audience badge-vip">VIP</span></td>
+          <td><span class="intent-dot dot-inform"></span><span class="intent-label">Rate limiting / compliance</span></td>
+        </tr>
+        <tr>
+          <td class="ov-name-cell ov-off">Coin Paymentgate / Push confirmation / Migrations / Coin system</td>
+          <td class="ov-trigger-cell ov-off">—</td>
+          <td><span class="badge-audience badge-off">OFF</span></td>
+          <td><span class="intent-dot" style="background:#d1d5db"></span><span class="intent-label ov-off">Disabled / inactive</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ── GAPS ── -->
+  <div class="section-label">Identified gaps – Overlay layer</div>
+
+  <div class="gaps-grid">
+
+    <div class="gap-box" style="border-left-color: var(--gap-red)">
+      <div class="gap-title">Missing overlay for failed payment</div>
+      <div class="gap-desc">"Failed Automatic coin refill" exists only as a mention (deleted card), but there is no overlay for VIP payment failure. Meanwhile, NOTIF-PAYMENT-PROBLEM (ID 80) exists in the email layer and is also never sent – overlay + email recovery flow is completely missing.</div>
+    </div>
+
+    <div class="gap-box" style="border-left-color: var(--gap-red)">
+      <div class="gap-title">No proactive conversion overlay for FREE15 (days 15–45)</div>
+      <div class="gap-desc">The email layer already has an identified gap for days 15–45 without communication. The overlay layer also has no proactive trigger – only reacts to user actions (feature gates). Missing: a timed overlay (e.g. day 20, 30) with a limited offer.</div>
+    </div>
+
+    <div class="gap-box" style="border-left-color: var(--gap-red)">
+      <div class="gap-title">Post-VIP cancel – no win-back overlay</div>
+      <div class="gap-desc">No overlay exists after VIP Membership cancellation. The email layer only sends a survey (NOTIF-SURVEY-CANCEL). Ovoverlay on first login after VIP expiry offers no reactivation incentive or cheaper plan.</div>
+    </div>
+
+    <div class="gap-box" style="border-left-color: var(--gap-amber)">
+      <div class="gap-title">Welcome message – generic for all users, no personalisation</div>
+      <div class="gap-desc">The Welcome message is shown to all users identically on every login. For FREE users after day 15, 30 or 45 it could contain a different CTA (discount, urgency). For VIP users after expiry it should contain a win-back offer.</div>
+    </div>
+
+    <div class="gap-box" style="border-left-color: var(--gap-amber)">
+      <div class="gap-title">Cross-sell overlay without A/B testing framework</div>
+      <div class="gap-desc">The cross-sell promo overlay is controlled only by a CoolAdmin timer for all users. Missing: segmentation by activity, gegender or lifecycle stage. The overlay is shown the same way to a user on day 3 and day 200.</div>
+    </div>
+
+    <div class="gap-box" style="border-left-color: var(--gap-amber)">
+      <div class="gap-title">No reactivation overlay for FREE_EXPIRED (after day 365)</div>
+      <div class="gap-desc">FREE_EXPIRED users have no dedicated overlay. On return to the member area (via magic link from email) they only see the generic Welcome message with no specific reactivation offer.</div>
+    </div>
+
+    <div class="gap-box" style="border-left-color: var(--gap-green)">
+      <div class="gap-title">Push opt-in overlays – 3 variants, unclear coordination</div>
+      <div class="gap-desc">There are 3 separate push overlays (chat, hotlist, match). It is unclear whether they show only once or repeatedly. Without coordination all three could appear in a single session – causing push fatigue for new users.</div>
+    </div>
+
+    <div class="gap-box" style="border-left-color: var(--gap-green)">
+      <div class="gap-title">Disabled overlays without documented reason</div>
+      <div class="gap-desc">5 overlays are marked as OFF (Coin Paymentgate, Push confirmation, migrations, Coin system). Missing documentation on why they were disabled and whether they are candidates for reactivation. Coin system has only the note "Ask Tomas".</div>
+    </div>
+
+  </div>
+
+  <div class="legend">
+    <span><span class="dot" style="background:#ef4444"></span>Conversion intent – direct payment pressure</span>
+    <span><span class="dot" style="background:#3b82f6"></span>Engagement – activation, push opt-in, match</span>
+    <span><span class="dot" style="background:#22c55e"></span>Information / onboarding / confirmation</span>
+    <span><span class="dot" style="background:#f59e0b"></span>Blocking / compliance / rate limiting</span>
+    <span style="margin-left:auto;color:#9a9a94;font-size:10px;font-family:'DM Mono',monospace">Intermaxgroup · overlay-analysis.html</span>
+  </div>
+
+</div><!-- /container overlay -->
+</div><!-- /tab-overlays -->
+
+<script>
+function switchTab(id, btn) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.style.display = 'none');
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).style.display = 'block';
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>
