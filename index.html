@@ -8,13 +8,16 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #f7f6f2;
+    --bg: #f0f2f7;
     --surface: #ffffff;
-    --border: rgba(0,0,0,0.08);
-    --border-strong: rgba(0,0,0,0.15);
-    --text: #1a1a18;
-    --text-2: #5a5a56;
-    --text-3: #9a9a94;
+    --border: rgba(0,0,0,0.06);
+    --border-strong: rgba(0,0,0,0.10);
+    --text: #0f1117;
+    --text-2: #4b5563;
+    --text-3: #9ca3af;
+    --primary: #6366f1;
+    --primary-light: #eef2ff;
+    --primary-text: #4338ca;
     --accent-soi: #dbeafe;
     --accent-soi-text: #1e40af;
     --accent-doi: #ede9fe;
@@ -34,9 +37,10 @@
     --gap-red: #ef4444;
     --gap-amber: #f59e0b;
     --gap-green: #22c55e;
-    --radius: 14px;
-    --radius-sm: 8px;
-    --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.04);
+    --radius: 16px;
+    --radius-sm: 10px;
+    --shadow: 0 1px 3px rgba(15,17,23,0.04), 0 8px 24px rgba(15,17,23,0.07);
+    --shadow-sm: 0 1px 2px rgba(15,17,23,0.04), 0 2px 8px rgba(15,17,23,0.05);
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -53,17 +57,36 @@
   .page-header {
     background: var(--surface);
     border-bottom: 1px solid var(--border);
-    padding: 36px 48px 28px;
+    padding: 28px 48px;
     display: flex;
-    align-items: flex-end;
-    gap: 24px;
+    align-items: center;
+    gap: 16px;
     justify-content: space-between;
   }
 
+  .page-header-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--primary-light);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .page-header-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
   .page-header h1 {
-    font-size: 26px;
-    font-weight: 600;
-    letter-spacing: -0.5px;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.4px;
+    color: var(--text);
   }
 
   .page-header .meta {
@@ -73,9 +96,10 @@
   }
 
   .page-header .sub {
-    font-size: 14px;
-    color: var(--text-2);
-    margin-top: 5px;
+    font-size: 13px;
+    color: var(--text-3);
+    margin-top: 3px;
+    font-weight: 400;
   }
 
   .container {
@@ -86,13 +110,15 @@
 
   .section-label {
     font-size: 11px;
-    font-weight: 600;
-    color: var(--text-3);
+    font-weight: 700;
+    color: var(--primary-text);
+    background: var(--primary-light);
     text-transform: uppercase;
     letter-spacing: 0.1em;
     margin-bottom: 16px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--border);
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    display: inline-block;
   }
 
   .seg-grid {
@@ -104,7 +130,7 @@
 
   .seg-card {
     background: var(--surface);
-    border: 1px solid var(--border);
+    border: none;
     border-radius: var(--radius);
     overflow: hidden;
     box-shadow: var(--shadow);
@@ -200,17 +226,18 @@
 
   .gap-box {
     background: var(--surface);
-    border: 1px solid var(--border);
+    border: none;
     border-radius: var(--radius);
-    padding: 18px 20px;
+    padding: 20px 20px 20px 24px;
     border-left-width: 4px;
+    border-left-style: solid;
     box-shadow: var(--shadow);
   }
 
   .gap-title {
     font-size: 14px;
-    font-weight: 600;
-    margin-bottom: 6px;
+    font-weight: 700;
+    margin-bottom: 7px;
   }
 
   .gap-desc {
@@ -244,43 +271,36 @@
 
   .lifecycle-bar {
     display: flex;
-    gap: 0;
+    gap: 8px;
     margin-bottom: 36px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    overflow: hidden;
-    background: var(--surface);
-    box-shadow: var(--shadow);
   }
 
   .lc-step {
     flex: 1;
-    padding: 16px 12px;
+    padding: 16px 14px;
     text-align: center;
-    border-right: 1px solid var(--border);
+    border-radius: var(--radius);
     font-size: 12px;
     position: relative;
+    box-shadow: var(--shadow-sm);
   }
-
-  .lc-step:last-child { border-right: none; }
 
   .lc-name {
     font-family: 'DM Mono', monospace;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 12px;
     margin-bottom: 4px;
   }
 
   .lc-desc {
     font-size: 11px;
-    color: var(--text-3);
     line-height: 1.4;
+    opacity: 0.65;
   }
 
   .lc-count {
-    font-size: 22px;
-    font-weight: 300;
-    color: var(--text-3);
+    font-size: 24px;
+    font-weight: 600;
     margin-bottom: 3px;
   }
 
@@ -308,7 +328,7 @@
     flex: 1;
     min-width: 160px;
     background: var(--surface);
-    border: 1px solid var(--border);
+    border: none;
     border-radius: var(--radius);
     overflow: hidden;
     box-shadow: var(--shadow);
@@ -363,7 +383,7 @@
   /* ── OVERLAY DETAIL TABLE ── */
   .ov-table-wrap {
     background: var(--surface);
-    border: 1px solid var(--border);
+    border: none;
     border-radius: var(--radius);
     overflow: hidden;
     margin-bottom: 40px;
@@ -377,16 +397,16 @@
   }
 
   .ov-table thead tr {
-    background: var(--bg);
-    border-bottom: 1px solid var(--border-strong);
+    background: var(--primary-light);
+    border-bottom: 1px solid rgba(99,102,241,0.12);
   }
 
   .ov-table th {
     padding: 11px 16px;
     text-align: left;
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--text-3);
+    font-size: 10.5px;
+    font-weight: 700;
+    color: var(--primary-text);
     text-transform: uppercase;
     letter-spacing: 0.08em;
     white-space: nowrap;
@@ -400,7 +420,7 @@
   }
 
   .ov-table tr:last-child td { border-bottom: none; }
-  .ov-table tr:hover td { background: rgba(0,0,0,0.018); }
+  .ov-table tr:hover td { background: rgba(99,102,241,0.025); }
 
   .badge-audience {
     display: inline-block;
@@ -458,28 +478,30 @@
     border-bottom: 1px solid var(--border);
     padding: 0 48px;
     display: flex;
-    gap: 4px;
+    gap: 2px;
   }
 
   .tab-btn {
-    padding: 14px 22px;
+    padding: 14px 20px;
     font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
+    font-size: 13.5px;
     font-weight: 500;
-    color: var(--text-2);
+    color: var(--text-3);
     background: none;
     border: none;
     border-bottom: 2px solid transparent;
     cursor: pointer;
     margin-bottom: -1px;
     transition: color 0.15s, border-color 0.15s;
+    letter-spacing: 0.01em;
   }
 
-  .tab-btn:hover { color: var(--text); }
+  .tab-btn:hover { color: var(--text-2); }
 
   .tab-btn.active {
-    color: var(--text);
-    border-bottom-color: var(--text);
+    color: var(--primary);
+    border-bottom-color: var(--primary);
+    font-weight: 600;
   }
 
   .tab-panel { display: block; }
@@ -494,19 +516,21 @@
   .catalog-stat {
     flex: 1;
     background: var(--surface);
-    border: 1px solid var(--border);
+    border: none;
     border-radius: var(--radius);
-    padding: 20px 24px;
+    padding: 24px 28px;
     box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
   }
 
   .catalog-stat-num {
-    font-size: 36px;
-    font-weight: 300;
-    color: var(--text);
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--primary);
     line-height: 1;
-    margin-bottom: 6px;
-    font-family: 'DM Mono', monospace;
+    letter-spacing: -1px;
   }
 
   .catalog-stat-label {
@@ -514,7 +538,7 @@
     color: var(--text-3);
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    font-weight: 500;
+    font-weight: 600;
   }
 
   .sig-badge {
@@ -550,9 +574,12 @@
 <body>
 
 <div class="page-header">
-  <div>
-    <h1>SK3 – Overview about the current segmentation and funnels</h1>
-    <div class="sub">Email templates &amp; overlays across lifecycle segments</div>
+  <div class="page-header-left">
+    <div class="page-header-icon">⬡</div>
+    <div>
+      <h1>SK3 – Overview about the current segmentation and funnels</h1>
+      <div class="sub">Email templates · Overlays · Event Catalog</div>
+    </div>
   </div>
 </div>
 
