@@ -120,6 +120,26 @@
     border-radius: var(--radius-sm);
     display: inline-block;
   }
+  .cat-heading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -0.01em;
+    margin-bottom: 14px;
+    margin-top: 8px;
+    padding: 12px 18px;
+    background: var(--surface);
+    border-radius: var(--radius-sm);
+    border-left: 4px solid var(--primary);
+    box-shadow: var(--shadow-sm);
+  }
+  .cat-heading .cat-emoji {
+    font-size: 20px;
+    line-height: 1;
+  }
 
   .seg-grid {
     display: grid;
@@ -599,7 +619,7 @@
 <div class="tab-bar">
   <button class="tab-btn active" onclick="switchTab('emails', this)">✉ Email templates</button>
   <button class="tab-btn" onclick="switchTab('overlays', this)">⧉ Overlays</button>
-  <button class="tab-btn" onclick="switchTab('catalog', this)">⬡ Event Catalog</button>
+  <button class="tab-btn" onclick="switchTab('catalog', this)">⬡ Events / Tracking plan</button>
 </div>
 
 <div id="tab-emails" class="tab-panel">
@@ -1276,7 +1296,7 @@
   </div>
 
   <!-- TOPBAR -->
-  <div class="section-label">Topbar</div>
+  <div class="cat-heading"><span class="cat-emoji">🧭</span> Topbar</div>
   <div class="ov-table-wrap" style="margin-bottom:32px">
     <table class="ov-table">
       <thead><tr><th>Event</th><th>Description</th><th>Trigger</th><th>Key properties</th><th>Signal</th></tr></thead>
@@ -1300,7 +1320,7 @@
   </div>
 
   <!-- SIDEBAR -->
-  <div class="section-label">Sidebar</div>
+  <div class="cat-heading"><span class="cat-emoji">📌</span> Sidebar</div>
   <div class="ov-table-wrap" style="margin-bottom:32px">
     <table class="ov-table">
       <thead><tr><th>Event</th><th>Description</th><th>Trigger</th><th>Key properties</th><th>Signal</th></tr></thead>
@@ -1322,7 +1342,7 @@
   </div>
 
   <!-- NEARBY -->
-  <div class="section-label">Nearby</div>
+  <div class="cat-heading"><span class="cat-emoji">📍</span> Nearby</div>
   <div class="ov-table-wrap" style="margin-bottom:32px">
     <table class="ov-table">
       <thead><tr><th>Event</th><th>Description</th><th>Trigger</th><th>Key properties</th><th>Signal</th></tr></thead>
@@ -1340,7 +1360,7 @@
   </div>
 
   <!-- PROFILE DETAIL -->
-  <div class="section-label">Profile Detail</div>
+  <div class="cat-heading"><span class="cat-emoji">👤</span> Profile Detail</div>
   <div class="ov-table-wrap" style="margin-bottom:32px">
     <table class="ov-table">
       <thead><tr><th>Event</th><th>Description</th><th>Trigger</th><th>Key properties</th><th>Signal</th></tr></thead>
@@ -1361,7 +1381,7 @@
   </div>
 
   <!-- LIVE CHAT -->
-  <div class="section-label">Live Chat</div>
+  <div class="cat-heading"><span class="cat-emoji">💬</span> Live Chat</div>
   <div class="ov-table-wrap" style="margin-bottom:32px">
     <table class="ov-table">
       <thead><tr><th>Event</th><th>Description</th><th>Trigger</th><th>Key properties</th><th>Signal</th></tr></thead>
@@ -1391,7 +1411,7 @@
   </div>
 
   <!-- MESSAGES -->
-  <div class="section-label">Messages</div>
+  <div class="cat-heading"><span class="cat-emoji">✉️</span> Messages</div>
   <div class="ov-table-wrap" style="margin-bottom:32px">
     <table class="ov-table">
       <thead><tr><th>Event</th><th>Description</th><th>Trigger</th><th>Key properties</th><th>Signal</th></tr></thead>
@@ -1415,7 +1435,7 @@
   </div>
 
   <!-- PERFECT MATCH -->
-  <div class="section-label">Perfect Match – Game</div>
+  <div class="cat-heading"><span class="cat-emoji">💘</span> Perfect Match – Game</div>
   <div class="ov-table-wrap" style="margin-bottom:32px">
     <table class="ov-table">
       <thead><tr><th>Event</th><th>Description</th><th>Trigger</th><th>Key properties</th><th>Signal</th></tr></thead>
@@ -1432,7 +1452,7 @@
   </div>
 
   <!-- PERFECT MATCH RESULTS -->
-  <div class="section-label">Perfect Match – Results</div>
+  <div class="cat-heading"><span class="cat-emoji">🏆</span> Perfect Match – Results</div>
   <div class="ov-table-wrap" style="margin-bottom:32px">
     <table class="ov-table">
       <thead><tr><th>Event</th><th>Description</th><th>Trigger</th><th>Key properties</th><th>Signal</th></tr></thead>
@@ -1445,7 +1465,7 @@
   </div>
 
   <!-- WHO WANTS ME -->
-  <div class="section-label">Who Wants Me</div>
+  <div class="cat-heading"><span class="cat-emoji">🔥</span> Who Wants Me</div>
   <div class="ov-table-wrap" style="margin-bottom:32px">
     <table class="ov-table">
       <thead><tr><th>Event</th><th>Description</th><th>Trigger</th><th>Key properties</th><th>Signal</th></tr></thead>
@@ -1460,7 +1480,7 @@
   </div>
 
   <!-- RECENT VISITORS -->
-  <div class="section-label">Recent Profile Visitors</div>
+  <div class="cat-heading"><span class="cat-emoji">👣</span> Recent Profile Visitors</div>
   <div class="ov-table-wrap" style="margin-bottom:32px">
     <table class="ov-table">
       <thead><tr><th>Event</th><th>Description</th><th>Trigger</th><th>Key properties</th><th>Signal</th></tr></thead>
@@ -1473,7 +1493,7 @@
   </div>
 
   <!-- HOTLIST -->
-  <div class="section-label">Hotlist</div>
+  <div class="cat-heading"><span class="cat-emoji">⭐</span> Hotlist</div>
   <div class="ov-table-wrap" style="margin-bottom:32px">
     <table class="ov-table">
       <thead><tr><th>Event</th><th>Description</th><th>Trigger</th><th>Key properties</th><th>Signal</th></tr></thead>
@@ -1488,7 +1508,7 @@
   </div>
 
   <!-- SUPERPOWERS -->
-  <div class="section-label">Superpowers</div>
+  <div class="cat-heading"><span class="cat-emoji">⚡</span> Superpowers</div>
   <div class="ov-table-wrap" style="margin-bottom:32px">
     <table class="ov-table">
       <thead><tr><th>Event</th><th>Description</th><th>Trigger</th><th>Key properties</th><th>Signal</th></tr></thead>
@@ -1503,7 +1523,7 @@
   </div>
 
   <!-- MY PROFILE -->
-  <div class="section-label">My Profile</div>
+  <div class="cat-heading"><span class="cat-emoji">🙋</span> My Profile</div>
   <div class="ov-table-wrap" style="margin-bottom:32px">
     <table class="ov-table">
       <thead><tr><th>Event</th><th>Description</th><th>Trigger</th><th>Key properties</th><th>Signal</th></tr></thead>
@@ -1533,7 +1553,7 @@
   </div>
 
   <!-- VIP PAYMENT -->
-  <div class="section-label">Payment Gate – VIP Membership</div>
+  <div class="cat-heading"><span class="cat-emoji">💎</span> Payment Gate – VIP Membership</div>
   <div class="ov-table-wrap" style="margin-bottom:32px">
     <table class="ov-table">
       <thead><tr><th>Event</th><th>Description</th><th>Trigger</th><th>Key properties</th><th>Signal</th></tr></thead>
@@ -1552,7 +1572,7 @@
   </div>
 
   <!-- COINS PAYMENT -->
-  <div class="section-label">Payment Gate – Coins</div>
+  <div class="cat-heading"><span class="cat-emoji">🪙</span> Payment Gate – Coins</div>
   <div class="ov-table-wrap" style="margin-bottom:32px">
     <table class="ov-table">
       <thead><tr><th>Event</th><th>Description</th><th>Trigger</th><th>Key properties</th><th>Signal</th></tr></thead>
