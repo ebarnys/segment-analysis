@@ -484,6 +484,67 @@
 
   .tab-panel { display: block; }
 
+  /* ── EVENT CATALOG ── */
+  .catalog-summary {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 36px;
+  }
+
+  .catalog-stat {
+    flex: 1;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    box-shadow: var(--shadow);
+  }
+
+  .catalog-stat-num {
+    font-size: 36px;
+    font-weight: 300;
+    color: var(--text);
+    line-height: 1;
+    margin-bottom: 6px;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .catalog-stat-label {
+    font-size: 12px;
+    color: var(--text-3);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 500;
+  }
+
+  .sig-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 20px;
+    font-family: 'DM Mono', monospace;
+    white-space: nowrap;
+  }
+
+  .sig-high       { background: var(--accent-all);   color: var(--accent-all-text); }
+  .sig-engagement { background: var(--accent-soi);   color: var(--accent-soi-text); }
+  .sig-standard   { background: var(--accent-exp);   color: var(--accent-exp-text); }
+
+  .ev-name {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  .ev-props {
+    font-size: 11px;
+    color: var(--text-3);
+    font-family: 'DM Mono', monospace;
+    margin-top: 2px;
+  }
+
 </style>
 </head>
 <body>
@@ -498,6 +559,7 @@
 <div class="tab-bar">
   <button class="tab-btn active" onclick="switchTab('emails', this)">✉ Email templates</button>
   <button class="tab-btn" onclick="switchTab('overlays', this)">⧉ Overlays</button>
+  <button class="tab-btn" onclick="switchTab('catalog', this)">⬡ Event Catalog</button>
 </div>
 
 <div id="tab-emails" class="tab-panel">
@@ -1154,6 +1216,302 @@
 
 </div><!-- /container overlay -->
 </div><!-- /tab-overlays -->
+
+<div id="tab-catalog" class="tab-panel" style="display:none">
+<div class="container">
+
+  <div class="catalog-summary">
+    <div class="catalog-stat">
+      <div class="catalog-stat-num">92</div>
+      <div class="catalog-stat-label">Total events</div>
+    </div>
+    <div class="catalog-stat">
+      <div class="catalog-stat-num">44</div>
+      <div class="catalog-stat-label">High-intent signals</div>
+    </div>
+    <div class="catalog-stat">
+      <div class="catalog-stat-num">14</div>
+      <div class="catalog-stat-label">Pages covered</div>
+    </div>
+  </div>
+
+  <!-- GLOBAL NAVIGATION -->
+  <div class="section-label">Global Navigation</div>
+  <div class="ov-table-wrap" style="margin-bottom:32px">
+    <table class="ov-table">
+      <thead><tr><th>Event</th><th>Key properties</th><th>Signal</th></tr></thead>
+      <tbody>
+        <tr><td><div class="ev-name">topbar_nav_clicked</div></td><td><div class="ev-props">section: 'live_chat' | 'perfect_match' | 'nearby' | 'new_members'</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">language_switcher_clicked</div></td><td><div class="ev-props">from, to</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">profile_dropdown_opened</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">profile_dropdown_item_clicked</div></td><td><div class="ev-props">item: 'my_profile' | 'my_photos' | 'profile_settings' | 'logout' | ...</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">sidebar_messages_indicator_clicked</div></td><td><div class="ev-props">messages_remaining</div></td><td><span class="sig-badge sig-engagement">Engagement</span></td></tr>
+        <tr><td><div class="ev-name">sidebar_likes_indicator_clicked</div></td><td><div class="ev-props">likes_remaining</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">sidebar_coins_indicator_clicked</div></td><td><div class="ev-props">coins_balance</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">sidebar_vip_banner_clicked</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">sidebar_nav_clicked</div></td><td><div class="ev-props">item: 'live_chat' | 'messages' | 'perfect_match' | 'who_wants_me' | 'recent_visitors' | 'hotlist' | 'superpowers'</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">sidebar_push_banner_clicked</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- NEARBY -->
+  <div class="section-label">Nearby</div>
+  <div class="ov-table-wrap" style="margin-bottom:32px">
+    <table class="ov-table">
+      <thead><tr><th>Event</th><th>Key properties</th><th>Signal</th></tr></thead>
+      <tbody>
+        <tr><td><div class="ev-name">page_viewed</div></td><td><div class="ev-props">page: 'nearby'</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">profile_completion_banner_viewed</div></td><td><div class="ev-props">missing: ['photo', 'details', 'description']</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">profile_completion_cta_clicked</div></td><td><div class="ev-props">cta: 'add_photo' | 'profile_details' | 'short_description'</div></td><td><span class="sig-badge sig-engagement">Engagement</span></td></tr>
+        <tr><td><div class="ev-name">nearby_filter_changed</div></td><td><div class="ev-props">gender, age_min, age_max, country, region, city</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">nearby_sort_changed</div></td><td><div class="ev-props">sort_by</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">nearby_view_toggled</div></td><td><div class="ev-props">view: 'grid' | 'list'</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">profile_detail_clicked</div></td><td><div class="ev-props">profile_id, position, has_top_badge, has_photo, age, city</div></td><td><span class="sig-badge sig-engagement">Engagement</span></td></tr>
+        <tr><td><div class="ev-name">nearby_page_changed</div></td><td><div class="ev-props">page</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- PROFILE DETAIL -->
+  <div class="section-label">Profile Detail</div>
+  <div class="ov-table-wrap" style="margin-bottom:32px">
+    <table class="ov-table">
+      <thead><tr><th>Event</th><th>Key properties</th><th>Signal</th></tr></thead>
+      <tbody>
+        <tr><td><div class="ev-name">profile_detail_viewed</div></td><td><div class="ev-props">profile_id, age, city, has_photo, photo_count</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">profile_photo_browsed</div></td><td><div class="ev-props">profile_id, photo_index, total_photos</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">profile_liked</div></td><td><div class="ev-props">profile_id, source: 'profile_detail' | 'perfect_match'</div></td><td><span class="sig-badge sig-engagement">Engagement</span></td></tr>
+        <tr><td><div class="ev-name">profile_disliked</div></td><td><div class="ev-props">profile_id, source</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">profile_gift_clicked</div></td><td><div class="ev-props">profile_id, source</div></td><td><span class="sig-badge sig-engagement">Engagement</span></td></tr>
+        <tr><td><div class="ev-name">profile_chat_clicked</div></td><td><div class="ev-props">profile_id, source</div></td><td><span class="sig-badge sig-engagement">Engagement</span></td></tr>
+        <tr><td><div class="ev-name">profile_hotlist_clicked</div></td><td><div class="ev-props">profile_id, source</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">profile_report_clicked</div></td><td><div class="ev-props">profile_id</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">flirt_message_started</div></td><td><div class="ev-props">profile_id</div></td><td><span class="sig-badge sig-engagement">Engagement</span></td></tr>
+        <tr><td><div class="ev-name">flirt_suggestion_clicked</div></td><td><div class="ev-props">profile_id</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">flirt_message_sent</div></td><td><div class="ev-props">profile_id, message_length, used_suggestion</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- LIVE CHAT -->
+  <div class="section-label">Live Chat</div>
+  <div class="ov-table-wrap" style="margin-bottom:32px">
+    <table class="ov-table">
+      <thead><tr><th>Event</th><th>Key properties</th><th>Signal</th></tr></thead>
+      <tbody>
+        <tr><td><div class="ev-name">livechat_page_viewed</div></td><td><div class="ev-props">coin_balance</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">livechat_tab_clicked</div></td><td><div class="ev-props">tab: 'active_chats' | 'pinned_chats' | 'online_list'</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">livechat_filter_changed</div></td><td><div class="ev-props">...</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">livechat_view_toggled</div></td><td><div class="ev-props">view: 'grid' | 'list'</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">livechat_profile_clicked</div></td><td><div class="ev-props">profile_id, position, age, is_online</div></td><td><span class="sig-badge sig-engagement">Engagement</span></td></tr>
+        <tr><td><div class="ev-name">livechat_page_changed</div></td><td><div class="ev-props">page</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">livechat_onboarding_viewed</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">livechat_onboarding_cta_clicked</div></td><td><div class="ev-props">cta: 'join_community'</div></td><td><span class="sig-badge sig-engagement">Engagement</span></td></tr>
+        <tr><td><div class="ev-name">livechat_profile_panel_viewed</div></td><td><div class="ev-props">profile_id, age</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">livechat_wink_overlay_shown</div></td><td><div class="ev-props">profile_id, cost_coins</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">livechat_wink_confirmed</div></td><td><div class="ev-props">profile_id, cost_coins</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">livechat_gift_overlay_shown</div></td><td><div class="ev-props">profile_id, cost_coins</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">livechat_gift_confirmed</div></td><td><div class="ev-props">profile_id, cost_coins</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">livechat_profile_pinned</div></td><td><div class="ev-props">profile_id</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">livechat_profile_unpinned</div></td><td><div class="ev-props">profile_id</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">livechat_profile_reported</div></td><td><div class="ev-props">profile_id, reason</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">livechat_message_started</div></td><td><div class="ev-props">profile_id</div></td><td><span class="sig-badge sig-engagement">Engagement</span></td></tr>
+        <tr><td><div class="ev-name">livechat_message_send_attempted</div></td><td><div class="ev-props">profile_id, user_type: 'free'</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">livechat_vip_overlay_shown</div></td><td><div class="ev-props">profile_id, trigger: 'send_message'</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">livechat_message_sent</div></td><td><div class="ev-props">profile_id, message_length</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- MESSAGES -->
+  <div class="section-label">Messages</div>
+  <div class="ov-table-wrap" style="margin-bottom:32px">
+    <table class="ov-table">
+      <thead><tr><th>Event</th><th>Key properties</th><th>Signal</th></tr></thead>
+      <tbody>
+        <tr><td><div class="ev-name">messages_push_banner_clicked</div></td><td><div class="ev-props">cta: 'turn_on_notifications'</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">messages_all_tab_viewed</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">messages_unread_tab_viewed</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">messages_unanswered_tab_viewed</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">messages_favorites_tab_viewed</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">messages_system_tab_viewed</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">conversation_opened</div></td><td><div class="ev-props">profile_id, is_unread, conversation_age_days</div></td><td><span class="sig-badge sig-engagement">Engagement</span></td></tr>
+        <tr><td><div class="ev-name">conversation_deleted</div></td><td><div class="ev-props">profile_id</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">messages_page_changed</div></td><td><div class="ev-props">page</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">message_started</div></td><td><div class="ev-props">profile_id</div></td><td><span class="sig-badge sig-engagement">Engagement</span></td></tr>
+        <tr><td><div class="ev-name">message_unlock_attempted</div></td><td><div class="ev-props">profile_id, user_type: 'free'</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">message_vip_overlay_shown</div></td><td><div class="ev-props">profile_id, trigger: 'unlock_message' | 'reply'</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">message_send_attempted</div></td><td><div class="ev-props">profile_id, user_type: 'free'</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">message_sent</div></td><td><div class="ev-props">profile_id, message_length</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- PERFECT MATCH -->
+  <div class="section-label">Perfect Match – Game</div>
+  <div class="ov-table-wrap" style="margin-bottom:32px">
+    <table class="ov-table">
+      <thead><tr><th>Event</th><th>Key properties</th><th>Signal</th></tr></thead>
+      <tbody>
+        <tr><td><div class="ev-name">perfect_match_page_viewed</div></td><td><div class="ev-props">likes_remaining</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">perfect_match_profile_viewed</div></td><td><div class="ev-props">profile_id, age, city, position_in_session</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">perfect_match_profile_liked</div></td><td><div class="ev-props">profile_id, position_in_session</div></td><td><span class="sig-badge sig-engagement">Engagement</span></td></tr>
+        <tr><td><div class="ev-name">perfect_match_profile_disliked</div></td><td><div class="ev-props">profile_id, position_in_session</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">perfect_match_mutual_match</div></td><td><div class="ev-props">profile_id</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">perfect_match_limit_reached</div></td><td><div class="ev-props">likes_used, user_type</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">perfect_match_vip_overlay_shown</div></td><td><div class="ev-props">trigger: 'limit_reached'</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- PERFECT MATCH RESULTS -->
+  <div class="section-label">Perfect Match – Results</div>
+  <div class="ov-table-wrap" style="margin-bottom:32px">
+    <table class="ov-table">
+      <thead><tr><th>Event</th><th>Key properties</th><th>Signal</th></tr></thead>
+      <tbody>
+        <tr><td><div class="ev-name">perfect_match_results_page_viewed</div></td><td><div class="ev-props">mutual_matches_count</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">perfect_match_results_tab_clicked</div></td><td><div class="ev-props">tab: 'perfect_match_results' | 'who_wants_me'</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">perfect_match_play_game_clicked</div></td><td><div class="ev-props">source: 'banner' | 'text_link', mutual_matches_count</div></td><td><span class="sig-badge sig-engagement">Engagement</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- WHO WANTS ME -->
+  <div class="section-label">Who Wants Me</div>
+  <div class="ov-table-wrap" style="margin-bottom:32px">
+    <table class="ov-table">
+      <thead><tr><th>Event</th><th>Key properties</th><th>Signal</th></tr></thead>
+      <tbody>
+        <tr><td><div class="ev-name">who_wants_me_page_viewed</div></td><td><div class="ev-props">likes_received_count, user_type</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">who_wants_me_vip_banner_viewed</div></td><td><div class="ev-props">likes_received_count</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">who_wants_me_activate_vip_clicked</div></td><td><div class="ev-props">likes_received_count, source: 'banner'</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">who_wants_me_locked_profile_clicked</div></td><td><div class="ev-props">profile_id, user_type: 'free'</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">who_wants_me_vip_overlay_shown</div></td><td><div class="ev-props">trigger: 'locked_profile', likes_received_count</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- RECENT VISITORS -->
+  <div class="section-label">Recent Profile Visitors</div>
+  <div class="ov-table-wrap" style="margin-bottom:32px">
+    <table class="ov-table">
+      <thead><tr><th>Event</th><th>Key properties</th><th>Signal</th></tr></thead>
+      <tbody>
+        <tr><td><div class="ev-name">recent_visitors_page_viewed</div></td><td><div class="ev-props">visitors_count</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">recent_visitors_photo_cta_clicked</div></td><td><div class="ev-props">source: 'empty_state'</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">recent_visitors_profile_clicked</div></td><td><div class="ev-props">profile_id, visited_days_ago</div></td><td><span class="sig-badge sig-engagement">Engagement</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- HOTLIST -->
+  <div class="section-label">Hotlist</div>
+  <div class="ov-table-wrap" style="margin-bottom:32px">
+    <table class="ov-table">
+      <thead><tr><th>Event</th><th>Key properties</th><th>Signal</th></tr></thead>
+      <tbody>
+        <tr><td><div class="ev-name">hotlist_page_viewed</div></td><td><div class="ev-props">my_hotlist_count</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">hotlist_tab_clicked</div></td><td><div class="ev-props">tab: 'in_hotlist_from' | 'my_hotlist'</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">hotlist_search_cta_clicked</div></td><td><div class="ev-props">source: 'empty_state'</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">hotlist_profile_clicked</div></td><td><div class="ev-props">profile_id</div></td><td><span class="sig-badge sig-engagement">Engagement</span></td></tr>
+        <tr><td><div class="ev-name">hotlist_profile_removed</div></td><td><div class="ev-props">profile_id</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SUPERPOWERS -->
+  <div class="section-label">Superpowers</div>
+  <div class="ov-table-wrap" style="margin-bottom:32px">
+    <table class="ov-table">
+      <thead><tr><th>Event</th><th>Key properties</th><th>Signal</th></tr></thead>
+      <tbody>
+        <tr><td><div class="ev-name">superpowers_page_viewed</div></td><td><div class="ev-props">credits_balance</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">superpowers_buy_credits_clicked</div></td><td><div class="ev-props">credits_balance</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">superpower_use_clicked</div></td><td><div class="ev-props">type: 'multi_notification' | 'super_perfect_match' | 'highlight', credits_balance</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">superpower_activated</div></td><td><div class="ev-props">type, cost_credits, active_for_days</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">superpower_no_credits_overlay_shown</div></td><td><div class="ev-props">type, trigger: 'use_power'</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- MY PROFILE -->
+  <div class="section-label">My Profile</div>
+  <div class="ov-table-wrap" style="margin-bottom:32px">
+    <table class="ov-table">
+      <thead><tr><th>Event</th><th>Key properties</th><th>Signal</th></tr></thead>
+      <tbody>
+        <tr><td><div class="ev-name">my_profile_details_viewed</div></td><td><div class="ev-props">profile_complete</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">my_profile_push_banner_clicked</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">my_profile_field_updated</div></td><td><div class="ev-props">field: 'searching_for' | 'sexual_orientation' | 'height' | ...</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">my_profile_description_updated</div></td><td><div class="ev-props">char_count</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">my_profile_details_saved</div></td><td><div class="ev-props">fields_filled, total_fields</div></td><td><span class="sig-badge sig-engagement">Engagement</span></td></tr>
+        <tr><td><div class="ev-name">my_profile_photo_viewed</div></td><td><div class="ev-props">has_photo</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">my_profile_photo_select_clicked</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-engagement">Engagement</span></td></tr>
+        <tr><td><div class="ev-name">my_profile_photo_uploaded</div></td><td><div class="ev-props">photo_count</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">my_profile_settings_viewed</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">my_profile_status_changed</div></td><td><div class="ev-props">status: 'active' | 'hidden'</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">my_profile_nickname_changed</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">my_profile_contact_permission_changed</div></td><td><div class="ev-props">value: 'anyone' | 'nobody' | ...</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">my_profile_language_changed</div></td><td><div class="ev-props">from, to</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">my_profile_settings_saved</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">my_profile_social_unlinked</div></td><td><div class="ev-props">provider: 'google'</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">my_profile_delete_account_clicked</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">my_profile_notifications_viewed</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">notification_preference_changed</div></td><td><div class="ev-props">category, channel: 'email' | 'push', enabled</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+        <tr><td><div class="ev-name">notifications_email_unsubscribe_clicked</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">notifications_push_subscribe_clicked</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-engagement">Engagement</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- VIP PAYMENT -->
+  <div class="section-label">Payment Gate – VIP Membership</div>
+  <div class="ov-table-wrap" style="margin-bottom:32px">
+    <table class="ov-table">
+      <thead><tr><th>Event</th><th>Key properties</th><th>Signal</th></tr></thead>
+      <tbody>
+        <tr><td><div class="ev-name">vip_payment_gate_viewed</div></td><td><div class="ev-props">source: 'sidebar_banner' | 'overlay' | 'who_wants_me' | ...</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">vip_payment_method_selected</div></td><td><div class="ev-props">method: 'card' | 'bank_transfer' | 'apple_pay' | 'google_pay'</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">vip_payment_plan_selected</div></td><td><div class="ev-props">plan: '1_month' | '3_months' | '6_months' | '12_months', price_per_month, currency</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">vip_payment_terms_accepted</div></td><td><div class="ev-props">plan</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">vip_payment_initiated</div></td><td><div class="ev-props">method, plan, amount, currency</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">vip_payment_completed</div></td><td><div class="ev-props">method, plan, amount, currency</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">vip_payment_failed</div></td><td><div class="ev-props">method, plan, error_type</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">vip_payment_abandoned</div></td><td><div class="ev-props">plan, last_step: 'method_select' | 'plan_select' | 'card_form'</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">vip_payment_support_clicked</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- COINS PAYMENT -->
+  <div class="section-label">Payment Gate – Coins</div>
+  <div class="ov-table-wrap" style="margin-bottom:32px">
+    <table class="ov-table">
+      <thead><tr><th>Event</th><th>Key properties</th><th>Signal</th></tr></thead>
+      <tbody>
+        <tr><td><div class="ev-name">coins_payment_gate_viewed</div></td><td><div class="ev-props">source: 'sidebar' | 'overlay' | 'superpowers' | ...</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">coins_payment_method_selected</div></td><td><div class="ev-props">method: 'card' | 'bank_transfer' | 'apple_pay' | 'google_pay'</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">coins_package_selected</div></td><td><div class="ev-props">credits: 80 | 225 | 625 | 1450 | 5550, price, currency, badge: 'bonus' | 'best_offer' | null</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">coins_payment_terms_accepted</div></td><td><div class="ev-props">credits</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">coins_payment_initiated</div></td><td><div class="ev-props">method, credits, amount, currency</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">coins_payment_completed</div></td><td><div class="ev-props">method, credits, amount, currency</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">coins_payment_failed</div></td><td><div class="ev-props">method, credits, error_type</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">coins_payment_abandoned</div></td><td><div class="ev-props">credits, last_step: 'method_select' | 'package_select' | 'card_form'</div></td><td><span class="sig-badge sig-high">High intent</span></td></tr>
+        <tr><td><div class="ev-name">coins_payment_support_clicked</div></td><td><div class="ev-props">—</div></td><td><span class="sig-badge sig-standard">Standard</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="legend">
+    <span><span class="dot" style="background:#991b1b"></span>High intent – conversion / payment signals</span>
+    <span><span class="dot" style="background:#1e40af"></span>Engagement – active usage signals</span>
+    <span><span class="dot" style="background:#374151"></span>Standard – navigation &amp; informational</span>
+  </div>
+
+</div>
+</div><!-- /tab-catalog -->
 
 <script>
 function switchTab(id, btn) {
