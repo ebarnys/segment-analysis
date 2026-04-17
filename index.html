@@ -824,6 +824,41 @@
     margin-bottom: 3px;
     font-style: normal;
   }
+  /* RESPONDER CARDS */
+  .resp-card {
+    background: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .resp-header {
+    padding: 16px 22px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .resp-emoji { font-size: 24px; line-height: 1; flex-shrink: 0; }
+  .resp-title { font-size: 15px; font-weight: 600; color: var(--text); }
+  .resp-subtitle { font-size: 12px; color: var(--text-2); margin-top: 2px; }
+  .resp-body { padding: 20px 22px; }
+  .resp-handles { display: flex; gap: 6px; flex-wrap: wrap; margin-left: auto; }
+  .resp-handle-tag {
+    font-size: 11px; font-weight: 600; padding: 3px 9px;
+    border-radius: 6px; background: var(--bg); color: var(--text-2);
+  }
+  .resp-rule-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .resp-rule-table th {
+    font-size: 10px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--text-3); padding: 6px 10px;
+    text-align: left; background: var(--bg);
+  }
+  .resp-rule-table td { padding: 7px 10px; border-bottom: 1px solid var(--border); color: var(--text-2); }
+  .resp-rule-table tr:last-child td { border-bottom: none; }
+  .resp-rule-ignore { color: var(--text-3); font-style: italic; }
+
   .mod-pool-card {
     background: var(--surface);
     border-radius: var(--radius);
@@ -2361,158 +2396,419 @@
   <!-- Stats row -->
   <div class="mod-stat-row">
     <div class="mod-stat">
-      <div class="mod-stat-value">10</div>
-      <div class="mod-stat-label">Messages per FREE user</div>
-      <div class="mod-stat-sub">total across all message types</div>
-    </div>
-    <div class="mod-stat">
-      <div class="mod-stat-value">30</div>
-      <div class="mod-stat-label">Messages per VIP user</div>
-      <div class="mod-stat-sub">per day</div>
-    </div>
-    <div class="mod-stat">
-      <div class="mod-stat-value">3</div>
+      <div class="mod-stat-value">5</div>
       <div class="mod-stat-label">Message types</div>
-      <div class="mod-stat-sub">regular · predefined · gift</div>
+      <div class="mod-stat-sub">regular · predefined · gift · livechat · robot</div>
+    </div>
+    <div class="mod-stat">
+      <div class="mod-stat-value">6</div>
+      <div class="mod-stat-label">Responder types</div>
+      <div class="mod-stat-sub">FREE · VIP · Active · Followup · Reanimation · Livechat</div>
+    </div>
+    <div class="mod-stat">
+      <div class="mod-stat-value">5</div>
+      <div class="mod-stat-label">Whale tiers</div>
+      <div class="mod-stat-sub">Diamond · Gold · Silver · Bronze · Basic</div>
     </div>
   </div>
 
-  <!-- Message types & response logic -->
-  <div class="cat-heading"><span class="cat-emoji">💬</span> Message types &amp; response logic</div>
-  <div class="mod-flow">
+  <!-- ─── SECTION 1: MESSAGE TYPES ─── -->
+  <div class="cat-heading"><span class="cat-emoji">💬</span> Message types</div>
+  <p style="font-size:13px;color:var(--text-2);line-height:1.6;margin-bottom:20px;max-width:760px">
+    There are 5 distinct message types in the system. Regular, predefined, and gift messages are user-initiated and count (or not) toward the daily limit. Livechat and robot messages are platform-side mechanics.
+  </p>
 
-    <!-- Regular message -->
-    <div class="mod-msg-card" style="border-top-color: #6366f1">
-      <div class="mod-msg-title">
-        <span style="font-size:18px">✏️</span> Regular message
-      </div>
-      <div class="mod-msg-desc">
-        User writes their own text from scratch. Most personal type of message.
-      </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:12px">
+
+    <!-- Regular -->
+    <div class="mod-msg-card" style="border-top-color:#6366f1">
+      <div class="mod-msg-title"><span style="font-size:18px">✏️</span> Regular message</div>
+      <div class="mod-msg-desc">User writes their own text from scratch — the most personal type. Counts toward the daily limit.</div>
       <div class="mod-response-box">
-        <div class="mod-response-label">How we respond</div>
-        <div class="mod-response-text">
-          <strong>Option A:</strong> Moderator writes a manual reply<br>
-          <strong>Option B:</strong> System picks a universal reply from the response pool
-        </div>
+        <div class="mod-response-label">Response</div>
+        <div class="mod-response-text"><strong>A:</strong> Moderator writes manual reply &nbsp;|&nbsp; <strong>C:</strong> System picks from the universal response pool. Split is 50 / 50.</div>
       </div>
     </div>
 
-    <!-- Predefined message -->
-    <div class="mod-msg-card" style="border-top-color: #f59e0b">
-      <div class="mod-msg-title">
-        <span style="font-size:18px">📋</span> Predefined message
-      </div>
-      <div class="mod-msg-desc">
-        User selects one of the offered pre-written message options from a list.
-      </div>
+    <!-- Predefined -->
+    <div class="mod-msg-card" style="border-top-color:#f59e0b">
+      <div class="mod-msg-title"><span style="font-size:18px">📋</span> Predefined message</div>
+      <div class="mod-msg-desc">User selects one of the offered pre-written message options from a list. Counts toward the daily limit.</div>
       <div class="mod-response-box">
-        <div class="mod-response-label">How we respond</div>
-        <div class="mod-response-text">
-          <strong>Automatic</strong> — each predefined question is paired with multiple response variants. The system picks one and sends it automatically.
-        </div>
+        <div class="mod-response-label">Response</div>
+        <div class="mod-response-text"><strong>Always automatic</strong> — each predefined question is paired with multiple response variants; the system picks one instantly.</div>
       </div>
     </div>
 
-    <!-- Gift message -->
-    <div class="mod-msg-card" style="border-top-color: #ec4899">
-      <div class="mod-msg-title">
-        <span style="font-size:18px">🎁</span> Gift message
-      </div>
-      <div class="mod-msg-desc">
-        User sends a virtual gift and attaches a personal note to it.
-      </div>
+    <!-- Gift -->
+    <div class="mod-msg-card" style="border-top-color:#ec4899">
+      <div class="mod-msg-title"><span style="font-size:18px">🎁</span> Gift message</div>
+      <div class="mod-msg-desc">User sends a virtual gift (paid with coins) and attaches a personal note. <strong>Does NOT count toward the daily limit.</strong></div>
       <div class="mod-response-box">
-        <div class="mod-response-label">How we respond</div>
-        <div class="mod-response-text">
-          <strong>Always a moderator</strong> — gift messages are always answered manually. The personal gesture deserves a personal reply.
-        </div>
+        <div class="mod-response-label">Response</div>
+        <div class="mod-response-text"><strong>Always a moderator</strong> — the personal gesture deserves a personal reply. Never automated.</div>
       </div>
     </div>
 
   </div>
 
-  <!-- Universal response pool -->
-  <div class="mod-pool-card">
+  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:36px">
+
+    <!-- Livechat -->
+    <div class="mod-msg-card" style="border-top-color:#06b6d4">
+      <div class="mod-msg-title"><span style="font-size:18px">💬</span> Livechat message</div>
+      <div class="mod-msg-desc">Paid real-time chat. <strong>Available to VIP users only.</strong> Each message costs <strong>10 coins</strong>. Does not count toward the daily message limit — it has its own coin-based economy.</div>
+      <div class="mod-response-box">
+        <div class="mod-response-label">Response</div>
+        <div class="mod-response-text">Handled by the <strong>Livechat Responder</strong> queue. Conversations sorted by whale tier — highest-value users answered first.</div>
+      </div>
+    </div>
+
+    <!-- Robot -->
+    <div class="mod-msg-card" style="border-top-color:#94a3b8">
+      <div class="mod-msg-title"><span style="font-size:18px">🤖</span> Robot message (profile robot)</div>
+      <div class="mod-msg-desc">System-initiated outreach. Each fake female profile has <strong>exactly one robot message</strong> inspired by that profile's persona. Sent to male users who have not been contacted yet.</div>
+      <div class="mod-response-box">
+        <div class="mod-response-label">How it works</div>
+        <div class="mod-response-text">The message is tied to the persona — "outgoing blonde", "adventurous traveller", etc. Lower engagement than Active Responder because it cannot reference the recipient's profile.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Universal response pool callout -->
+  <div class="mod-pool-card" style="margin-bottom:40px">
     <div class="mod-pool-icon">🗂️</div>
     <div>
       <div class="mod-pool-title">Universal response pool</div>
       <div class="mod-pool-desc">
-        A large collection of short and longer universal replies designed to fit almost any opening message from a user. Used as the automated fallback for regular messages when a moderator is not replying manually. The pool covers a wide range of tones and lengths so the response always feels natural regardless of what the user wrote.
+        A large collection of short and longer universal replies designed to fit almost any opening message from a user. Used as the automated fallback (Option C) for regular messages. The pool covers a wide range of tones and lengths so the response always feels natural regardless of what the user wrote.
       </div>
     </div>
   </div>
 
-  <!-- Active Responder vs Robot -->
-  <div class="cat-heading"><span class="cat-emoji">🎯</span> Active Responder vs Robot messages</div>
-  <p style="font-size:13px;color:var(--text-2);line-height:1.6;margin-bottom:20px;max-width:720px">
-    Which messaging approach is used depends entirely on whether the user has a profile photo and a description filled in. This single condition determines the quality and personalization level of every outgoing message.
+  <!-- ─── SECTION 2: SENDING RULES ─── -->
+  <div class="cat-heading"><span class="cat-emoji">👥</span> Sending rules by user type</div>
+  <p style="font-size:13px;color:var(--text-2);line-height:1.6;margin-bottom:20px;max-width:760px">
+    What each user type can send, how many messages they have, and whether the quota refreshes.
   </p>
 
-  <div class="mod-split">
-
-    <!-- Active Responder -->
-    <div class="mod-profile-card" style="border-left: 4px solid #22c55e">
-      <div class="mod-profile-head">
-        <div class="mod-profile-emoji">🟢</div>
-        <div>
-          <div class="mod-profile-title">Active Responder</div>
-          <div class="mod-profile-sub">Personalized, moderator-driven messaging</div>
-        </div>
-      </div>
-      <span class="mod-condition-tag" style="background:#dcfce7;color:#166534;align-self:flex-start">
-        ✓ Has profile photo &nbsp;+&nbsp; ✓ Has description
-      </span>
-      <div class="mod-steps">
-        <div class="mod-step"><div class="mod-step-num">1</div><span>Moderator opens the user's profile</span></div>
-        <div class="mod-step"><div class="mod-step-num">2</div><span>Reads the description and looks at the photo</span></div>
-        <div class="mod-step"><div class="mod-step-num">3</div><span>Writes a reply that references something specific from the profile</span></div>
-        <div class="mod-step"><div class="mod-step-num">4</div><span>Message feels personal → higher reply rate, stronger engagement</span></div>
-      </div>
-    </div>
-
-    <!-- Robot message -->
-    <div class="mod-profile-card" style="border-left: 4px solid #94a3b8">
-      <div class="mod-profile-head">
-        <div class="mod-profile-emoji">⚫</div>
-        <div>
-          <div class="mod-profile-title">Robot message</div>
-          <div class="mod-profile-sub">Generic, profile-based automated messaging</div>
-        </div>
-      </div>
-      <span class="mod-condition-tag" style="background:#f1f5f9;color:#475569;align-self:flex-start">
-        ✗ No photo &nbsp;or&nbsp; ✗ No description
-      </span>
-      <div class="mod-steps">
-        <div class="mod-step"><div class="mod-step-num">1</div><span>No profile data to personalize from</span></div>
-        <div class="mod-step"><div class="mod-step-num">2</div><span>System uses pre-written messages tied to each fake female profile</span></div>
-        <div class="mod-step"><div class="mod-step-num">3</div><span>Each fake profile has its own set of messages matching her "persona"</span></div>
-        <div class="mod-step"><div class="mod-step-num">4</div><span>Sent to male users only — lower engagement vs. active responder</span></div>
-      </div>
-      <div class="mod-example">
-        <div class="mod-example-label">Example robot messages</div>
-        <div class="mod-bubble">
-          <div class="mod-bubble-name">Woman A – outgoing, social</div>
-          "I'm a blonde girl who loves life. Don't you want to get to know each other?"
-        </div>
-        <div class="mod-bubble">
-          <div class="mod-bubble-name">Woman B – adventurous</div>
-          "I love life with everything it has to offer — will you join me?"
-        </div>
-      </div>
-    </div>
-
+  <div class="ov-table-wrap" style="margin-bottom:40px">
+    <table class="ov-table">
+      <thead>
+        <tr>
+          <th>User type</th>
+          <th>Regular</th>
+          <th>Predefined</th>
+          <th>Gift</th>
+          <th>Livechat</th>
+          <th>Daily limit</th>
+          <th>Refresh</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>FREE</strong></td>
+          <td><span class="sig-badge sig-engagement">✓ Yes</span></td>
+          <td><span class="sig-badge sig-engagement">✓ Yes</span></td>
+          <td><span class="sig-badge sig-engagement">✓ Yes</span></td>
+          <td><span class="sig-badge sig-standard">✗ No</span></td>
+          <td><strong>10 / day</strong></td>
+          <td><span style="color:#16a34a;font-weight:600">Yes – resets daily</span></td>
+        </tr>
+        <tr>
+          <td><strong>FREE_EXPIRED</strong></td>
+          <td><span class="sig-badge sig-engagement">✓ Yes</span></td>
+          <td><span class="sig-badge sig-engagement">✓ Yes</span></td>
+          <td><span class="sig-badge sig-engagement">✓ Yes</span></td>
+          <td><span class="sig-badge sig-standard">✗ No</span></td>
+          <td><strong>10 total lifetime</strong></td>
+          <td><span style="color:#dc2626;font-weight:600">Never – quota exhausted</span></td>
+        </tr>
+        <tr>
+          <td><strong>VIP</strong></td>
+          <td><span class="sig-badge sig-engagement">✓ Yes</span></td>
+          <td><span class="sig-badge sig-engagement">✓ Yes</span></td>
+          <td><span class="sig-badge sig-engagement">✓ Yes</span></td>
+          <td><span class="sig-badge sig-high">✓ Yes (10 coins/msg)</span></td>
+          <td><strong>30 / day</strong></td>
+          <td><span style="color:#16a34a;font-weight:600">Yes – resets daily</span></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
-  <!-- Impact note -->
-  <div style="background:var(--primary-light);border-radius:var(--radius-sm);padding:14px 18px;margin-bottom:40px;border-left:4px solid var(--primary)">
-    <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--primary-text);margin-bottom:5px">Why this matters for segmentation</div>
-    <div style="font-size:13px;color:var(--text-2);line-height:1.6">
-      Profile completeness (photo + description) is the most fundamental segmentation split in the messaging system. Users without a complete profile receive a lower-quality engagement experience, which typically results in weaker retention. <strong style="color:var(--text)">Completing the profile should be treated as a critical onboarding milestone</strong> — not an optional step — because it determines whether the user gets personalized engagement or generic robot messages.
+  <!-- ─── SECTION 3: RESPONDERS ─── -->
+  <div class="cat-heading"><span class="cat-emoji">⚙️</span> Responders</div>
+  <p style="font-size:13px;color:var(--text-2);line-height:1.6;margin-bottom:24px;max-width:760px">
+    Six distinct responder types handle outgoing messages. Each targets a specific user state or segment with its own strategy, timing, and answer logic.
+  </p>
+
+  <!-- 1. FREE Responder -->
+  <div class="resp-card">
+    <div class="resp-header">
+      <div class="resp-emoji">💚</div>
+      <div>
+        <div class="resp-title">FREE Responder</div>
+        <div class="resp-subtitle">Manages reply cadence for FREE users through a structured 10-message pattern to maximize engagement without feeling like a bot.</div>
+      </div>
+      <div class="resp-handles">
+        <span class="resp-handle-tag" style="background:#dcfce7;color:#166534">FREE users</span>
+      </div>
+    </div>
+    <div class="resp-body">
+
+      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-3);margin-bottom:10px">10-message answer pattern</div>
+      <table class="resp-rule-table" style="margin-bottom:20px">
+        <thead>
+          <tr>
+            <th>Message #</th>
+            <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th>
+            <th>6</th><th>7</th><th>8</th><th>9</th><th>10</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-weight:600;color:var(--text)">Action</td>
+            <td style="color:#16a34a;font-weight:600">Answer</td>
+            <td class="resp-rule-ignore">Ignore</td>
+            <td style="color:#16a34a;font-weight:600">Answer</td>
+            <td style="color:#16a34a;font-weight:600">Answer</td>
+            <td class="resp-rule-ignore">Ignore</td>
+            <td style="color:#16a34a;font-weight:600">Answer</td>
+            <td style="color:#16a34a;font-weight:600">Answer</td>
+            <td class="resp-rule-ignore">Ignore</td>
+            <td class="resp-rule-ignore">Ignore</td>
+            <td style="color:#16a34a;font-weight:600">Answer</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-3);margin-bottom:10px">Answer type rules</div>
+      <table class="resp-rule-table">
+        <thead>
+          <tr><th>Message type</th><th>Answer method</th><th>Notes</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Regular message</td>
+            <td><span style="color:#6366f1;font-weight:600">A or C — 50 / 50 split</span></td>
+            <td>A = moderator writes manual reply &nbsp;·&nbsp; C = universal response pool</td>
+          </tr>
+          <tr>
+            <td>Predefined message</td>
+            <td><span style="color:#f59e0b;font-weight:600">Always automatic</span></td>
+            <td>System pairs the question with a pre-set response variant</td>
+          </tr>
+          <tr>
+            <td>Gift message</td>
+            <td><span style="color:#ec4899;font-weight:600">Always moderator (manual)</span></td>
+            <td>Personal gesture requires a personal reply — never automated</td>
+          </tr>
+        </tbody>
+      </table>
+
     </div>
   </div>
 
-  <!-- WHALE CATEGORIES -->
+  <!-- 2. VIP Responder -->
+  <div class="resp-card">
+    <div class="resp-header">
+      <div class="resp-emoji">👑</div>
+      <div>
+        <div class="resp-title">VIP Responder</div>
+        <div class="resp-subtitle">Handles conversations with VIP subscribers. Strategy evolved from "answer everything" to selective pattern-based replies.</div>
+      </div>
+      <div class="resp-handles">
+        <span class="resp-handle-tag" style="background:#fef3c7;color:#92400e">VIP users</span>
+      </div>
+    </div>
+    <div class="resp-body">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+
+        <div style="background:#fff1f2;border-radius:var(--radius-sm);padding:14px 16px;border-left:3px solid #f43f5e">
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:#be123c;margin-bottom:8px">Old strategy</div>
+          <div style="font-size:13px;color:var(--text-2);line-height:1.6">
+            Answer <strong>every single message</strong> instantly. No pattern, no gaps — always respond.<br><br>
+            <span style="color:#be123c">❌ Problem:</span> Conversation felt like a robot. Too eager. No mystery or natural flow. User could sense it wasn't organic.
+          </div>
+        </div>
+
+        <div style="background:#f0fdf4;border-radius:var(--radius-sm);padding:14px 16px;border-left:3px solid #22c55e">
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:#15803d;margin-bottom:8px">New strategy</div>
+          <div style="font-size:13px;color:var(--text-2);line-height:1.6">
+            Selective answering pattern — similar to FREE Responder logic but adapted for the 30-message daily quota. Not every message gets an instant reply.<br><br>
+            <span style="color:#15803d">✓ Goal:</span> Conversation feels organic. Creates natural tension and desire — the woman seems like a real person with her own pace, not an instant-reply machine.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Active Responder -->
+  <div class="resp-card">
+    <div class="resp-header">
+      <div class="resp-emoji">🎯</div>
+      <div>
+        <div class="resp-title">Active Responder</div>
+        <div class="resp-subtitle">Personalized moderator replies for FREE users who have a complete profile. Higher quality engagement than robot messages.</div>
+      </div>
+      <div class="resp-handles">
+        <span class="resp-handle-tag" style="background:#dcfce7;color:#166534">FREE users with complete profile</span>
+      </div>
+    </div>
+    <div class="resp-body">
+
+      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-3);margin-bottom:10px">Conditions to qualify</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px">
+        <span style="background:#dcfce7;color:#166534;font-size:12px;font-weight:600;padding:5px 12px;border-radius:20px">✓ User status: FREE</span>
+        <span style="background:#dcfce7;color:#166534;font-size:12px;font-weight:600;padding:5px 12px;border-radius:20px">✓ Has profile photo</span>
+        <span style="background:#dcfce7;color:#166534;font-size:12px;font-weight:600;padding:5px 12px;border-radius:20px">✓ Has description (min 10 chars)</span>
+        <span style="background:#dcfce7;color:#166534;font-size:12px;font-weight:600;padding:5px 12px;border-radius:20px">✓ Approval Level 1</span>
+      </div>
+
+      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-3);margin-bottom:10px">How a moderator handles it</div>
+      <div class="mod-steps">
+        <div class="mod-step"><div class="mod-step-num">1</div><span>Moderator opens the user's profile in the tool</span></div>
+        <div class="mod-step"><div class="mod-step-num">2</div><span>Reads the description and inspects the photo to understand the person</span></div>
+        <div class="mod-step"><div class="mod-step-num">3</div><span>Writes a reply that references something specific — a hobby, a phrase they used, something from the photo</span></div>
+        <div class="mod-step"><div class="mod-step-num">4</div><span>Message feels personal → significantly higher reply rate and stronger emotional engagement</span></div>
+      </div>
+
+      <div style="background:var(--primary-light);border-radius:var(--radius-sm);padding:12px 16px;margin-top:16px;border-left:3px solid var(--primary)">
+        <div style="font-size:12px;color:var(--text-2);line-height:1.6">
+          <strong style="color:var(--text)">Why profile completion matters:</strong> A user without photo + description gets robot messages — a far lower-quality experience. Profile completeness is the most fundamental split in the messaging system and should be treated as a critical onboarding milestone.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 4. Followup Responder -->
+  <div class="resp-card">
+    <div class="resp-header">
+      <div class="resp-emoji">🔁</div>
+      <div>
+        <div class="resp-title">Followup Responder</div>
+        <div class="resp-subtitle">Re-engages users who started a conversation but stopped replying. Sends a gentle nudge to bring them back.</div>
+      </div>
+      <div class="resp-handles">
+        <span class="resp-handle-tag" style="background:#ede9fe;color:#5b21b6">Users who stopped replying</span>
+      </div>
+    </div>
+    <div class="resp-body">
+      <table class="resp-rule-table">
+        <thead>
+          <tr><th>Trigger</th><th>Action</th><th>Goal</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>User hasn't replied after a set time window since the last message</td>
+            <td>System sends a follow-up message from the female profile — a short, curious or inviting line to re-open the conversation</td>
+            <td>Recover dead conversations. Many users simply forget to reply — a soft nudge is enough to restart engagement</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 5. Reanimation Responder -->
+  <div class="resp-card">
+    <div class="resp-header">
+      <div class="resp-emoji">🔄</div>
+      <div>
+        <div class="resp-title">Reanimation Responder</div>
+        <div class="resp-subtitle">Targets users who have been fully inactive for an extended period. Attempts to bring them back to the platform.</div>
+      </div>
+      <div class="resp-handles">
+        <span class="resp-handle-tag" style="background:#fef3c7;color:#92400e">Dormant / inactive users</span>
+      </div>
+    </div>
+    <div class="resp-body">
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+        <div style="background:#f0fdf4;border-radius:var(--radius-sm);padding:14px 16px">
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:#15803d;margin-bottom:8px">✓ What works</div>
+          <div style="font-size:13px;color:var(--text-2);line-height:1.6">
+            Re-activates a portion of sleeping users who simply lost the habit. Works especially well for users who previously showed strong engagement signals (multiple replies, photo uploaded, etc.)
+          </div>
+        </div>
+        <div style="background:#fff1f2;border-radius:var(--radius-sm);padding:14px 16px">
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:#be123c;margin-bottom:8px">⚠️ Limitations</div>
+          <div style="font-size:13px;color:var(--text-2);line-height:1.6">
+            Lower conversion than other responders by nature — users who went inactive have already demonstrated low intent. Risk of message fatigue if triggered too aggressively. Needs careful throttling.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 6. Livechat Responder -->
+  <div class="resp-card" style="margin-bottom:40px">
+    <div class="resp-header">
+      <div class="resp-emoji">💬</div>
+      <div>
+        <div class="resp-title">Livechat Responder</div>
+        <div class="resp-subtitle">Processes the Live Chat backlog. Conversations are sorted by whale tier — highest-value users are answered first. Includes auto-reactivation.</div>
+      </div>
+      <div class="resp-handles">
+        <span class="resp-handle-tag" style="background:#cffafe;color:#0e7490">VIP users (coin-paid chats)</span>
+      </div>
+    </div>
+    <div class="resp-body">
+
+      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-3);margin-bottom:10px">Backlog sort order — by whale tier</div>
+      <table class="resp-rule-table" style="margin-bottom:20px">
+        <thead>
+          <tr><th>Priority</th><th>Tier</th><th>Threshold</th><th>Rationale</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-weight:700;color:#0891b2">1st</td>
+            <td>💎 Diamond</td>
+            <td>6,001+ messages</td>
+            <td>Highest spenders — fastest response, best quality replies</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700;color:#d97706">2nd</td>
+            <td>👑 Gold</td>
+            <td>1,001–6,000</td>
+            <td>High-value — prioritised ahead of mid-tier</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700;color:#64748b">3rd</td>
+            <td>🏆 Silver</td>
+            <td>201–1,000</td>
+            <td>Mid-tier — steady revenue, solid priority</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700;color:#b45309">4th</td>
+            <td>🥇 Bronze</td>
+            <td>81–200</td>
+            <td>Emerging — standard response cadence</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700;color:#6b7280">5th</td>
+            <td>👤 Basic</td>
+            <td>1–80</td>
+            <td>New payers — lower queue priority</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-3);margin-bottom:10px">Auto-reactivation</div>
+      <div style="background:#f0f9ff;border-radius:var(--radius-sm);padding:14px 16px;border-left:3px solid #06b6d4">
+        <div style="font-size:13px;color:var(--text-2);line-height:1.6">
+          If a whale user hasn't sent a Livechat message for a set number of days, the system automatically sends them a message from their last active female profile — a short, inviting line to re-open the chat. The higher the whale tier, the more aggressively the auto-reactivation fires. <strong style="color:var(--text)">Goal: keep high-value users engaged and spending.</strong>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ─── SECTION 4: WHALE CATEGORIES ─── -->
   <div class="cat-heading"><span class="cat-emoji">🐋</span> Whale categories – Live Chat value tiers</div>
   <p style="font-size:13px;color:var(--text-2);line-height:1.6;margin-bottom:20px;max-width:720px">
     Users who pay for Live Chat messages are classified into 5 tiers based on their total number of paid messages sent. The higher the tier, the higher the priority their chats receive in the moderator backlog — meaning they get faster, preferential responses.
