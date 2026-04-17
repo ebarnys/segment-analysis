@@ -602,6 +602,42 @@
     line-height: 1.5;
   }
 
+  /* TEMPLATE LIST TABLE */
+  .tpl-group-row td {
+    background: var(--primary-light);
+    color: var(--primary-text);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 9px 14px;
+  }
+  .tpl-not-sent { opacity: 0.42; }
+  .tpl-ab td { opacity: 0.65; }
+  .tpl-prio {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 2px 8px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .tpl-prio-high { background: #fee2e2; color: #991b1b; }
+  .tpl-prio-mid  { background: #fef3c7; color: #92400e; }
+  .tpl-prio-low  { background: #f3f4f6; color: #374151; }
+  .tpl-prio-ns   { background: #f3f4f6; color: #9ca3af; text-decoration: line-through; }
+  .tpl-code { font-family: 'DM Mono', monospace; font-size: 11.5px; font-weight: 500; color: var(--primary-text); }
+  .tpl-id   { font-size: 11px; color: var(--text-3); font-family: 'DM Mono', monospace; }
+  .tpl-desc { font-size: 12.5px; color: var(--text); }
+  .tpl-rule { font-size: 12px; color: var(--text-2); line-height: 1.4; }
+  .tpl-ab-badge {
+    display: inline-block; font-size: 9px; font-weight: 700;
+    background: #ede9fe; color: #5b21b6; padding: 1px 5px;
+    border-radius: 4px; margin-left: 5px; text-transform: uppercase;
+  }
+
   /* AUDIENCES TAB */
   .aud-intro {
     background: var(--surface);
@@ -983,6 +1019,123 @@
       <div class="gap-title">Birthday discount – underrated touchpoint</div>
       <div class="gap-desc">NOTIF-20DISCOUNT-BRD is Low priority, despite personalized birthday emails with limited-time offers having above-average CTR and conversion in the dating sector.</div>
     </div>
+  </div>
+
+  <!-- FULL TEMPLATE LIST -->
+  <div class="section-label" style="margin-top:48px;margin-bottom:20px">Complete email template list</div>
+  <div class="ov-table-wrap" style="margin-bottom:36px">
+    <table class="ov-table">
+      <thead>
+        <tr><th style="width:44px">ID</th><th style="width:220px">Code</th><th>Description</th><th>Sending rule</th><th style="width:90px">Priority</th></tr>
+      </thead>
+      <tbody>
+
+        <!-- ── MEMBER REGISTRATION ─────────────────── -->
+        <tr class="tpl-group-row"><td colspan="5">📋 Member Registration</td></tr>
+        <tr><td><span class="tpl-id">1</span></td><td><span class="tpl-code">REG-WEB-01</span></td><td><span class="tpl-desc">Registration confirmation (web)</span></td><td><span class="tpl-rule">Immediately after sign-up</span></td><td><span class="tpl-prio tpl-prio-high">High</span></td></tr>
+        <tr class="tpl-ab"><td><span class="tpl-id">117</span></td><td><span class="tpl-code">REG-WEB-01-AB001<span class="tpl-ab-badge">AB</span></span></td><td><span class="tpl-desc">Registration confirmation – A/B variant</span></td><td><span class="tpl-rule">Immediately after sign-up</span></td><td><span class="tpl-prio tpl-prio-high">High</span></td></tr>
+        <tr><td><span class="tpl-id">2</span></td><td><span class="tpl-code">REG-WEB-02</span></td><td><span class="tpl-desc">Registration confirmation – 2nd follow-up</span></td><td><span class="tpl-rule">5 min after SOI, no activation yet</span></td><td><span class="tpl-prio tpl-prio-high">High</span></td></tr>
+        <tr><td><span class="tpl-id">3</span></td><td><span class="tpl-code">REG-WEB-03</span></td><td><span class="tpl-desc">Registration confirmation – 3rd follow-up</span></td><td><span class="tpl-rule">10 min after SOI, no activation yet</span></td><td><span class="tpl-prio tpl-prio-high">High</span></td></tr>
+        <tr><td><span class="tpl-id">96</span></td><td><span class="tpl-code">REG-WEB-04</span></td><td><span class="tpl-desc">Registration confirmation – 4th follow-up</span></td><td><span class="tpl-rule">1 hour after SOI, still SOI only</span></td><td><span class="tpl-prio tpl-prio-low">Low</span></td></tr>
+        <tr><td><span class="tpl-id">98</span></td><td><span class="tpl-code">REG-WEB-05</span></td><td><span class="tpl-desc">Registration confirmation – 5th follow-up</span></td><td><span class="tpl-rule">24 hours after SOI, still SOI only</span></td><td><span class="tpl-prio tpl-prio-low">Low</span></td></tr>
+        <tr><td><span class="tpl-id">147</span></td><td><span class="tpl-code">REG-WEB-EXISTING</span></td><td><span class="tpl-desc">Existing TOI user returned to landing page</span></td><td><span class="tpl-rule">User re-enters email on LP</span></td><td><span class="tpl-prio tpl-prio-high">High</span></td></tr>
+        <tr><td><span class="tpl-id">58</span></td><td><span class="tpl-code">REG-CONTINUE</span></td><td><span class="tpl-desc">Reminder to complete full registration</span></td><td><span class="tpl-rule">1h / 24h / 48h after DOI without TOI</span></td><td><span class="tpl-prio tpl-prio-mid">Middle</span></td></tr>
+        <tr><td><span class="tpl-id">145</span></td><td><span class="tpl-code">REG-CONTINUE-EXISTING</span></td><td><span class="tpl-desc">Existing DOI re-entered email on LP</span></td><td><span class="tpl-rule">User re-enters email on LP (DOI status)</span></td><td><span class="tpl-prio tpl-prio-high">High</span></td></tr>
+        <tr><td><span class="tpl-id">10</span></td><td><span class="tpl-code">REG-PWD-REC</span></td><td><span class="tpl-desc">Password recovery (web)</span></td><td><span class="tpl-rule">Immediately on password recovery request</span></td><td><span class="tpl-prio tpl-prio-high">High</span></td></tr>
+        <tr><td><span class="tpl-id">137</span></td><td><span class="tpl-code">REG-PWD-REC-APP</span></td><td><span class="tpl-desc">Password recovery (app – Zeniors / Flirtfox)</span></td><td><span class="tpl-rule">On request from app</span></td><td><span class="tpl-prio tpl-prio-high">High</span></td></tr>
+        <tr><td><span class="tpl-id">104</span></td><td><span class="tpl-code">REG-LOGIN</span></td><td><span class="tpl-desc">Passwordless login link</span></td><td><span class="tpl-rule">Wrong password on valid TOI account</span></td><td><span class="tpl-prio tpl-prio-mid">Middle</span></td></tr>
+        <tr><td><span class="tpl-id">92</span></td><td><span class="tpl-code">REG-WELCOME</span></td><td><span class="tpl-desc">Welcome email after completing registration</span></td><td><span class="tpl-rule">Immediately after TOI</span></td><td><span class="tpl-prio tpl-prio-mid">Middle</span></td></tr>
+        <tr><td><span class="tpl-id">11</span></td><td><span class="tpl-code">REG-CHECK</span></td><td><span class="tpl-desc">Profile approved by moderator</span></td><td><span class="tpl-rule">After Level 1 approval</span></td><td><span class="tpl-prio tpl-prio-mid">Middle</span></td></tr>
+        <tr><td><span class="tpl-id">12</span></td><td><span class="tpl-code">REG-DENY</span></td><td><span class="tpl-desc">Profile (photo + text) not accepted</span></td><td><span class="tpl-rule">On L1 / L3 rejection</span></td><td><span class="tpl-prio tpl-prio-mid">Middle</span></td></tr>
+        <tr><td><span class="tpl-id">54</span></td><td><span class="tpl-code">REG-DENY-TEXT</span></td><td><span class="tpl-desc">Profile text rejected (username or description)</span></td><td><span class="tpl-rule">After L1 / L3 text disapproval</span></td><td><span class="tpl-prio tpl-prio-mid">Middle</span></td></tr>
+        <tr><td><span class="tpl-id">57</span></td><td><span class="tpl-code">REG-DENY-FEMALE</span></td><td><span class="tpl-desc">Female verification photo not accepted or deletion requested</span></td><td><span class="tpl-rule">On L1 female rejection</span></td><td><span class="tpl-prio tpl-prio-low">Low</span></td></tr>
+        <tr><td><span class="tpl-id">51</span></td><td><span class="tpl-code">REG-CHECK-PHOTO-DENIED</span></td><td><span class="tpl-desc">Profile photo deleted by moderator</span></td><td><span class="tpl-rule">After photo rejection in admin</span></td><td><span class="tpl-prio tpl-prio-mid">Middle</span></td></tr>
+        <tr><td><span class="tpl-id">59</span></td><td><span class="tpl-code">REG-CHECK-LVL2-PHOTO</span></td><td><span class="tpl-desc">Changed profile photo approved (Level 2)</span></td><td><span class="tpl-rule">After L2 photo approval</span></td><td><span class="tpl-prio tpl-prio-low">Low</span></td></tr>
+        <tr><td><span class="tpl-id">60</span></td><td><span class="tpl-code">LVL2-PHOTO-DISAPPROVED</span></td><td><span class="tpl-desc">Changed profile photo rejected (Level 2)</span></td><td><span class="tpl-rule">After L2 photo rejection</span></td><td><span class="tpl-prio tpl-prio-mid">Middle</span></td></tr>
+        <tr class="tpl-not-sent"><td><span class="tpl-id">7–9</span></td><td><span class="tpl-code">REG-SPC-01/02/03</span></td><td><span class="tpl-desc">Activation emails for affiliate (Enrico)</span></td><td><span class="tpl-rule">—</span></td><td><span class="tpl-prio tpl-prio-ns">Not sent</span></td></tr>
+        <tr class="tpl-not-sent"><td><span class="tpl-id">219</span></td><td><span class="tpl-code">TEST-REG-WEB-01</span></td><td><span class="tpl-desc">Test template for registration flow</span></td><td><span class="tpl-rule">TBD</span></td><td><span class="tpl-prio tpl-prio-ns">Not sent</span></td></tr>
+
+        <!-- ── FUNNEL CAMPAIGNS ───────────────────── -->
+        <tr class="tpl-group-row"><td colspan="5">📧 Funnel Campaigns</td></tr>
+        <tr><td><span class="tpl-id">141</span></td><td><span class="tpl-code">FNL-A-POWERS</span></td><td><span class="tpl-desc">Info about coin superpowers feature</span></td><td><span class="tpl-rule">Day 3 after TOI</span></td><td><span class="tpl-prio tpl-prio-low">Low</span></td></tr>
+        <tr><td><span class="tpl-id">31</span></td><td><span class="tpl-code">FNL-B-CNT</span></td><td><span class="tpl-desc">Announce users with same interests</span></td><td><span class="tpl-rule">FREE1 users</span></td><td><span class="tpl-prio tpl-prio-low">Low</span></td></tr>
+        <tr class="tpl-ab"><td><span class="tpl-id">181/199/217</span></td><td><span class="tpl-code">FNL-B-CNT-AB001/02/03<span class="tpl-ab-badge">AB</span></span></td><td><span class="tpl-desc">Same interests announce – A/B variants</span></td><td><span class="tpl-rule">FREE1 users</span></td><td><span class="tpl-prio tpl-prio-low">Low</span></td></tr>
+        <tr><td><span class="tpl-id">32</span></td><td><span class="tpl-code">FNL-C-WHY</span></td><td><span class="tpl-desc">"Why it's working" newsletter teaser</span></td><td><span class="tpl-rule">FREE1, day 2 after TOI</span></td><td><span class="tpl-prio tpl-prio-mid">Middle</span></td></tr>
+        <tr><td><span class="tpl-id">33</span></td><td><span class="tpl-code">FNL-D-NEW-MSG</span></td><td><span class="tpl-desc">New message waiting notification</span></td><td><span class="tpl-rule">FREE1, day 5 after TOI</span></td><td><span class="tpl-prio tpl-prio-mid">Middle</span></td></tr>
+        <tr><td><span class="tpl-id">34</span></td><td><span class="tpl-code">FNL-E-PROF-REM</span></td><td><span class="tpl-desc">Reminder to fill profile photo and details</span></td><td><span class="tpl-rule">FREE1, day 3 after TOI</span></td><td><span class="tpl-prio tpl-prio-low">Low</span></td></tr>
+        <tr><td><span class="tpl-id">36</span></td><td><span class="tpl-code">FNL-G-PROF-VISIT</span></td><td><span class="tpl-desc">Someone visited your profile</span></td><td><span class="tpl-rule">FREE1/FREE15 visited by created/imported profile</span></td><td><span class="tpl-prio tpl-prio-low">Low</span></td></tr>
+        <tr class="tpl-ab"><td><span class="tpl-id">165/183/201</span></td><td><span class="tpl-code">FNL-G-PROF-VISIT-AB001/02/03<span class="tpl-ab-badge">AB</span></span></td><td><span class="tpl-desc">Profile visit notification – A/B variants</span></td><td><span class="tpl-rule">FREE1/FREE15 visited by profile</span></td><td><span class="tpl-prio tpl-prio-low">Low</span></td></tr>
+        <tr><td><span class="tpl-id">53</span></td><td><span class="tpl-code">FNL-G-PROF-VISIT-ABO</span></td><td><span class="tpl-desc">Profile visit notification for VIP users</span></td><td><span class="tpl-rule">On visit event (web or cron)</span></td><td><span class="tpl-prio tpl-prio-low">Low</span></td></tr>
+        <tr><td><span class="tpl-id">37</span></td><td><span class="tpl-code">FNL-H-VIP-OFFR</span></td><td><span class="tpl-desc">VIP benefits reminder for FREE users</span></td><td><span class="tpl-rule">FREE1 day 9 · FREE15 day 30 after TOI</span></td><td><span class="tpl-prio tpl-prio-low">Low</span></td></tr>
+        <tr><td><span class="tpl-id">40</span></td><td><span class="tpl-code">FNL-N-INNACT-REM</span></td><td><span class="tpl-desc">Low activity reminder</span></td><td><span class="tpl-rule">Day 30 after registration</span></td><td><span class="tpl-prio tpl-prio-mid">Middle</span></td></tr>
+        <tr><td><span class="tpl-id">30</span></td><td><span class="tpl-code">FNL-T-GEO</span></td><td><span class="tpl-desc">Latest members from your region</span></td><td><span class="tpl-rule">FREE1/FREE15 – local profiles (2 real females)</span></td><td><span class="tpl-prio tpl-prio-low">Low</span></td></tr>
+        <tr class="tpl-ab"><td><span class="tpl-id">167/185/203</span></td><td><span class="tpl-code">FNL-T-GEO-AB001/02/03<span class="tpl-ab-badge">AB</span></span></td><td><span class="tpl-desc">Latest members from region – A/B variants</span></td><td><span class="tpl-rule">FREE1/FREE15 – local profiles</span></td><td><span class="tpl-prio tpl-prio-low">Low</span></td></tr>
+        <tr><td><span class="tpl-id">55</span></td><td><span class="tpl-code">FNL-T-GEO-VIP</span></td><td><span class="tpl-desc">Latest members from region for VIP users</span></td><td><span class="tpl-rule">VIP users – local profiles (2 real females)</span></td><td><span class="tpl-prio tpl-prio-low">Low</span></td></tr>
+        <tr><td><span class="tpl-id">84</span></td><td><span class="tpl-code">TIP1-PHOTO</span></td><td><span class="tpl-desc">Tip: how your profile photo should look</span></td><td><span class="tpl-rule">VIP, day 2 (not female)</span></td><td><span class="tpl-prio tpl-prio-low">Low</span></td></tr>
+        <tr><td><span class="tpl-id">86</span></td><td><span class="tpl-code">TIP2-DESCRIPTION</span></td><td><span class="tpl-desc">Tip: importance of profile description</span></td><td><span class="tpl-rule">VIP, day 3 (not female)</span></td><td><span class="tpl-prio tpl-prio-low">Low</span></td></tr>
+        <tr><td><span class="tpl-id">88</span></td><td><span class="tpl-code">TIP3-PROFILEDETAILS</span></td><td><span class="tpl-desc">Tip: fill all profile detail fields</span></td><td><span class="tpl-rule">VIP, day 4 (not female)</span></td><td><span class="tpl-prio tpl-prio-low">Low</span></td></tr>
+        <tr><td><span class="tpl-id">90</span></td><td><span class="tpl-code">TIP4-FOCUS</span></td><td><span class="tpl-desc">Tip: use the dating site more effectively</span></td><td><span class="tpl-rule">VIP, day 5 (not female)</span></td><td><span class="tpl-prio tpl-prio-mid">Middle</span></td></tr>
+        <tr><td><span class="tpl-id">102</span></td><td><span class="tpl-code">NOTIF-50DISCOUNT</span></td><td><span class="tpl-desc">50% discount offer for VIP membership</span></td><td><span class="tpl-rule">FREE15 users – days 45 through 51</span></td><td><span class="tpl-prio tpl-prio-high">High</span></td></tr>
+        <tr class="tpl-ab"><td><span class="tpl-id">169/187/205</span></td><td><span class="tpl-code">NOTIF-50DISCOUNT-AB001/02/03<span class="tpl-ab-badge">AB</span></span></td><td><span class="tpl-desc">50% discount offer – A/B variants</span></td><td><span class="tpl-rule">FREE15 – days 45–51</span></td><td><span class="tpl-prio tpl-prio-high">High</span></td></tr>
+        <tr><td><span class="tpl-id">143</span></td><td><span class="tpl-code">NOTIF-20DISCOUNT-EARLY</span></td><td><span class="tpl-desc">Early 20% discount (day 5)</span></td><td><span class="tpl-rule">Day 5 after TOI – FREE male users</span></td><td><span class="tpl-prio tpl-prio-high">High</span></td></tr>
+        <tr><td><span class="tpl-id">109</span></td><td><span class="tpl-code">NOTIF-20DISCOUNT-BRD</span></td><td><span class="tpl-desc">Birthday 20% discount (48 hours)</span></td><td><span class="tpl-rule">On user's birthday (set during registration)</span></td><td><span class="tpl-prio tpl-prio-low">Low</span></td></tr>
+        <tr><td><span class="tpl-id">82</span></td><td><span class="tpl-code">NOTIF-SURVEY-CANCEL</span></td><td><span class="tpl-desc">Survey after VIP cancellation</span></td><td><span class="tpl-rule">When VIP recurring membership is cancelled</span></td><td><span class="tpl-prio tpl-prio-high">High</span></td></tr>
+        <tr><td><span class="tpl-id">149</span></td><td><span class="tpl-code">SPC-EARN-INVITE</span></td><td><span class="tpl-desc">Earn coins – invite a friend</span></td><td><span class="tpl-rule">When user invites someone by email</span></td><td><span class="tpl-prio tpl-prio-high">High</span></td></tr>
+        <tr><td><span class="tpl-id">131</span></td><td><span class="tpl-code">SPC-PROMO-ADULT</span></td><td><span class="tpl-desc">Cross-selling promotion – adult</span></td><td><span class="tpl-rule">Controlled in domain settings</span></td><td><span class="tpl-prio tpl-prio-high">High</span></td></tr>
+        <tr><td><span class="tpl-id">133</span></td><td><span class="tpl-code">SPC-PROMO-SM</span></td><td><span class="tpl-desc">Cross-selling promotion – SM</span></td><td><span class="tpl-rule">Controlled in domain settings</span></td><td><span class="tpl-prio tpl-prio-high">High</span></td></tr>
+        <tr><td><span class="tpl-id">135</span></td><td><span class="tpl-code">SPC-PROMO-MILF</span></td><td><span class="tpl-desc">Cross-selling promotion – MILF</span></td><td><span class="tpl-rule">Controlled in domain settings</span></td><td><span class="tpl-prio tpl-prio-high">High</span></td></tr>
+        <tr class="tpl-not-sent"><td><span class="tpl-id">80</span></td><td><span class="tpl-code">NOTIF-PAYMENT-PROBLEM</span></td><td><span class="tpl-desc">Help for users with payment problems</span></td><td><span class="tpl-rule">Failed payment attempt</span></td><td><span class="tpl-prio tpl-prio-ns">Not sent</span></td></tr>
+
+        <!-- ── MEMBER EVENT NOTIFICATIONS ─────────── -->
+        <tr class="tpl-group-row"><td colspan="5">🔔 Member Event Notifications</td></tr>
+        <tr><td><span class="tpl-id">94</span></td><td><span class="tpl-code">NOTIF-VIP-WELCOME</span></td><td><span class="tpl-desc">Welcome email after first VIP payment</span></td><td><span class="tpl-rule">After successful VIP activation (not rebill, not female)</span></td><td><span class="tpl-prio tpl-prio-low">Low</span></td></tr>
+        <tr><td><span class="tpl-id">56</span></td><td><span class="tpl-code">NOTIF-UNFINISHED-PAYMENT</span></td><td><span class="tpl-desc">Unfinished payment reminder</span></td><td><span class="tpl-rule">FREE1/FREE15 visited payment gate and didn't complete</span></td><td><span class="tpl-prio tpl-prio-high">High</span></td></tr>
+        <tr><td><span class="tpl-id">48</span></td><td><span class="tpl-code">NOTIF-WEB-MSG-FRE</span></td><td><span class="tpl-desc">First message from real user → FREE recipient</span></td><td><span class="tpl-rule">When real user sends 1st message to FREE user</span></td><td><span class="tpl-prio tpl-prio-high">High</span></td></tr>
+        <tr><td><span class="tpl-id">49</span></td><td><span class="tpl-code">NOTIF-WEB-MSG-ABO</span></td><td><span class="tpl-desc">First message from real user → VIP recipient</span></td><td><span class="tpl-rule">When real user sends 1st message to VIP user</span></td><td><span class="tpl-prio tpl-prio-high">High</span></td></tr>
+        <tr><td><span class="tpl-id">74</span></td><td><span class="tpl-code">NOTIF-WEB-RPL-FRE</span></td><td><span class="tpl-desc">Reply from real user → FREE recipient</span></td><td><span class="tpl-rule">When real user replies to FREE user's message</span></td><td><span class="tpl-prio tpl-prio-high">High</span></td></tr>
+        <tr><td><span class="tpl-id">76</span></td><td><span class="tpl-code">NOTIF-WEB-RPL-ABO</span></td><td><span class="tpl-desc">Reply from real user → VIP recipient</span></td><td><span class="tpl-rule">When real user replies to VIP user's message</span></td><td><span class="tpl-prio tpl-prio-high">High</span></td></tr>
+        <tr><td><span class="tpl-id">17</span></td><td><span class="tpl-code">NOTIF-CBM-EDA-MOD-ACT-FRE</span></td><td><span class="tpl-desc">New active message received (FREE – moderator)</span></td><td><span class="tpl-rule">FREE user receives active responder message</span></td><td><span class="tpl-prio tpl-prio-high">High</span></td></tr>
+        <tr><td><span class="tpl-id">28</span></td><td><span class="tpl-code">NOTIF-CBM-EDA-MOD-RPL-FRE</span></td><td><span class="tpl-desc">Moderator reply to FREE user (free flirt reply)</span></td><td><span class="tpl-rule">When moderator replies to real FREE user</span></td><td><span class="tpl-prio tpl-prio-high">High</span></td></tr>
+        <tr><td><span class="tpl-id">29</span></td><td><span class="tpl-code">NOTIF-CBM-EDA-MOD-RPL-VIP</span></td><td><span class="tpl-desc">Moderator reply to VIP user (active responder)</span></td><td><span class="tpl-rule">Currently unused (theoretically for VIP active responder)</span></td><td><span class="tpl-prio tpl-prio-high">High</span></td></tr>
+        <tr><td><span class="tpl-id">152</span></td><td><span class="tpl-code">NOTIF-PR-RPL-VIP</span></td><td><span class="tpl-desc">Predefined reply received → VIP user</span></td><td><span class="tpl-rule">When VIP user receives a predefined reply</span></td><td><span class="tpl-prio tpl-prio-high">High</span></td></tr>
+        <tr><td><span class="tpl-id">154</span></td><td><span class="tpl-code">NOTIF-PRE-RPL-FREE</span></td><td><span class="tpl-desc">Predefined reply received → FREE user</span></td><td><span class="tpl-rule">When FREE user receives a predefined reply</span></td><td><span class="tpl-prio tpl-prio-high">High</span></td></tr>
+        <tr><td><span class="tpl-id">160</span></td><td><span class="tpl-code">NOTIF-ROB-MSG-TOI</span></td><td><span class="tpl-desc">TOI robot message (first engagement)</span></td><td><span class="tpl-rule">Shortly after TOI is completed</span></td><td><span class="tpl-prio tpl-prio-high">High</span></td></tr>
+        <tr><td><span class="tpl-id">158</span></td><td><span class="tpl-code">NOTIF-PRE-MSG-FREE</span></td><td><span class="tpl-desc">Predefined robot message → FREE user</span></td><td><span class="tpl-rule">When FREE user receives predefined message</span></td><td><span class="tpl-prio tpl-prio-mid">Middle</span></td></tr>
+        <tr class="tpl-ab"><td><span class="tpl-id">179/197/215</span></td><td><span class="tpl-code">NOTIF-PRE-MSG-FREE-AB001/02/03<span class="tpl-ab-badge">AB</span></span></td><td><span class="tpl-desc">Predefined robot message FREE – A/B variants</span></td><td><span class="tpl-rule">FREE user receives predefined message</span></td><td><span class="tpl-prio tpl-prio-mid">Middle</span></td></tr>
+        <tr><td><span class="tpl-id">156</span></td><td><span class="tpl-code">NOTIF-PRE-MSG-VIP</span></td><td><span class="tpl-desc">Predefined robot message → VIP user</span></td><td><span class="tpl-rule">When VIP user receives predefined message</span></td><td><span class="tpl-prio tpl-prio-mid">Middle</span></td></tr>
+        <tr><td><span class="tpl-id">62</span></td><td><span class="tpl-code">NOTIF-ROB-MSG-FREE</span></td><td><span class="tpl-desc">Robot message received → FREE user</span></td><td><span class="tpl-rule">FREE1/FREE15 receive robot message</span></td><td><span class="tpl-prio tpl-prio-mid">Middle</span></td></tr>
+        <tr><td><span class="tpl-id">64</span></td><td><span class="tpl-code">NOTIF-ROB-MSG-VIP</span></td><td><span class="tpl-desc">Robot message received → VIP user</span></td><td><span class="tpl-rule">VIP user receives robot message</span></td><td><span class="tpl-prio tpl-prio-mid">Middle</span></td></tr>
+        <tr><td><span class="tpl-id">162</span></td><td><span class="tpl-code">NOTIF-ROB-MSG-FREE15</span></td><td><span class="tpl-desc">Robot message received → FREE EXPIRED user</span></td><td><span class="tpl-rule">FREE15 EXPIRED receives robot message</span></td><td><span class="tpl-prio tpl-prio-low">Low</span></td></tr>
+        <tr><td><span class="tpl-id">70</span></td><td><span class="tpl-code">NOTIF-MUTUALMATCH-FREE</span></td><td><span class="tpl-desc">Mutual match in Perfect Match → FREE user</span></td><td><span class="tpl-rule">FREE1/FREE15 get a mutual match in PM game</span></td><td><span class="tpl-prio tpl-prio-high">High</span></td></tr>
+        <tr class="tpl-ab"><td><span class="tpl-id">177/195/213</span></td><td><span class="tpl-code">NOTIF-MUTUALMATCH-FREE-AB001/02/03<span class="tpl-ab-badge">AB</span></span></td><td><span class="tpl-desc">Mutual match FREE – A/B variants</span></td><td><span class="tpl-rule">FREE1/FREE15 mutual match</span></td><td><span class="tpl-prio tpl-prio-high">High</span></td></tr>
+        <tr><td><span class="tpl-id">72</span></td><td><span class="tpl-code">NOTIF-MUTUALMATCH-VIP</span></td><td><span class="tpl-desc">Mutual match in Perfect Match → VIP user</span></td><td><span class="tpl-rule">VIP user gets a mutual match in PM game</span></td><td><span class="tpl-prio tpl-prio-mid">Middle</span></td></tr>
+        <tr><td><span class="tpl-id">68</span></td><td><span class="tpl-code">NOTIF-MATCH-FREE</span></td><td><span class="tpl-desc">Someone liked FREE user in Perfect Match</span></td><td><span class="tpl-rule">FREE1/FREE15 liked in PM (by real user or cron)</span></td><td><span class="tpl-prio tpl-prio-low">Low</span></td></tr>
+        <tr class="tpl-ab"><td><span class="tpl-id">175/193/211</span></td><td><span class="tpl-code">NOTIF-MATCH-FREE-AB001/02/03<span class="tpl-ab-badge">AB</span></span></td><td><span class="tpl-desc">PM like notification FREE – A/B variants</span></td><td><span class="tpl-rule">FREE1/FREE15 liked in PM</span></td><td><span class="tpl-prio tpl-prio-low">Low</span></td></tr>
+        <tr><td><span class="tpl-id">66</span></td><td><span class="tpl-code">NOTIF-MATCH-VIP</span></td><td><span class="tpl-desc">Someone liked VIP user in Perfect Match</span></td><td><span class="tpl-rule">VIP liked in PM – disabled in favour of All-in-One</span></td><td><span class="tpl-prio tpl-prio-low">Low</span></td></tr>
+        <tr><td><span class="tpl-id">13</span></td><td><span class="tpl-code">NOTIF-FAW</span></td><td><span class="tpl-desc">Added to hotlist notification → FREE user</span></td><td><span class="tpl-rule">FREE1/FREE15 added to someone's hotlist</span></td><td><span class="tpl-prio tpl-prio-mid">Middle</span></td></tr>
+        <tr><td><span class="tpl-id">52</span></td><td><span class="tpl-code">NOTIF-FAW-ABO</span></td><td><span class="tpl-desc">Added to hotlist notification → VIP user</span></td><td><span class="tpl-rule">VIP added to hotlist – disabled in favour of All-in-One</span></td><td><span class="tpl-prio tpl-prio-low">Low</span></td></tr>
+        <tr><td><span class="tpl-id">25</span></td><td><span class="tpl-code">NOTIF-CBM-10-REM</span></td><td><span class="tpl-desc">10 chat requests &amp; 20 votes available again</span></td><td><span class="tpl-rule">FREE1 – daily during first 2 weeks after TOI</span></td><td><span class="tpl-prio tpl-prio-low">Low</span></td></tr>
+        <tr class="tpl-ab"><td><span class="tpl-id">173/191/209</span></td><td><span class="tpl-code">NOTIF-CBM-10-REM-AB001/02/03<span class="tpl-ab-badge">AB</span></span></td><td><span class="tpl-desc">Chat requests renewed – A/B variants</span></td><td><span class="tpl-rule">FREE1 – daily first 2 weeks</span></td><td><span class="tpl-prio tpl-prio-low">Low</span></td></tr>
+        <tr><td><span class="tpl-id">26</span></td><td><span class="tpl-code">NOTIF-CBM-VIP-REM</span></td><td><span class="tpl-desc">15-day free period is over</span></td><td><span class="tpl-rule">When user switches FREE1 → FREE15</span></td><td><span class="tpl-prio tpl-prio-low">Low</span></td></tr>
+        <tr><td><span class="tpl-id">50</span></td><td><span class="tpl-code">NOTIF-CBM-30-REM</span></td><td><span class="tpl-desc">30 messages renewed for VIP</span></td><td><span class="tpl-rule">VIP users – daily during VIP membership</span></td><td><span class="tpl-prio tpl-prio-low">Low</span></td></tr>
+        <tr><td><span class="tpl-id">78</span></td><td><span class="tpl-code">NOTIF-ALLINONE-FREE15</span></td><td><span class="tpl-desc">All-in-one activity digest → FREE15 user</span></td><td><span class="tpl-rule">Day 45 → day 365, every 7 days</span></td><td><span class="tpl-prio tpl-prio-low">Low</span></td></tr>
+        <tr class="tpl-ab"><td><span class="tpl-id">171/189/207</span></td><td><span class="tpl-code">NOTIF-ALLINONE-FREE15-AB001/02/03<span class="tpl-ab-badge">AB</span></span></td><td><span class="tpl-desc">All-in-one FREE15 – A/B variants</span></td><td><span class="tpl-rule">Day 45 → day 365, every 7 days</span></td><td><span class="tpl-prio tpl-prio-low">Low</span></td></tr>
+        <tr><td><span class="tpl-id">100</span></td><td><span class="tpl-code">NOTIF-ALLINONE-VIP</span></td><td><span class="tpl-desc">All-in-one activity digest → VIP user</span></td><td><span class="tpl-rule">From day 2 of VIP, daily until FREE or rules activated</span></td><td><span class="tpl-prio tpl-prio-mid">Middle</span></td></tr>
+        <tr><td><span class="tpl-id">129</span></td><td><span class="tpl-code">NOTIF-PHOTO-UPLOAD</span></td><td><span class="tpl-desc">Prompt to upload a profile photo</span></td><td><span class="tpl-rule">Day 1 after TOI</span></td><td><span class="tpl-prio tpl-prio-low">Low</span></td></tr>
+        <tr><td><span class="tpl-id">106</span></td><td><span class="tpl-code">NOTIF-AGB-VIOLATION</span></td><td><span class="tpl-desc">Terms &amp; conditions violation warning</span></td><td><span class="tpl-rule">When banned content detected (phone/email/skype) – manual or auto</span></td><td><span class="tpl-prio tpl-prio-low">Low</span></td></tr>
+        <tr class="tpl-not-sent"><td><span class="tpl-id">27</span></td><td><span class="tpl-code">NOTIF-CBM-10-LEFT-REM</span></td><td><span class="tpl-desc">FREE user still has flirts remaining</span></td><td><span class="tpl-rule">Disabled years ago</span></td><td><span class="tpl-prio tpl-prio-ns">Not sent</span></td></tr>
+
+        <!-- ── SPECIAL / ONE-TIME ─────────────────── -->
+        <tr class="tpl-group-row"><td colspan="5">⭐ Special &amp; One-time</td></tr>
+        <tr class="tpl-not-sent"><td><span class="tpl-id">61</span></td><td><span class="tpl-code">SPC-MIG-WLC</span></td><td><span class="tpl-desc">Migration welcome (SK2 → SK3)</span></td><td><span class="tpl-rule">One-time migration send – no longer used</span></td><td><span class="tpl-prio tpl-prio-ns">Not sent</span></td></tr>
+        <tr class="tpl-not-sent"><td><span class="tpl-id">127</span></td><td><span class="tpl-code">SPC-PROMO-CORONA</span></td><td><span class="tpl-desc">Corona promo (never deployed)</span></td><td><span class="tpl-rule">No sending rule</span></td><td><span class="tpl-prio tpl-prio-ns">Not sent</span></td></tr>
+        <tr class="tpl-not-sent"><td><span class="tpl-id">151</span></td><td><span class="tpl-code">SPC-PROMO-1WEEK</span></td><td><span class="tpl-desc">1-week payment promo (payment issues era)</span></td><td><span class="tpl-rule">No sending rule</span></td><td><span class="tpl-prio tpl-prio-ns">Not sent</span></td></tr>
+        <tr class="tpl-not-sent"><td><span class="tpl-id">139</span></td><td><span class="tpl-code">SPC-NEW-PAYMENT</span></td><td><span class="tpl-desc">New payment options announcement</span></td><td><span class="tpl-rule">One-time send (never deployed)</span></td><td><span class="tpl-prio tpl-prio-ns">Not sent</span></td></tr>
+        <tr class="tpl-not-sent"><td><span class="tpl-id">125</span></td><td><span class="tpl-code">SPC-PROMO-SMS</span></td><td><span class="tpl-desc">SMS payment promo</span></td><td><span class="tpl-rule">Not used</span></td><td><span class="tpl-prio tpl-prio-ns">Not sent</span></td></tr>
+        <tr class="tpl-not-sent"><td><span class="tpl-id">163</span></td><td><span class="tpl-code">NOTIF-PROMO-WORLDCUP</span></td><td><span class="tpl-desc">World Cup promotional email</span></td><td><span class="tpl-rule">Every 2 days (never deployed)</span></td><td><span class="tpl-prio tpl-prio-ns">Not sent</span></td></tr>
+
+      </tbody>
+    </table>
   </div>
 
   <div class="legend">
