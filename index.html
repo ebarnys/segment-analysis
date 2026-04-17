@@ -2505,16 +2505,117 @@
   </div>
 
   <!-- Impact note -->
-  <div style="background:var(--primary-light);border-radius:var(--radius-sm);padding:14px 18px;margin-bottom:32px;border-left:4px solid var(--primary)">
+  <div style="background:var(--primary-light);border-radius:var(--radius-sm);padding:14px 18px;margin-bottom:40px;border-left:4px solid var(--primary)">
     <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--primary-text);margin-bottom:5px">Why this matters for segmentation</div>
     <div style="font-size:13px;color:var(--text-2);line-height:1.6">
       Profile completeness (photo + description) is the most fundamental segmentation split in the messaging system. Users without a complete profile receive a lower-quality engagement experience, which typically results in weaker retention. <strong style="color:var(--text)">Completing the profile should be treated as a critical onboarding milestone</strong> — not an optional step — because it determines whether the user gets personalized engagement or generic robot messages.
     </div>
   </div>
 
+  <!-- WHALE CATEGORIES -->
+  <div class="cat-heading"><span class="cat-emoji">🐋</span> Whale categories – Live Chat value tiers</div>
+  <p style="font-size:13px;color:var(--text-2);line-height:1.6;margin-bottom:20px;max-width:720px">
+    Users who pay for Live Chat messages are classified into 5 tiers based on their total number of paid messages sent. The higher the tier, the higher the priority their chats receive in the moderator backlog — meaning they get faster, preferential responses.
+  </p>
+
+  <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:28px">
+
+    <!-- Diamond -->
+    <div style="background:var(--surface);border-radius:var(--radius-sm);box-shadow:var(--shadow-sm);padding:16px 20px;display:flex;align-items:center;gap:16px;border-left:5px solid #06b6d4">
+      <div style="font-size:26px;line-height:1;flex-shrink:0">💎</div>
+      <div style="flex:1">
+        <div style="display:flex;align-items:baseline;gap:8px">
+          <span style="font-size:15px;font-weight:700;color:#0891b2">1. DIAMOND</span>
+          <span style="font-size:11px;font-weight:600;background:#cffafe;color:#0e7490;padding:2px 8px;border-radius:20px">Highest priority</span>
+        </div>
+        <div style="font-size:12.5px;color:var(--text-2);margin-top:3px">User sent <strong style="color:var(--text)">6,001+</strong> paid Live Chat messages</div>
+      </div>
+      <div style="text-align:right;flex-shrink:0">
+        <div style="font-size:11px;color:var(--text-3);font-family:'DM Mono',monospace">6 001+</div>
+        <div style="font-size:10px;color:var(--text-3);margin-top:2px">messages</div>
+      </div>
+    </div>
+
+    <!-- Gold -->
+    <div style="background:var(--surface);border-radius:var(--radius-sm);box-shadow:var(--shadow-sm);padding:16px 20px;display:flex;align-items:center;gap:16px;border-left:5px solid #f59e0b">
+      <div style="font-size:26px;line-height:1;flex-shrink:0">👑</div>
+      <div style="flex:1">
+        <div style="display:flex;align-items:baseline;gap:8px">
+          <span style="font-size:15px;font-weight:700;color:#d97706">2. GOLD</span>
+          <span style="font-size:11px;font-weight:600;background:#fef3c7;color:#92400e;padding:2px 8px;border-radius:20px">High priority</span>
+        </div>
+        <div style="font-size:12.5px;color:var(--text-2);margin-top:3px">User sent <strong style="color:var(--text)">1,001 – 6,000</strong> paid Live Chat messages</div>
+      </div>
+      <div style="text-align:right;flex-shrink:0">
+        <div style="font-size:11px;color:var(--text-3);font-family:'DM Mono',monospace">1 001 – 6 000</div>
+        <div style="font-size:10px;color:var(--text-3);margin-top:2px">messages</div>
+      </div>
+    </div>
+
+    <!-- Silver -->
+    <div style="background:var(--surface);border-radius:var(--radius-sm);box-shadow:var(--shadow-sm);padding:16px 20px;display:flex;align-items:center;gap:16px;border-left:5px solid #94a3b8">
+      <div style="font-size:26px;line-height:1;flex-shrink:0">🏆</div>
+      <div style="flex:1">
+        <div style="display:flex;align-items:baseline;gap:8px">
+          <span style="font-size:15px;font-weight:700;color:#64748b">3. SILVER</span>
+          <span style="font-size:11px;font-weight:600;background:#f1f5f9;color:#475569;padding:2px 8px;border-radius:20px">Medium priority</span>
+        </div>
+        <div style="font-size:12.5px;color:var(--text-2);margin-top:3px">User sent <strong style="color:var(--text)">201 – 1,000</strong> paid Live Chat messages</div>
+      </div>
+      <div style="text-align:right;flex-shrink:0">
+        <div style="font-size:11px;color:var(--text-3);font-family:'DM Mono',monospace">201 – 1 000</div>
+        <div style="font-size:10px;color:var(--text-3);margin-top:2px">messages</div>
+      </div>
+    </div>
+
+    <!-- Bronze -->
+    <div style="background:var(--surface);border-radius:var(--radius-sm);box-shadow:var(--shadow-sm);padding:16px 20px;display:flex;align-items:center;gap:16px;border-left:5px solid #b45309">
+      <div style="font-size:26px;line-height:1;flex-shrink:0">🥇</div>
+      <div style="flex:1">
+        <div style="display:flex;align-items:baseline;gap:8px">
+          <span style="font-size:15px;font-weight:700;color:#b45309">4. BRONZE</span>
+          <span style="font-size:11px;font-weight:600;background:#fef3c7;color:#92400e;padding:2px 8px;border-radius:20px">Standard priority</span>
+        </div>
+        <div style="font-size:12.5px;color:var(--text-2);margin-top:3px">User sent <strong style="color:var(--text)">81 – 200</strong> paid Live Chat messages</div>
+      </div>
+      <div style="text-align:right;flex-shrink:0">
+        <div style="font-size:11px;color:var(--text-3);font-family:'DM Mono',monospace">81 – 200</div>
+        <div style="font-size:10px;color:var(--text-3);margin-top:2px">messages</div>
+      </div>
+    </div>
+
+    <!-- Basic -->
+    <div style="background:var(--surface);border-radius:var(--radius-sm);box-shadow:var(--shadow-sm);padding:16px 20px;display:flex;align-items:center;gap:16px;border-left:5px solid #6b7280">
+      <div style="font-size:26px;line-height:1;flex-shrink:0">👤</div>
+      <div style="flex:1">
+        <div style="display:flex;align-items:baseline;gap:8px">
+          <span style="font-size:15px;font-weight:700;color:#6b7280">5. BASIC</span>
+          <span style="font-size:11px;font-weight:600;background:#f3f4f6;color:#6b7280;padding:2px 8px;border-radius:20px">Low priority</span>
+        </div>
+        <div style="font-size:12.5px;color:var(--text-2);margin-top:3px">User sent <strong style="color:var(--text)">1 – 80</strong> paid Live Chat messages</div>
+      </div>
+      <div style="text-align:right;flex-shrink:0">
+        <div style="font-size:11px;color:var(--text-3);font-family:'DM Mono',monospace">1 – 80</div>
+        <div style="font-size:10px;color:var(--text-3);margin-top:2px">messages</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Whale impact note -->
+  <div style="background:#cffafe;border-radius:var(--radius-sm);padding:14px 18px;margin-bottom:36px;border-left:4px solid #06b6d4">
+    <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#0e7490;margin-bottom:5px">How this works in practice</div>
+    <div style="font-size:13px;color:#164e63;line-height:1.6">
+      When moderators process the Live Chat backlog, conversations are sorted by whale tier. A Diamond user's unanswered message jumps ahead of everyone else — they get a faster, higher-quality response. This directly increases satisfaction and retention for the users who generate the most revenue. <strong>It's a built-in VIP service layer purely based on spending behaviour.</strong>
+    </div>
+  </div>
+
   <div class="legend">
-    <span><span class="dot" style="background:#22c55e"></span>Active Responder – has photo &amp; description</span>
-    <span><span class="dot" style="background:#94a3b8"></span>Robot message – missing photo or description</span>
+    <span><span class="dot" style="background:#06b6d4"></span>Diamond – 6,001+ messages</span>
+    <span><span class="dot" style="background:#f59e0b"></span>Gold – 1,001–6,000</span>
+    <span><span class="dot" style="background:#94a3b8"></span>Silver – 201–1,000</span>
+    <span><span class="dot" style="background:#b45309"></span>Bronze – 81–200</span>
+    <span><span class="dot" style="background:#6b7280"></span>Basic – 1–80</span>
   </div>
 
 </div>
