@@ -859,6 +859,22 @@
   .resp-rule-table tr:last-child td { border-bottom: none; }
   .resp-rule-ignore { color: var(--text-3); font-style: italic; }
 
+  /* ── Segment cards ── */
+  .seg-card { background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow-sm); margin-bottom: 14px; overflow: hidden; }
+  .seg-card-head { padding: 14px 20px; display: flex; align-items: center; gap: 14px; border-bottom: 1px solid var(--border); }
+  .seg-letter { width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 800; font-family: 'DM Mono', monospace; flex-shrink: 0; }
+  .seg-name { font-size: 15px; font-weight: 700; color: var(--text); }
+  .seg-subdesc { font-size: 12px; color: var(--text-2); margin-top: 2px; max-width: 600px; line-height: 1.5; }
+  .seg-status-pill { margin-left: auto; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 20px; white-space: nowrap; }
+  .seg-cols { display: grid; grid-template-columns: repeat(3, 1fr); }
+  .seg-col { padding: 14px 18px; border-right: 1px solid var(--border); }
+  .seg-col:last-child { border-right: none; }
+  .seg-col-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-3); margin-bottom: 8px; }
+  .seg-col-content { font-size: 12px; color: var(--text-2); line-height: 1.65; }
+  .seg-col-content strong { color: var(--text); }
+  .seg-goal { padding: 9px 20px; background: var(--bg); border-top: 1px solid var(--border); font-size: 12px; color: var(--text-2); display: flex; align-items: baseline; gap: 8px; }
+  .seg-goal-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-3); flex-shrink: 0; }
+
   .mod-pool-card {
     background: var(--surface);
     border-radius: var(--radius);
@@ -1061,6 +1077,7 @@
   <button class="tab-btn active" onclick="switchTab('emails', this)">📧 Email templates</button>
   <button class="tab-btn" onclick="switchTab('overlays', this)">🪟 Overlays</button>
   <button class="tab-btn" onclick="switchTab('moderation', this)">🛡️ Moderation</button>
+  <button class="tab-btn" onclick="switchTab('segments', this)">🧩 User segments</button>
   <button class="tab-btn" onclick="switchTab('catalog', this)">📡 Events / Tracking plan</button>
   <button class="tab-btn" onclick="switchTab('audiences', this)">👥 Ideas for audiences</button>
 </div>
@@ -3182,6 +3199,371 @@
 
 </div>
 </div><!-- /tab-moderation -->
+
+<!-- ============================================================ -->
+<!-- TAB: USER SEGMENTS                                           -->
+<!-- ============================================================ -->
+<div id="tab-segments" class="tab-panel" style="display:none">
+<div class="container">
+
+  <p style="font-size:13px;color:var(--text-2);line-height:1.6;margin-bottom:8px;max-width:760px">
+    Every user falls into one of 8 behavioural segments. Each segment receives a consistent, coordinated treatment across moderation, email, and overlays. The segments form a natural journey — from registration through to high-value retention.
+  </p>
+
+  <!-- Quick legend -->
+  <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px">
+    <span style="font-size:11px;color:var(--text-3);align-self:center;font-weight:600;text-transform:uppercase;letter-spacing:0.07em">Segments:</span>
+    <span style="font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;background:#f1f5f9;color:#475569">A · No profile</span>
+    <span style="font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;background:#dcfce7;color:#15803d">B · Complete profile</span>
+    <span style="font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;background:#dbeafe;color:#1d4ed8">C · FREE active</span>
+    <span style="font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;background:#fee2e2;color:#b91c1c">D · FREE_EXPIRED</span>
+    <span style="font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;background:#fef3c7;color:#b45309">E · VIP standard</span>
+    <span style="font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;background:#cffafe;color:#0e7490">F · Whale</span>
+    <span style="font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;background:#ede9fe;color:#5b21b6">G · Dropped off</span>
+    <span style="font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;background:#ffedd5;color:#c2410c">H · Dormant</span>
+  </div>
+
+  <!-- A – No profile -->
+  <div class="seg-card" style="border-top:3px solid #94a3b8">
+    <div class="seg-card-head">
+      <div class="seg-letter" style="background:#f1f5f9;color:#475569">A</div>
+      <div>
+        <div class="seg-name">🆕 New – no profile</div>
+        <div class="seg-subdesc">Just registered. No photo or description. Has not been contacted by the platform yet.</div>
+      </div>
+      <span class="seg-status-pill" style="background:#f1f5f9;color:#475569">FREE · uncontacted</span>
+    </div>
+    <div class="seg-cols">
+      <div class="seg-col">
+        <div class="seg-col-label">🛡️ Moderation</div>
+        <div class="seg-col-content">
+          <strong>Robot messages</strong><br>
+          ~2 min after TOI: 4-message burst from 4 different fake profiles (within 5–120 min)<br><br>
+          Days 1–14: daily schedule (3,3,3,2,2,2,1,2,1,2,1,2,2,1)<br>
+          No moderator involvement — fully automated
+        </div>
+      </div>
+      <div class="seg-col">
+        <div class="seg-col-label">📧 Email</div>
+        <div class="seg-col-content">
+          Welcome email<br>
+          Profile completion nudge<br>
+          New message / like notifications
+        </div>
+      </div>
+      <div class="seg-col">
+        <div class="seg-col-label">🪟 Overlays</div>
+        <div class="seg-col-content">
+          Profile completion CTA<br>
+          VIP teaser (preview of what's behind the gate)
+        </div>
+      </div>
+    </div>
+    <div class="seg-goal">
+      <span class="seg-goal-label">Goal →</span>
+      Complete profile (photo + description) → qualify for Active Responder → move to <strong>segment B</strong>
+    </div>
+  </div>
+
+  <!-- B – Complete profile -->
+  <div class="seg-card" style="border-top:3px solid #22c55e">
+    <div class="seg-card-head">
+      <div class="seg-letter" style="background:#dcfce7;color:#15803d">B</div>
+      <div>
+        <div class="seg-name">✅ New – complete profile</div>
+        <div class="seg-subdesc">Has photo + description (≥10 chars) + Approval Level 1. Qualifies for personalized outreach.</div>
+      </div>
+      <span class="seg-status-pill" style="background:#dcfce7;color:#15803d">FREE · Active Responder</span>
+    </div>
+    <div class="seg-cols">
+      <div class="seg-col">
+        <div class="seg-col-label">🛡️ Moderation</div>
+        <div class="seg-col-content">
+          <strong>Active Responder</strong><br>
+          Moderator reads profile, writes a personalized reply referencing the user's photo or description<br><br>
+          Higher reply rate than robot messages — creates genuine engagement
+        </div>
+      </div>
+      <div class="seg-col">
+        <div class="seg-col-label">📧 Email</div>
+        <div class="seg-col-content">
+          Welcome email<br>
+          New message notifications<br>
+          New like / profile view notifications
+        </div>
+      </div>
+      <div class="seg-col">
+        <div class="seg-col-label">🪟 Overlays</div>
+        <div class="seg-col-content">
+          VIP overlay when approaching the 10-message daily limit<br>
+          Soft upsell — show what VIP unlocks
+        </div>
+      </div>
+    </div>
+    <div class="seg-goal">
+      <span class="seg-goal-label">Goal →</span>
+      Build engagement → hit daily message limit → upgrade to VIP → move to <strong>segment E</strong>
+    </div>
+  </div>
+
+  <!-- C – FREE active -->
+  <div class="seg-card" style="border-top:3px solid #3b82f6">
+    <div class="seg-card-head">
+      <div class="seg-letter" style="background:#dbeafe;color:#1d4ed8">C</div>
+      <div>
+        <div class="seg-name">💬 FREE – active, quota available</div>
+        <div class="seg-subdesc">Actively messaging. Still has daily quota remaining. Engaged but not yet converted.</div>
+      </div>
+      <span class="seg-status-pill" style="background:#dbeafe;color:#1d4ed8">FREE · 10/day quota</span>
+    </div>
+    <div class="seg-cols">
+      <div class="seg-col">
+        <div class="seg-col-label">🛡️ Moderation</div>
+        <div class="seg-col-content">
+          <strong>FREE Responder</strong><br>
+          Pattern: answer msgs 1,3,4,6,7,10 · ignore 2,5,8,9<br><br>
+          Regular msg: 50/50 manual moderator vs pool<br>
+          Predefined: always auto<br>
+          Gift: always manual moderator
+        </div>
+      </div>
+      <div class="seg-col">
+        <div class="seg-col-label">📧 Email</div>
+        <div class="seg-col-content">
+          New message notifications<br>
+          New like notifications<br>
+          Profile view alerts
+        </div>
+      </div>
+      <div class="seg-col">
+        <div class="seg-col-label">🪟 Overlays</div>
+        <div class="seg-col-content">
+          VIP overlay when hitting daily limit<br>
+          "Unlock unlimited messaging" angle — show clear value
+        </div>
+      </div>
+    </div>
+    <div class="seg-goal">
+      <span class="seg-goal-label">Goal →</span>
+      Consistently hit the 10/day limit → upsell overlay converts → move to <strong>segment E (VIP)</strong> or <strong>D (expired)</strong>
+    </div>
+  </div>
+
+  <!-- D – FREE_EXPIRED -->
+  <div class="seg-card" style="border-top:3px solid #ef4444">
+    <div class="seg-card-head">
+      <div class="seg-letter" style="background:#fee2e2;color:#b91c1c">D</div>
+      <div>
+        <div class="seg-name">🔴 FREE_EXPIRED – quota exhausted</div>
+        <div class="seg-subdesc">Used all 10 lifetime messages. Cannot send any more without upgrading. Highest conversion urgency.</div>
+      </div>
+      <span class="seg-status-pill" style="background:#fee2e2;color:#b91c1c">FREE_EXPIRED · hard blocked</span>
+    </div>
+    <div class="seg-cols">
+      <div class="seg-col">
+        <div class="seg-col-label">🛡️ Moderation</div>
+        <div class="seg-col-content">
+          <strong>FREE Responder</strong> (same pattern)<br>
+          Platform still answers their earlier messages to keep the conversation alive<br><br>
+          <span style="color:#b91c1c;font-weight:600">User cannot send new messages</span> — quota is 0 and never refreshes
+        </div>
+      </div>
+      <div class="seg-col">
+        <div class="seg-col-label">📧 Email</div>
+        <div class="seg-col-content">
+          High-urgency conversion emails<br>
+          "Your matches are waiting" framing<br>
+          Special offer / limited-time VIP deal
+        </div>
+      </div>
+      <div class="seg-col">
+        <div class="seg-col-label">🪟 Overlays</div>
+        <div class="seg-col-content">
+          <strong>Hard VIP paywall</strong> — cannot send without upgrading<br>
+          No soft teaser — direct conversion overlay<br>
+          Maximum urgency framing
+        </div>
+      </div>
+    </div>
+    <div class="seg-goal">
+      <span class="seg-goal-label">Goal →</span>
+      Immediate VIP conversion — this is the highest-intent purchase moment in the funnel → move to <strong>segment E</strong>
+    </div>
+  </div>
+
+  <!-- E – VIP standard -->
+  <div class="seg-card" style="border-top:3px solid #f59e0b">
+    <div class="seg-card-head">
+      <div class="seg-letter" style="background:#fef3c7;color:#b45309">E</div>
+      <div>
+        <div class="seg-name">👑 VIP – standard subscriber</div>
+        <div class="seg-subdesc">Active VIP subscription. 30 messages/day. Has not yet used Livechat (coin-paid) feature.</div>
+      </div>
+      <span class="seg-status-pill" style="background:#fef3c7;color:#b45309">VIP · 30/day quota</span>
+    </div>
+    <div class="seg-cols">
+      <div class="seg-col">
+        <div class="seg-col-label">🛡️ Moderation</div>
+        <div class="seg-col-content">
+          <strong>VIP Responder</strong><br>
+          Selective answer pattern — not every message replied to instantly<br><br>
+          Creates organic conversation rhythm and natural tension<br>
+          Regular: pattern-based · Predefined: auto · Gift: manual
+        </div>
+      </div>
+      <div class="seg-col">
+        <div class="seg-col-label">📧 Email</div>
+        <div class="seg-col-content">
+          Feature discovery emails (Livechat, gifts, superpowers)<br>
+          Engagement / new activity notifications<br>
+          Subscription renewal reminders
+        </div>
+      </div>
+      <div class="seg-col">
+        <div class="seg-col-label">🪟 Overlays</div>
+        <div class="seg-col-content">
+          Coin purchase overlay (for gifts, livechat winks)<br>
+          Livechat intro — explain the feature and first-use CTA<br>
+          Superpower upsell overlays
+        </div>
+      </div>
+    </div>
+    <div class="seg-goal">
+      <span class="seg-goal-label">Goal →</span>
+      Retain subscription + trigger first Livechat / coin purchase → move to <strong>segment F (Whale)</strong>
+    </div>
+  </div>
+
+  <!-- F – Whale -->
+  <div class="seg-card" style="border-top:3px solid #06b6d4">
+    <div class="seg-card-head">
+      <div class="seg-letter" style="background:#cffafe;color:#0e7490">F</div>
+      <div>
+        <div class="seg-name">💎 VIP + Whale – Livechat buyer</div>
+        <div class="seg-subdesc">VIP subscriber who has made at least one coin-paid Livechat purchase. Classified into 5 tiers: Diamond (6001+) · Gold (1001–6000) · Silver (201–1000) · Bronze (81–200) · Basic (1–80).</div>
+      </div>
+      <span class="seg-status-pill" style="background:#cffafe;color:#0e7490">VIP · Livechat active</span>
+    </div>
+    <div class="seg-cols">
+      <div class="seg-col">
+        <div class="seg-col-label">🛡️ Moderation</div>
+        <div class="seg-col-content">
+          <strong>Livechat Responder</strong><br>
+          Priority queue sorted by whale tier — Diamond first, Basic last<br><br>
+          Higher tier = faster response, higher quality replies<br><br>
+          <strong>Auto-reactivation</strong> if inactive for X days — auto-message from last active profile. Higher tier = more aggressive frequency.
+        </div>
+      </div>
+      <div class="seg-col">
+        <div class="seg-col-label">📧 Email</div>
+        <div class="seg-col-content">
+          Whale retention emails<br>
+          "Top up your coins" prompts<br>
+          Exclusive offers for high-tier users<br>
+          Re-engagement if Livechat activity drops
+        </div>
+      </div>
+      <div class="seg-col">
+        <div class="seg-col-label">🪟 Overlays</div>
+        <div class="seg-col-content">
+          Coin bundle offers (larger packages, better value)<br>
+          "Low coins" warning overlay before running out<br>
+          Tier upgrade prompt ("You're close to Gold")
+        </div>
+      </div>
+    </div>
+    <div class="seg-goal">
+      <span class="seg-goal-label">Goal →</span>
+      Maximize coin spend · prevent churn · move up whale tier · keep Diamond/Gold users in active Livechat conversations
+    </div>
+  </div>
+
+  <!-- G – Dropped off -->
+  <div class="seg-card" style="border-top:3px solid #8b5cf6">
+    <div class="seg-card-head">
+      <div class="seg-letter" style="background:#ede9fe;color:#5b21b6">G</div>
+      <div>
+        <div class="seg-name">🔁 Dropped off – mid-conversation</div>
+        <div class="seg-subdesc">Was actively messaging, then stopped replying. Conversation still technically open. Short-term inactivity.</div>
+      </div>
+      <span class="seg-status-pill" style="background:#ede9fe;color:#5b21b6">Any status · recently silent</span>
+    </div>
+    <div class="seg-cols">
+      <div class="seg-col">
+        <div class="seg-col-label">🛡️ Moderation</div>
+        <div class="seg-col-content">
+          <strong>Followup Responder</strong><br>
+          Platform sends a nudge message from the female profile after the inactivity window<br><br>
+          Short, inviting line — re-opens the conversation naturally without being pushy
+        </div>
+      </div>
+      <div class="seg-col">
+        <div class="seg-col-label">📧 Email</div>
+        <div class="seg-col-content">
+          "She's waiting for your reply" type email<br>
+          New activity notification (if other profiles interacted)<br>
+          Gentle urgency — not aggressive
+        </div>
+      </div>
+      <div class="seg-col">
+        <div class="seg-col-label">🪟 Overlays</div>
+        <div class="seg-col-content">
+          Re-engagement overlay on next login<br>
+          "Pick up where you left off" — shows the open conversation
+        </div>
+      </div>
+    </div>
+    <div class="seg-goal">
+      <span class="seg-goal-label">Goal →</span>
+      Restart the conversation → restore activity → keep in <strong>segment C or E</strong>, prevent sliding to H
+    </div>
+  </div>
+
+  <!-- H – Dormant -->
+  <div class="seg-card" style="border-top:3px solid #f97316">
+    <div class="seg-card-head">
+      <div class="seg-letter" style="background:#ffedd5;color:#c2410c">H</div>
+      <div>
+        <div class="seg-name">😴 Dormant – long-term inactive</div>
+        <div class="seg-subdesc">No meaningful activity for an extended period. Beyond the Followup Responder window. At serious churn risk.</div>
+      </div>
+      <span class="seg-status-pill" style="background:#ffedd5;color:#c2410c">Any status · churned</span>
+    </div>
+    <div class="seg-cols">
+      <div class="seg-col">
+        <div class="seg-col-label">🛡️ Moderation</div>
+        <div class="seg-col-content">
+          <strong>Reanimation Responder</strong><br>
+          Win-back outreach attempt — message from a profile the user previously interacted with<br><br>
+          Best results on users who previously showed high engagement (multiple replies, gifts sent, complete profile)
+        </div>
+      </div>
+      <div class="seg-col">
+        <div class="seg-col-label">📧 Email</div>
+        <div class="seg-col-content">
+          Win-back campaign<br>
+          "X people liked you while you were away"<br>
+          Comeback offer — free trial extension or discount<br>
+          Urgency framing: your matches are expiring
+        </div>
+      </div>
+      <div class="seg-col">
+        <div class="seg-col-label">🪟 Overlays</div>
+        <div class="seg-col-content">
+          Welcome back overlay on first re-login<br>
+          Special reactivation offer (VIP discount or free coins)<br>
+          Show what they missed — new likes, profile views
+        </div>
+      </div>
+    </div>
+    <div class="seg-goal">
+      <span class="seg-goal-label">Goal →</span>
+      Reactivate → restart from <strong>segment B or C</strong> depending on profile completeness and status
+    </div>
+  </div>
+
+</div>
+</div><!-- /tab-segments -->
 
 <script>
 function switchTab(id, btn) {
