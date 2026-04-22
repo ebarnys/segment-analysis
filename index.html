@@ -901,6 +901,9 @@
   .toi-btn { font-size: 12px; font-weight: 600; padding: 5px 13px; border-radius: 20px; border: 1px solid var(--border); background: var(--surface); color: var(--text-2); cursor: pointer; transition: all 0.15s; }
   .toi-btn:hover { background: var(--bg); color: var(--text); }
   .toi-active { background: #dbeafe !important; color: #1d4ed8 !important; border-color: #bfdbfe !important; }
+  .toi-exp-btn { font-size: 12px; font-weight: 600; padding: 5px 13px; border-radius: 20px; border: 1px solid var(--border); background: var(--surface); color: var(--text-2); cursor: pointer; transition: all 0.15s; }
+  .toi-exp-btn:hover { background: var(--bg); color: var(--text); }
+  .toi-exp-active { background: #fee2e2 !important; color: #b91c1c !important; border-color: #fecaca !important; }
 
   /* ── Lifecycle stages ── */
   .lc-funnel { display: flex; align-items: center; gap: 0; margin-bottom: 40px; flex-wrap: wrap; }
@@ -1291,11 +1294,12 @@
 
   <div class="cf-card">
     <div class="cf-head">
-      <span class="cf-badge" style="background:#e0f2fe;color:#0369a1">TOI</span>
+      <span class="cf-badge" style="background:#dcfce7;color:#15803d">TOI · FREE</span>
       <div>
-        <div class="cf-stage-name">Profile phase</div>
-        <div class="cf-stage-desc">User has platform access and is building their profile. Flow differs by profile completeness — use the switcher to explore each sub-stage.</div>
+        <div class="cf-stage-name">Profile phase — days 1–14</div>
+        <div class="cf-stage-desc">User has FREE status. 10 messages/day, quota refreshes daily. After 14 days without converting to VIP → automatically becomes FREE_EXPIRED.</div>
       </div>
+      <span style="margin-left:auto;font-size:11px;font-weight:700;background:#dcfce7;color:#15803d;padding:4px 10px;border-radius:20px;white-space:nowrap;flex-shrink:0">Days 1–14</span>
     </div>
 
     <!-- Sub-stage switcher -->
@@ -1443,15 +1447,144 @@
 
   </div>
 
-  <!-- FREE_EXPIRED note -->
-  <div style="background:#fff1f2;border-radius:var(--radius-sm);padding:14px 18px;border-left:4px solid #ef4444;margin-bottom:8px">
-    <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:#b91c1c;margin-bottom:6px">⚠️ FREE_EXPIRED modifier — applies to any TOI sub-stage</div>
-    <div style="font-size:12px;color:var(--text-2);line-height:1.65">
-      When a user exhausts their 10 lifetime messages they become <strong style="color:var(--text)">FREE_EXPIRED</strong> — same profile sub-stage, but treatment changes:<br><br>
-      🪟 <strong style="color:var(--text)">Hard VIP paywall overlay</strong> — cannot send without upgrading<br>
-      📧 <strong style="color:var(--text)">Urgency conversion emails</strong> — "your matches are waiting", limited-time VIP offer<br>
-      🎯 <strong style="color:var(--text)">Highest conversion priority</strong> — hottest moment in the funnel
+  <!-- Card 2: TOI FREE_EXPIRED -->
+  <div class="cf-card">
+    <div class="cf-head">
+      <span class="cf-badge" style="background:#fee2e2;color:#b91c1c">TOI · FREE_EXPIRED</span>
+      <div>
+        <div class="cf-stage-name">Profile phase — day 15+</div>
+        <div class="cf-stage-desc">Automatically assigned after 14 days without VIP conversion. Daily quota no longer refreshes. Maximum conversion pressure — this is the hottest moment in the funnel.</div>
+      </div>
+      <span style="margin-left:auto;font-size:11px;font-weight:700;background:#fee2e2;color:#b91c1c;padding:4px 10px;border-radius:20px;white-space:nowrap;flex-shrink:0">Day 15+</span>
     </div>
+
+    <!-- Sub-stage switcher -->
+    <div style="display:flex;gap:6px;flex-wrap:wrap;padding:12px 18px;border-bottom:1px solid var(--border);background:var(--bg)">
+      <button onclick="switchTOIExp('empty', this)"  class="toi-exp-btn toi-exp-active">◩ Empty — 0%</button>
+      <button onclick="switchTOIExp('pic', this)"    class="toi-exp-btn">🖼️ Pic — 40%</button>
+      <button onclick="switchTOIExp('desc', this)"   class="toi-exp-btn">📝 Desc — 40%</button>
+      <button onclick="switchTOIExp('full', this)"   class="toi-exp-btn">✅ Full — 100%</button>
+    </div>
+
+    <!-- Empty panel -->
+    <div id="toi-exp-empty" class="toi-exp-panel">
+      <div class="cf-body">
+        <div style="font-size:12px;color:var(--text-2);margin-bottom:16px">No photo, no description. Lowest conversion potential — no profile means no personal engagement possible. Double nudge: complete profile AND upgrade to VIP.</div>
+        <div class="cf-timeline">
+          <div class="cf-event">
+            <div class="cf-time">Day 15</div>
+            <div class="cf-dot" style="background:#ef4444"></div>
+            <div class="cf-box"><div class="cf-box-code">STATUS CHANGE</div><div class="cf-box-label">⚠️ FREE → FREE_EXPIRED transition</div><div class="cf-box-cond">Daily quota freezes — no more refreshes</div></div>
+          </div>
+          <div class="cf-event">
+            <div class="cf-time">ongoing</div>
+            <div class="cf-dot" style="background:#f87171"></div>
+            <div class="cf-box"><div class="cf-box-code">HARD VIP PAYWALL</div><div class="cf-box-label">🪟 Cannot send messages without upgrading</div><div class="cf-box-cond">No soft teaser — direct conversion overlay on every send attempt</div></div>
+          </div>
+          <div class="cf-event">
+            <div class="cf-time">ongoing</div>
+            <div class="cf-dot" style="background:#cbd5e1"></div>
+            <div class="cf-box"><div class="cf-box-code">PROFILE COMPLETION CTA</div><div class="cf-box-label">🪟 Profile completion banner still active</div><div class="cf-box-cond">Completing profile improves response quality even after upgrade</div></div>
+          </div>
+          <div class="cf-event">
+            <div class="cf-time">Day 30</div>
+            <div class="cf-dot" style="background:#f59e0b"></div>
+            <div class="cf-box"><div class="cf-box-code">FNL-H-VIP-OFFR</div><div class="cf-box-label">📧 VIP benefits reminder + offer</div><div class="cf-box-cond">Low priority · long-term re-engagement attempt</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="cf-channels"><span class="cf-ch on">🪟 Hard VIP paywall</span><span class="cf-ch on">📧 Urgency emails</span><span class="cf-ch on">🤖 Robot (continues)</span><span class="cf-ch off">🛡️ Active Responder</span></div>
+      <div class="cf-goal"><span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-3);flex-shrink:0">Goal →</span> Convert to <strong>VIP</strong> — and complete profile to unlock Active Responder</div>
+    </div>
+
+    <!-- Pic panel -->
+    <div id="toi-exp-pic" class="toi-exp-panel" style="display:none">
+      <div class="cf-body">
+        <div style="font-size:12px;color:var(--text-2);margin-bottom:16px">Has photo, no description. One step from Active Responder — but blocked by paywall. Nudge covers both adding description and upgrading.</div>
+        <div class="cf-timeline">
+          <div class="cf-event">
+            <div class="cf-time">Day 15</div>
+            <div class="cf-dot" style="background:#ef4444"></div>
+            <div class="cf-box"><div class="cf-box-code">STATUS CHANGE</div><div class="cf-box-label">⚠️ FREE → FREE_EXPIRED transition</div><div class="cf-box-cond">Daily quota freezes — no more refreshes</div></div>
+          </div>
+          <div class="cf-event">
+            <div class="cf-time">ongoing</div>
+            <div class="cf-dot" style="background:#f87171"></div>
+            <div class="cf-box"><div class="cf-box-code">HARD VIP PAYWALL</div><div class="cf-box-label">🪟 Cannot send messages without upgrading</div><div class="cf-box-cond">Direct conversion overlay on every send attempt</div></div>
+          </div>
+          <div class="cf-event">
+            <div class="cf-time">ongoing</div>
+            <div class="cf-dot" style="background:#38bdf8"></div>
+            <div class="cf-box"><div class="cf-box-code">PROFILE COMPLETION CTA</div><div class="cf-box-label">🪟 "Tell people about yourself" banner</div><div class="cf-box-cond">Completing description unlocks Active Responder after upgrade</div></div>
+          </div>
+          <div class="cf-event">
+            <div class="cf-time">Day 30</div>
+            <div class="cf-dot" style="background:#f59e0b"></div>
+            <div class="cf-box"><div class="cf-box-code">FNL-H-VIP-OFFR</div><div class="cf-box-label">📧 VIP benefits reminder + offer</div><div class="cf-box-cond">Low priority · long-term re-engagement</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="cf-channels"><span class="cf-ch on">🪟 Hard VIP paywall</span><span class="cf-ch on">🪟 Description nudge</span><span class="cf-ch on">📧 Urgency emails</span><span class="cf-ch off">🛡️ Active Responder</span></div>
+      <div class="cf-goal"><span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-3);flex-shrink:0">Goal →</span> Add description + convert to <strong>VIP</strong> → unlock Active Responder immediately</div>
+    </div>
+
+    <!-- Desc panel -->
+    <div id="toi-exp-desc" class="toi-exp-panel" style="display:none">
+      <div class="cf-body">
+        <div style="font-size:12px;color:var(--text-2);margin-bottom:16px">Has description, no photo. One step from Active Responder — but blocked by paywall. Strong incentive: add photo + upgrade = personalized engagement starts immediately.</div>
+        <div class="cf-timeline">
+          <div class="cf-event">
+            <div class="cf-time">Day 15</div>
+            <div class="cf-dot" style="background:#ef4444"></div>
+            <div class="cf-box"><div class="cf-box-code">STATUS CHANGE</div><div class="cf-box-label">⚠️ FREE → FREE_EXPIRED transition</div><div class="cf-box-cond">Daily quota freezes — no more refreshes</div></div>
+          </div>
+          <div class="cf-event">
+            <div class="cf-time">ongoing</div>
+            <div class="cf-dot" style="background:#f87171"></div>
+            <div class="cf-box"><div class="cf-box-code">HARD VIP PAYWALL</div><div class="cf-box-label">🪟 Cannot send messages without upgrading</div><div class="cf-box-cond">Direct conversion overlay on every send attempt</div></div>
+          </div>
+          <div class="cf-event">
+            <div class="cf-time">ongoing</div>
+            <div class="cf-dot" style="background:#a78bfa"></div>
+            <div class="cf-box"><div class="cf-box-code">PROFILE COMPLETION CTA</div><div class="cf-box-label">🪟 "Profiles with photos get 5× more views" banner</div><div class="cf-box-cond">Adding photo unlocks Active Responder after upgrade</div></div>
+          </div>
+          <div class="cf-event">
+            <div class="cf-time">Day 30</div>
+            <div class="cf-dot" style="background:#f59e0b"></div>
+            <div class="cf-box"><div class="cf-box-code">FNL-H-VIP-OFFR</div><div class="cf-box-label">📧 VIP benefits reminder + offer</div><div class="cf-box-cond">Low priority · long-term re-engagement</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="cf-channels"><span class="cf-ch on">🪟 Hard VIP paywall</span><span class="cf-ch on">🪟 Photo nudge</span><span class="cf-ch on">📧 Urgency emails</span><span class="cf-ch off">🛡️ Active Responder</span></div>
+      <div class="cf-goal"><span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-3);flex-shrink:0">Goal →</span> Add photo + convert to <strong>VIP</strong> → unlock Active Responder immediately</div>
+    </div>
+
+    <!-- Full panel -->
+    <div id="toi-exp-full" class="toi-exp-panel" style="display:none">
+      <div class="cf-body">
+        <div style="font-size:12px;color:var(--text-2);margin-bottom:16px">Complete profile + blocked by paywall. <strong style="color:#b91c1c">Highest conversion urgency in the entire system.</strong> User is engaged, profile is ready, Active Responder is waiting — only thing missing is VIP payment.</div>
+        <div class="cf-timeline">
+          <div class="cf-event">
+            <div class="cf-time">Day 15</div>
+            <div class="cf-dot" style="background:#ef4444"></div>
+            <div class="cf-box"><div class="cf-box-code">STATUS CHANGE</div><div class="cf-box-label">⚠️ FREE → FREE_EXPIRED transition</div><div class="cf-box-cond">Daily quota freezes — no more refreshes</div></div>
+          </div>
+          <div class="cf-event">
+            <div class="cf-time">ongoing</div>
+            <div class="cf-dot" style="background:#ef4444"></div>
+            <div class="cf-box"><div class="cf-box-code">HARD VIP PAYWALL</div><div class="cf-box-label">🪟 Cannot send messages without upgrading</div><div class="cf-box-cond">Maximum urgency — user has conversations open and can't reply</div></div>
+          </div>
+          <div class="cf-event">
+            <div class="cf-time">Day 30</div>
+            <div class="cf-dot" style="background:#f59e0b"></div>
+            <div class="cf-box"><div class="cf-box-code">FNL-H-VIP-OFFR</div><div class="cf-box-label">📧 VIP benefits reminder + special offer</div><div class="cf-box-cond">Low priority · last attempt before user goes cold</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="cf-channels"><span class="cf-ch on">🪟 Hard VIP paywall</span><span class="cf-ch on">📧 Urgency conversion emails</span><span class="cf-ch on">🤖 Robot (continues)</span><span class="cf-ch off" style="text-decoration:none;opacity:1;color:#f59e0b;font-weight:700">⏳ Active Responder — waiting for VIP</span></div>
+      <div class="cf-goal"><span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:#b91c1c;flex-shrink:0">Goal →</span> Convert to <strong>VIP</strong> — Active Responder activates immediately on upgrade</div>
+    </div>
+
   </div>
 
 </div>
@@ -4094,6 +4227,13 @@
 </div><!-- /tab-segments -->
 
 <script>
+function switchTOIExp(id, btn) {
+  document.querySelectorAll('.toi-exp-panel').forEach(p => p.style.display = 'none');
+  document.querySelectorAll('.toi-exp-btn').forEach(b => b.classList.remove('toi-exp-active'));
+  document.getElementById('toi-exp-' + id).style.display = 'block';
+  btn.classList.add('toi-exp-active');
+}
+
 function switchTOI(id, btn) {
   document.querySelectorAll('.toi-panel').forEach(p => p.style.display = 'none');
   document.querySelectorAll('.toi-btn').forEach(b => b.classList.remove('toi-active'));
