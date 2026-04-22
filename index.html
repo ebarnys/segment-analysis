@@ -875,6 +875,30 @@
   .seg-goal { padding: 9px 20px; background: var(--bg); border-top: 1px solid var(--border); font-size: 12px; color: var(--text-2); display: flex; align-items: baseline; gap: 8px; }
   .seg-goal-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-3); flex-shrink: 0; }
 
+  /* ── Current flow tab ── */
+  .cf-card { background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow-sm); margin-bottom: 24px; overflow: hidden; }
+  .cf-head { padding: 16px 22px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 14px; }
+  .cf-badge { font-size: 13px; font-weight: 800; font-family: 'DM Mono', monospace; padding: 5px 12px; border-radius: 8px; flex-shrink: 0; }
+  .cf-stage-name { font-size: 15px; font-weight: 700; color: var(--text); }
+  .cf-stage-desc { font-size: 12px; color: var(--text-2); margin-top: 2px; }
+  .cf-body { padding: 20px 22px; }
+  .cf-timeline { position: relative; }
+  .cf-timeline::before { content: ''; position: absolute; left: 68px; top: 14px; bottom: 14px; width: 2px; background: var(--border); border-radius: 2px; }
+  .cf-event { display: grid; grid-template-columns: 52px 16px 1fr; gap: 0 10px; align-items: start; margin-bottom: 10px; position: relative; }
+  .cf-event:last-child { margin-bottom: 0; }
+  .cf-time { font-size: 11px; font-weight: 700; font-family: 'DM Mono', monospace; color: var(--text-3); text-align: right; padding-top: 5px; }
+  .cf-dot { width: 12px; height: 12px; border-radius: 50%; margin-top: 4px; z-index: 1; position: relative; flex-shrink: 0; border: 2px solid var(--surface); }
+  .cf-box { background: var(--bg); border-radius: 8px; padding: 9px 13px; border: 1px solid var(--border); margin-bottom: 0; }
+  .cf-box-code { font-size: 10px; font-weight: 700; font-family: 'DM Mono', monospace; color: var(--text-3); margin-bottom: 2px; letter-spacing: 0.04em; }
+  .cf-box-label { font-size: 13px; font-weight: 600; color: var(--text); }
+  .cf-box-cond { font-size: 11px; color: var(--text-3); margin-top: 3px; }
+  .cf-channels { display: flex; gap: 8px; flex-wrap: wrap; padding: 12px 22px; background: var(--bg); border-top: 1px solid var(--border); }
+  .cf-ch { display: flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 600; padding: 5px 12px; border-radius: 8px; border: 1px solid var(--border); }
+  .cf-ch.on  { background: var(--surface); color: var(--text); }
+  .cf-ch.off { background: var(--bg); color: var(--text-3); text-decoration: line-through; opacity: 0.45; }
+  .cf-goal { padding: 11px 22px; border-top: 1px solid var(--border); font-size: 12px; color: var(--text-2); display: flex; align-items: center; gap: 8px; }
+  .cf-goal strong { color: var(--text); }
+
   /* ── Lifecycle stages ── */
   .lc-funnel { display: flex; align-items: center; gap: 0; margin-bottom: 40px; flex-wrap: wrap; }
   .lc-main-stage { flex: 1; min-width: 90px; background: var(--surface); border-radius: var(--radius-sm); box-shadow: var(--shadow-sm); padding: 16px 14px; text-align: center; position: relative; border-top: 3px solid var(--border); cursor: default; }
@@ -1097,7 +1121,8 @@
 </div>
 
 <div class="tab-bar">
-  <button class="tab-btn active" onclick="switchTab('emails', this)">📧 Email templates</button>
+  <button class="tab-btn active" onclick="switchTab('flow', this)">▶️ Current flow</button>
+  <button class="tab-btn" onclick="switchTab('emails', this)">📧 Email templates</button>
   <button class="tab-btn" onclick="switchTab('overlays', this)">🪟 Overlays</button>
   <button class="tab-btn" onclick="switchTab('moderation', this)">🛡️ Moderation</button>
   <button class="tab-btn" onclick="switchTab('segments', this)">🗂️ Current segmentation</button>
@@ -1106,7 +1131,162 @@
   <button class="tab-btn" onclick="switchTab('audiences', this)">👥 Ideas for audiences</button>
 </div>
 
-<div id="tab-emails" class="tab-panel">
+<!-- ============================================================ -->
+<!-- TAB: CURRENT FLOW                                            -->
+<!-- ============================================================ -->
+<div id="tab-flow" class="tab-panel" style="display:none">
+<div class="container">
+
+  <p style="font-size:13px;color:var(--text-2);line-height:1.6;margin-bottom:28px;max-width:760px">
+    Step-by-step flow for each lifecycle stage — what the user receives, through which channel, and when. Each stage has one clear goal that moves the user forward.
+  </p>
+
+  <!-- ── SOI ── -->
+  <div class="cf-card">
+    <div class="cf-head">
+      <span class="cf-badge" style="background:#dbeafe;color:#1e40af">SOI</span>
+      <div>
+        <div class="cf-stage-name">Single Opt-In</div>
+        <div class="cf-stage-desc">User submitted their email on the landing page but has not yet clicked the confirmation link.</div>
+      </div>
+    </div>
+    <div class="cf-body">
+      <div class="cf-timeline">
+
+        <div class="cf-event">
+          <div class="cf-time">0 min</div>
+          <div class="cf-dot" style="background:#3b82f6"></div>
+          <div class="cf-box">
+            <div class="cf-box-code">REG-WEB-01</div>
+            <div class="cf-box-label">📧 Registration confirmation</div>
+            <div class="cf-box-cond">Immediately after signup — the main confirmation email</div>
+          </div>
+        </div>
+
+        <div class="cf-event">
+          <div class="cf-time">5 min</div>
+          <div class="cf-dot" style="background:#60a5fa"></div>
+          <div class="cf-box">
+            <div class="cf-box-code">REG-WEB-02</div>
+            <div class="cf-box-label">📧 2nd follow-up confirmation</div>
+            <div class="cf-box-cond">Only if still no activation</div>
+          </div>
+        </div>
+
+        <div class="cf-event">
+          <div class="cf-time">10 min</div>
+          <div class="cf-dot" style="background:#60a5fa"></div>
+          <div class="cf-box">
+            <div class="cf-box-code">REG-WEB-03</div>
+            <div class="cf-box-label">📧 3rd follow-up confirmation</div>
+            <div class="cf-box-cond">Only if still no activation</div>
+          </div>
+        </div>
+
+        <div class="cf-event">
+          <div class="cf-time">1 h</div>
+          <div class="cf-dot" style="background:#93c5fd"></div>
+          <div class="cf-box">
+            <div class="cf-box-code">REG-WEB-04</div>
+            <div class="cf-box-label">📧 4th follow-up</div>
+            <div class="cf-box-cond">Only if still SOI after 1 hour</div>
+          </div>
+        </div>
+
+        <div class="cf-event">
+          <div class="cf-time">24 h</div>
+          <div class="cf-dot" style="background:#bfdbfe"></div>
+          <div class="cf-box">
+            <div class="cf-box-code">REG-WEB-05</div>
+            <div class="cf-box-label">📧 5th follow-up — last attempt</div>
+            <div class="cf-box-cond">Only if still SOI after 24 hours — if no click, user goes cold</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="cf-channels">
+      <span class="cf-ch on">📧 5 emails</span>
+      <span class="cf-ch off">🪟 Overlays</span>
+      <span class="cf-ch off">🛡️ Moderation</span>
+      <span class="cf-ch off">📱 Push</span>
+    </div>
+    <div class="cf-goal">
+      <span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-3);flex-shrink:0">Goal →</span>
+      User clicks the confirmation link → becomes <strong>DOI</strong>
+    </div>
+  </div>
+
+  <!-- ── DOI ── -->
+  <div class="cf-card">
+    <div class="cf-head">
+      <span class="cf-badge" style="background:#ede9fe;color:#5b21b6">DOI</span>
+      <div>
+        <div class="cf-stage-name">Double Opt-In</div>
+        <div class="cf-stage-desc">User confirmed their email and has platform access, but has not started filling in their profile yet.</div>
+      </div>
+    </div>
+    <div class="cf-body">
+      <div class="cf-timeline">
+
+        <div class="cf-event">
+          <div class="cf-time">1 h</div>
+          <div class="cf-dot" style="background:#8b5cf6"></div>
+          <div class="cf-box">
+            <div class="cf-box-code">REG-CONTINUE</div>
+            <div class="cf-box-label">📧 Complete your registration – profile</div>
+            <div class="cf-box-cond">1h after DOI if profile not started → nudge to fill in profile</div>
+          </div>
+        </div>
+
+        <div class="cf-event">
+          <div class="cf-time">24 h</div>
+          <div class="cf-dot" style="background:#a78bfa"></div>
+          <div class="cf-box">
+            <div class="cf-box-code">REG-CONTINUE</div>
+            <div class="cf-box-label">📧 Complete your registration – reminder</div>
+            <div class="cf-box-cond">24h after DOI if still no profile</div>
+          </div>
+        </div>
+
+        <div class="cf-event">
+          <div class="cf-time">48 h</div>
+          <div class="cf-dot" style="background:#c4b5fd"></div>
+          <div class="cf-box">
+            <div class="cf-box-code">REG-CONTINUE</div>
+            <div class="cf-box-label">📧 Complete your registration – last nudge</div>
+            <div class="cf-box-cond">48h after DOI if still no profile — final reminder</div>
+          </div>
+        </div>
+
+        <div class="cf-event">
+          <div class="cf-time">any</div>
+          <div class="cf-dot" style="background:#f59e0b"></div>
+          <div class="cf-box">
+            <div class="cf-box-code">REG-CONTINUE-EXISTING</div>
+            <div class="cf-box-label">📧 Welcome back – complete your profile</div>
+            <div class="cf-box-cond">Triggered if existing DOI user re-enters their email on the landing page</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="cf-channels">
+      <span class="cf-ch on">📧 3 emails (+ 1 re-entry trigger)</span>
+      <span class="cf-ch off">🪟 Overlays</span>
+      <span class="cf-ch off">🛡️ Moderation</span>
+      <span class="cf-ch off">📱 Push</span>
+    </div>
+    <div class="cf-goal">
+      <span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-3);flex-shrink:0">Goal →</span>
+      User starts filling in their profile → enters <strong>TOI phase</strong>
+    </div>
+  </div>
+
+</div>
+</div><!-- /tab-flow -->
+
+<div id="tab-emails" class="tab-panel" style="display:none">
 <div class="container">
 
   <div class="section-label" style="margin-bottom:12px">User lifecycle – segment overview</div>
