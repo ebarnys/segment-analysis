@@ -1283,6 +1283,312 @@
     </div>
   </div>
 
+  <!-- ── TOI ENTRY (common for all) ── -->
+  <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-3);margin:32px 0 12px">TOI — Profile phase</div>
+
+  <div class="cf-card">
+    <div class="cf-head">
+      <span class="cf-badge" style="background:#e0f2fe;color:#0369a1">TOI</span>
+      <div>
+        <div class="cf-stage-name">TOI Entry — common for all sub-stages</div>
+        <div class="cf-stage-desc">User starts filling in their profile. These events fire regardless of how complete the profile is.</div>
+      </div>
+    </div>
+    <div class="cf-body">
+      <div class="cf-timeline">
+
+        <div class="cf-event">
+          <div class="cf-time">0 min</div>
+          <div class="cf-dot" style="background:#0ea5e9"></div>
+          <div class="cf-box">
+            <div class="cf-box-code">REG-WELCOME</div>
+            <div class="cf-box-label">📧 Welcome email</div>
+            <div class="cf-box-cond">Immediately after TOI — first platform welcome</div>
+          </div>
+        </div>
+
+        <div class="cf-event">
+          <div class="cf-time">~2 min</div>
+          <div class="cf-dot" style="background:#94a3b8"></div>
+          <div class="cf-box">
+            <div class="cf-box-code">ROBOT BURST</div>
+            <div class="cf-box-label">🤖 4 robot messages from 4 different fake profiles</div>
+            <div class="cf-box-cond">Delivered within 5–120 min · platform chat notification + email · daily schedule continues for 14 days</div>
+          </div>
+        </div>
+
+        <div class="cf-event">
+          <div class="cf-time">approval</div>
+          <div class="cf-dot" style="background:#22c55e"></div>
+          <div class="cf-box">
+            <div class="cf-box-code">REG-CHECK</div>
+            <div class="cf-box-label">📧 Profile approved by moderator</div>
+            <div class="cf-box-cond">Sent after Level 1 approval</div>
+          </div>
+        </div>
+
+        <div class="cf-event">
+          <div class="cf-time">rejection</div>
+          <div class="cf-dot" style="background:#ef4444"></div>
+          <div class="cf-box">
+            <div class="cf-box-code">REG-DENY / REG-DENY-TEXT</div>
+            <div class="cf-box-label">📧 Profile or text rejected</div>
+            <div class="cf-box-cond">Sent on L1 or L3 rejection — user must fix and resubmit</div>
+          </div>
+        </div>
+
+        <div class="cf-event">
+          <div class="cf-time">1st chat</div>
+          <div class="cf-dot" style="background:#a78bfa"></div>
+          <div class="cf-box">
+            <div class="cf-box-code">PUSH OPT-IN</div>
+            <div class="cf-box-label">🪟 Push notification permission overlay</div>
+            <div class="cf-box-cond">Shown on first entry into chat</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="cf-channels">
+      <span class="cf-ch on">📧 2 emails</span>
+      <span class="cf-ch on">🤖 Robot burst</span>
+      <span class="cf-ch on">🪟 Push opt-in overlay</span>
+      <span class="cf-ch off">📱 Push (not yet opted in)</span>
+    </div>
+    <div class="cf-goal">
+      <span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-3);flex-shrink:0">Next →</span>
+      Flow splits by profile completeness — see sub-stages below
+    </div>
+  </div>
+
+  <!-- Sub-stage label -->
+  <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-3);margin:28px 0 12px">TOI sub-stages — by profile completeness</div>
+
+  <!-- ── TOI EMPTY ── -->
+  <div class="cf-card">
+    <div class="cf-head">
+      <span class="cf-badge" style="background:#f1f5f9;color:#475569">◩ TOI Empty</span>
+      <div>
+        <div class="cf-stage-name">No photo, no description — 0% complete</div>
+        <div class="cf-stage-desc">Profile shell only. Receives robot messages only. Goal is to nudge toward adding at least one piece of profile content.</div>
+      </div>
+    </div>
+    <div class="cf-body">
+      <div class="cf-timeline">
+
+        <div class="cf-event">
+          <div class="cf-time">Day 1</div>
+          <div class="cf-dot" style="background:#94a3b8"></div>
+          <div class="cf-box">
+            <div class="cf-box-code">NOTIF-PHOTO-UPLOAD</div>
+            <div class="cf-box-label">📧 Prompt to upload a profile photo</div>
+            <div class="cf-box-cond">Low priority nudge — day 1 after TOI</div>
+          </div>
+        </div>
+
+        <div class="cf-event">
+          <div class="cf-time">Day 3</div>
+          <div class="cf-dot" style="background:#94a3b8"></div>
+          <div class="cf-box">
+            <div class="cf-box-code">FNL-E-PROF-REM</div>
+            <div class="cf-box-label">📧 Reminder to fill profile photo and details</div>
+            <div class="cf-box-cond">Low priority — still no profile action after 3 days</div>
+          </div>
+        </div>
+
+        <div class="cf-event">
+          <div class="cf-time">ongoing</div>
+          <div class="cf-dot" style="background:#cbd5e1"></div>
+          <div class="cf-box">
+            <div class="cf-box-code">PROFILE COMPLETION CTA</div>
+            <div class="cf-box-label">🪟 Profile completion banner in-app</div>
+            <div class="cf-box-cond">Shown when page loads if photo and description are missing · CTAs: add_photo, profile_details, short_description</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="cf-channels">
+      <span class="cf-ch on">📧 2 emails</span>
+      <span class="cf-ch on">🪟 Profile completion overlay</span>
+      <span class="cf-ch on">🤖 Robot messages only</span>
+      <span class="cf-ch off">🛡️ Active Responder</span>
+    </div>
+    <div class="cf-goal">
+      <span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-3);flex-shrink:0">Goal →</span>
+      Add photo → <strong>TOI Pic</strong> &nbsp;or&nbsp; add description → <strong>TOI Desc</strong>
+    </div>
+  </div>
+
+  <!-- ── TOI PIC ── -->
+  <div class="cf-card">
+    <div class="cf-head">
+      <span class="cf-badge" style="background:#e0f2fe;color:#0369a1">🖼️ TOI Pic</span>
+      <div>
+        <div class="cf-stage-name">Has photo, no description — 40% complete</div>
+        <div class="cf-stage-desc">One step away from TOI Full. Missing description — nudges focus entirely on adding text.</div>
+      </div>
+    </div>
+    <div class="cf-body">
+      <div class="cf-timeline">
+
+        <div class="cf-event">
+          <div class="cf-time">ongoing</div>
+          <div class="cf-dot" style="background:#38bdf8"></div>
+          <div class="cf-box">
+            <div class="cf-box-code">PROFILE COMPLETION CTA</div>
+            <div class="cf-box-label">🪟 "Tell people about yourself" banner</div>
+            <div class="cf-box-cond">In-app overlay pointing specifically to description field · shown on page load</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="cf-channels">
+      <span class="cf-ch on">🪟 Description nudge overlay</span>
+      <span class="cf-ch on">🤖 Robot messages only</span>
+      <span class="cf-ch off">🛡️ Active Responder</span>
+      <span class="cf-ch off">📧 No dedicated email</span>
+    </div>
+    <div class="cf-goal">
+      <span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-3);flex-shrink:0">Goal →</span>
+      Add description → <strong>TOI Full</strong> → unlock Active Responder
+    </div>
+  </div>
+
+  <!-- ── TOI DESC ── -->
+  <div class="cf-card">
+    <div class="cf-head">
+      <span class="cf-badge" style="background:#ede9fe;color:#5b21b6">📝 TOI Desc</span>
+      <div>
+        <div class="cf-stage-name">Has description, no photo — 40% complete</div>
+        <div class="cf-stage-desc">One step away from TOI Full. Missing photo — nudges focus on uploading a picture.</div>
+      </div>
+    </div>
+    <div class="cf-body">
+      <div class="cf-timeline">
+
+        <div class="cf-event">
+          <div class="cf-time">ongoing</div>
+          <div class="cf-dot" style="background:#a78bfa"></div>
+          <div class="cf-box">
+            <div class="cf-box-code">PROFILE COMPLETION CTA</div>
+            <div class="cf-box-label">🪟 "Profiles with photos get 5× more views" banner</div>
+            <div class="cf-box-cond">In-app overlay pointing specifically to photo upload · shown on page load</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="cf-channels">
+      <span class="cf-ch on">🪟 Photo nudge overlay</span>
+      <span class="cf-ch on">🤖 Robot messages only</span>
+      <span class="cf-ch off">🛡️ Active Responder</span>
+      <span class="cf-ch off">📧 No dedicated email</span>
+    </div>
+    <div class="cf-goal">
+      <span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-3);flex-shrink:0">Goal →</span>
+      Add photo → <strong>TOI Full</strong> → unlock Active Responder
+    </div>
+  </div>
+
+  <!-- ── TOI FULL ── -->
+  <div class="cf-card">
+    <div class="cf-head">
+      <span class="cf-badge" style="background:#dcfce7;color:#15803d">✅ TOI Full</span>
+      <div>
+        <div class="cf-stage-name">Photo + description complete — 100%</div>
+        <div class="cf-stage-desc">Match-ready. Active Responder unlocked. Full engagement email sequence starts. Highest conversion potential in TOI phase.</div>
+      </div>
+    </div>
+    <div class="cf-body">
+      <div class="cf-timeline">
+
+        <div class="cf-event">
+          <div class="cf-time">Day 2</div>
+          <div class="cf-dot" style="background:#22c55e"></div>
+          <div class="cf-box">
+            <div class="cf-box-code">FNL-C-WHY</div>
+            <div class="cf-box-label">📧 "Why it's working" — newsletter teaser</div>
+            <div class="cf-box-cond">Medium priority · engagement / value reinforcement</div>
+          </div>
+        </div>
+
+        <div class="cf-event">
+          <div class="cf-time">Day 3</div>
+          <div class="cf-dot" style="background:#22c55e"></div>
+          <div class="cf-box">
+            <div class="cf-box-code">FNL-A-POWERS</div>
+            <div class="cf-box-label">📧 Intro to Coin Superpowers feature</div>
+            <div class="cf-box-cond">Low priority · feature discovery</div>
+          </div>
+        </div>
+
+        <div class="cf-event">
+          <div class="cf-time">Day 5</div>
+          <div class="cf-dot" style="background:#16a34a"></div>
+          <div class="cf-box">
+            <div class="cf-box-code">FNL-D-NEW-MSG + NOTIF-20DISCOUNT-EARLY</div>
+            <div class="cf-box-label">📧 New message notification + 20% early VIP discount</div>
+            <div class="cf-box-cond">Discount: HIGH priority · FREE male users only</div>
+          </div>
+        </div>
+
+        <div class="cf-event">
+          <div class="cf-time">Day 9</div>
+          <div class="cf-dot" style="background:#15803d"></div>
+          <div class="cf-box">
+            <div class="cf-box-code">FNL-H-VIP-OFFR</div>
+            <div class="cf-box-label">📧 VIP benefits reminder + offer</div>
+            <div class="cf-box-cond">Low priority · long-term nurture</div>
+          </div>
+        </div>
+
+        <div class="cf-event">
+          <div class="cf-time">ongoing</div>
+          <div class="cf-dot" style="background:#4ade80"></div>
+          <div class="cf-box">
+            <div class="cf-box-code">ACTIVE RESPONDER</div>
+            <div class="cf-box-label">🛡️ Personalized moderator messages activated</div>
+            <div class="cf-box-cond">Moderator reads profile → writes reply referencing photo or description · significantly higher engagement than robot messages</div>
+          </div>
+        </div>
+
+        <div class="cf-event">
+          <div class="cf-time">at limit</div>
+          <div class="cf-dot" style="background:#f59e0b"></div>
+          <div class="cf-box">
+            <div class="cf-box-code">VIP TEASER</div>
+            <div class="cf-box-label">🪟 VIP overlay when approaching daily message limit</div>
+            <div class="cf-box-cond">Soft upsell — shown when user nears 10/day free limit</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="cf-channels">
+      <span class="cf-ch on">📧 4 emails (days 2–9)</span>
+      <span class="cf-ch on">🛡️ Active Responder</span>
+      <span class="cf-ch on">🪟 VIP teaser overlay</span>
+      <span class="cf-ch on">🤖 Robot messages (continue)</span>
+    </div>
+    <div class="cf-goal">
+      <span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-3);flex-shrink:0">Goal →</span>
+      Hit daily message limit → convert to <strong>VIP</strong>
+    </div>
+  </div>
+
+  <!-- FREE_EXPIRED modifier -->
+  <div style="background:#fff1f2;border-radius:var(--radius-sm);padding:14px 18px;border-left:4px solid #ef4444;margin-bottom:8px">
+    <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:#b91c1c;margin-bottom:6px">⚠️ FREE_EXPIRED modifier — applies to any TOI sub-stage</div>
+    <div style="font-size:12px;color:var(--text-2);line-height:1.65">
+      When a user exhausts their 10 lifetime messages, they become <strong style="color:var(--text)">FREE_EXPIRED</strong> — the same profile sub-stage applies but the treatment changes:<br><br>
+      🪟 <strong style="color:var(--text)">Hard VIP paywall overlay</strong> — cannot send any message without upgrading (no soft teaser, direct conversion)<br>
+      📧 <strong style="color:var(--text)">Urgency conversion emails</strong> — "your matches are waiting", special limited-time VIP offer<br>
+      🎯 <strong style="color:var(--text)">Highest conversion priority</strong> — this is the hottest moment in the funnel
+    </div>
+  </div>
+
 </div>
 </div><!-- /tab-flow -->
 
