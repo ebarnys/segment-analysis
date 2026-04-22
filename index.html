@@ -3766,7 +3766,7 @@
     <div class="lc-toi-header">
       <div>
         <div class="lc-toi-title">👤 TOI — Profile phase (8 sub-stages)</div>
-        <div class="lc-toi-desc">Split by message quota status (FREE vs FREE_EXPIRED) × profile completeness. Each combination requires different treatment.</div>
+        <div class="lc-toi-desc">Split by time-based status (FREE days 1–14 vs FREE_EXPIRED day 15+) × profile completeness. Each combination requires different treatment.</div>
       </div>
     </div>
 
@@ -3774,7 +3774,7 @@
 
       <!-- FREE group -->
       <div class="lc-toi-group">
-        <div class="lc-toi-group-label" style="background:#dcfce7;color:#15803d">FREE — quota refreshes daily (10/day)</div>
+        <div class="lc-toi-group-label" style="background:#dcfce7;color:#15803d">FREE — days 1–14 · 10 msgs/day, refreshes daily</div>
 
         <div class="lc-sub-card" style="border-left-color:#94a3b8">
           <div class="lc-sub-emoji">◩</div>
@@ -3815,13 +3815,13 @@
 
       <!-- FREE_EXPIRED group -->
       <div class="lc-toi-group">
-        <div class="lc-toi-group-label" style="background:#fee2e2;color:#b91c1c">FREE_EXPIRED — 10 lifetime msgs, never refreshes</div>
+        <div class="lc-toi-group-label" style="background:#fee2e2;color:#b91c1c">FREE_EXPIRED — day 15+ · quota no longer refreshes</div>
 
         <div class="lc-sub-card" style="border-left-color:#94a3b8">
           <div class="lc-sub-emoji">◩</div>
           <div>
             <div class="lc-sub-name">FREE_EXPIRED TOI Empty</div>
-            <div class="lc-sub-desc">Quota gone. No profile. Hardest to convert.</div>
+            <div class="lc-sub-desc">14 days passed, no VIP. No profile. Hardest to convert.</div>
           </div>
           <span class="lc-sub-pct" style="background:#f1f5f9;color:#64748b">0%</span>
         </div>
@@ -3830,7 +3830,7 @@
           <div class="lc-sub-emoji">🖼️</div>
           <div>
             <div class="lc-sub-name">FREE_EXPIRED TOI Pic</div>
-            <div class="lc-sub-desc">Quota gone. Has photo, no description.</div>
+            <div class="lc-sub-desc">14 days passed, no VIP. Has photo, no description.</div>
           </div>
           <span class="lc-sub-pct" style="background:#fee2e2;color:#b91c1c">40%</span>
         </div>
@@ -3839,7 +3839,7 @@
           <div class="lc-sub-emoji">📝</div>
           <div>
             <div class="lc-sub-name">FREE_EXPIRED TOI Desc</div>
-            <div class="lc-sub-desc">Quota gone. Has description, no photo.</div>
+            <div class="lc-sub-desc">14 days passed, no VIP. Has description, no photo.</div>
           </div>
           <span class="lc-sub-pct" style="background:#fee2e2;color:#b91c1c">40%</span>
         </div>
@@ -3848,7 +3848,7 @@
           <div class="lc-sub-emoji">⚡</div>
           <div>
             <div class="lc-sub-name">FREE_EXPIRED TOI Full</div>
-            <div class="lc-sub-desc">Complete profile + blocked by paywall. Highest conversion urgency.</div>
+            <div class="lc-sub-desc">14 days passed, no VIP. Complete profile, blocked by paywall. Highest conversion urgency.</div>
           </div>
           <span class="lc-sub-pct" style="background:#fee2e2;color:#b91c1c">100%</span>
         </div>
