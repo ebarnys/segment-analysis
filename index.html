@@ -904,6 +904,8 @@
   .toi-exp-btn { font-size: 12px; font-weight: 600; padding: 5px 13px; border-radius: 20px; border: 1px solid var(--border); background: var(--surface); color: var(--text-2); cursor: pointer; transition: all 0.15s; }
   .toi-exp-btn:hover { background: var(--bg); color: var(--text); }
   .toi-exp-active { background: #fee2e2 !important; color: #b91c1c !important; border-color: #fecaca !important; }
+  .toi-exp-inact-btn { font-size: 12px; font-weight: 600; padding: 5px 13px; border-radius: 20px; border: 1px solid var(--border); background: var(--surface); color: var(--text-2); cursor: pointer; transition: all 0.15s; }
+  .toi-exp-inact-active { background: #f1f5f9 !important; color: #334155 !important; border-color: #cbd5e1 !important; }
 
   /* ── Lifecycle stages ── */
   .lc-funnel { display: flex; align-items: center; gap: 0; margin-bottom: 40px; flex-wrap: wrap; }
@@ -917,9 +919,10 @@
   .lc-toi-header { padding: 14px 22px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
   .lc-toi-title { font-size: 14px; font-weight: 700; color: var(--text); }
   .lc-toi-desc { font-size: 12px; color: var(--text-2); margin-top: 2px; }
-  .lc-toi-groups { display: grid; grid-template-columns: 1fr 1fr; }
+  .lc-toi-groups { display: grid; grid-template-columns: 1fr 1fr 1fr; }
   .lc-toi-group { padding: 18px 20px; }
   .lc-toi-group:first-child { border-right: 1px solid var(--border); }
+  .lc-toi-group:nth-child(2) { border-right: 1px solid var(--border); }
   .lc-toi-group-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; padding: 5px 10px; border-radius: 6px; display: inline-block; }
   .lc-sub-card { background: var(--bg); border-radius: var(--radius-sm); padding: 11px 14px; margin-bottom: 8px; border-left: 3px solid var(--border); display: flex; align-items: center; gap: 12px; }
   .lc-sub-card:last-child { margin-bottom: 0; }
@@ -1447,15 +1450,15 @@
 
   </div>
 
-  <!-- Card 2: TOI FREE_EXPIRED -->
+  <!-- Card 2: TOI FREE_EXPIRED Active -->
   <div class="cf-card">
     <div class="cf-head">
-      <span class="cf-badge" style="background:#fee2e2;color:#b91c1c">TOI · FREE_EXPIRED</span>
+      <span class="cf-badge" style="background:#ffedd5;color:#c2410c">TOI · FREE_EXPIRED Active</span>
       <div>
-        <div class="cf-stage-name">Profile phase — day 15+</div>
-        <div class="cf-stage-desc">Automatically assigned after 14 days without VIP conversion. Daily quota no longer refreshes. Maximum conversion pressure — this is the hottest moment in the funnel.</div>
+        <div class="cf-stage-name">Profile phase — day 15+ · still visiting</div>
+        <div class="cf-stage-desc">Day 15+ without VIP conversion, but user is still logging in and hitting the paywall. Maximum conversion pressure — quota is frozen, paywall shows on every send attempt.</div>
       </div>
-      <span style="margin-left:auto;font-size:11px;font-weight:700;background:#fee2e2;color:#b91c1c;padding:4px 10px;border-radius:20px;white-space:nowrap;flex-shrink:0">Day 15+</span>
+      <span style="margin-left:auto;font-size:11px;font-weight:700;background:#ffedd5;color:#c2410c;padding:4px 10px;border-radius:20px;white-space:nowrap;flex-shrink:0">Day 15+ · active</span>
     </div>
 
     <!-- Sub-stage switcher -->
@@ -1582,7 +1585,137 @@
         </div>
       </div>
       <div class="cf-channels"><span class="cf-ch on">🪟 Hard VIP paywall</span><span class="cf-ch on">📧 Urgency conversion emails</span><span class="cf-ch on">🤖 Robot (continues)</span><span class="cf-ch off" style="text-decoration:none;opacity:1;color:#f59e0b;font-weight:700">⏳ Active Responder — waiting for VIP</span></div>
-      <div class="cf-goal"><span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:#b91c1c;flex-shrink:0">Goal →</span> Convert to <strong>VIP</strong> — Active Responder activates immediately on upgrade</div>
+      <div class="cf-goal"><span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:#c2410c;flex-shrink:0">Goal →</span> Convert to <strong>VIP</strong> — Active Responder activates immediately on upgrade</div>
+    </div>
+
+  </div>
+
+  <!-- Card 3: TOI FREE_EXPIRED Inactive -->
+  <div class="cf-card">
+    <div class="cf-head">
+      <span class="cf-badge" style="background:#f1f5f9;color:#475569">TOI · FREE_EXPIRED Inactive</span>
+      <div>
+        <div class="cf-stage-name">Profile phase — day 15+ · stopped visiting</div>
+        <div class="cf-stage-desc">Day 15+ without VIP conversion and user has gone dormant — no recent logins. Must reactivate first before conversion can happen. Win-back emails + welcome-back overlay are the primary tools.</div>
+      </div>
+      <span style="margin-left:auto;font-size:11px;font-weight:700;background:#f1f5f9;color:#475569;padding:4px 10px;border-radius:20px;white-space:nowrap;flex-shrink:0">Day 15+ · dormant</span>
+    </div>
+
+    <!-- Sub-stage switcher -->
+    <div style="display:flex;gap:6px;flex-wrap:wrap;padding:12px 18px;border-bottom:1px solid var(--border);background:var(--bg)">
+      <button onclick="switchTOIExpInact('empty', this)"  class="toi-exp-inact-btn toi-exp-inact-active">◩ Empty — 0%</button>
+      <button onclick="switchTOIExpInact('pic', this)"    class="toi-exp-inact-btn">🖼️ Pic — 40%</button>
+      <button onclick="switchTOIExpInact('desc', this)"   class="toi-exp-inact-btn">📝 Desc — 40%</button>
+      <button onclick="switchTOIExpInact('full', this)"   class="toi-exp-inact-btn">✅ Full — 100%</button>
+    </div>
+
+    <!-- Empty panel -->
+    <div id="toi-exp-inact-empty" class="toi-exp-inact-panel">
+      <div class="cf-body">
+        <div style="font-size:12px;color:var(--text-2);margin-bottom:16px">No photo, no description — and no longer visiting. Lowest reactivation potential. Win-back email must work hard: reminds of platform value, asks them to complete profile and upgrade.</div>
+        <div class="cf-timeline">
+          <div class="cf-event">
+            <div class="cf-time">Day 15</div>
+            <div class="cf-dot" style="background:#94a3b8"></div>
+            <div class="cf-box"><div class="cf-box-code">STATUS CHANGE</div><div class="cf-box-label">💤 FREE → FREE_EXPIRED · user has gone silent</div><div class="cf-box-cond">No logins detected since trial ended</div></div>
+          </div>
+          <div class="cf-event">
+            <div class="cf-time">Day 30</div>
+            <div class="cf-dot" style="background:#64748b"></div>
+            <div class="cf-box"><div class="cf-box-code">FNL-H-VIP-OFFR</div><div class="cf-box-label">📧 Win-back email — "You have new messages"</div><div class="cf-box-cond">Robot messages still accumulating, used as social proof</div></div>
+          </div>
+          <div class="cf-event">
+            <div class="cf-time">on return</div>
+            <div class="cf-dot" style="background:#a3b8cc"></div>
+            <div class="cf-box"><div class="cf-box-code">WELCOME BACK OVERLAY</div><div class="cf-box-label">🪟 "Welcome back" + VIP offer shown on login</div><div class="cf-box-cond">If user clicks win-back link and logs back in</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="cf-channels"><span class="cf-ch on">📧 Win-back emails</span><span class="cf-ch on">🪟 Welcome-back overlay</span><span class="cf-ch on">🤖 Robot (continues silently)</span><span class="cf-ch off">🛡️ Active Responder</span></div>
+      <div class="cf-goal"><span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-3);flex-shrink:0">Goal →</span> Get user to <strong>return</strong>, then convert to VIP via paywall + welcome-back offer</div>
+    </div>
+
+    <!-- Pic panel -->
+    <div id="toi-exp-inact-pic" class="toi-exp-inact-panel" style="display:none">
+      <div class="cf-body">
+        <div style="font-size:12px;color:var(--text-2);margin-bottom:16px">Has photo, no description — dormant. Good reactivation hook: "You have messages waiting." One profile step away from full engagement once they return.</div>
+        <div class="cf-timeline">
+          <div class="cf-event">
+            <div class="cf-time">Day 15</div>
+            <div class="cf-dot" style="background:#94a3b8"></div>
+            <div class="cf-box"><div class="cf-box-code">STATUS CHANGE</div><div class="cf-box-label">💤 FREE → FREE_EXPIRED · user stopped visiting</div><div class="cf-box-cond">Photo present — usable as profile thumbnail in emails</div></div>
+          </div>
+          <div class="cf-event">
+            <div class="cf-time">Day 30</div>
+            <div class="cf-dot" style="background:#64748b"></div>
+            <div class="cf-box"><div class="cf-box-code">FNL-H-VIP-OFFR</div><div class="cf-box-label">📧 Win-back — "X people viewed your profile"</div><div class="cf-box-cond">Photo makes this email more personal and click-worthy</div></div>
+          </div>
+          <div class="cf-event">
+            <div class="cf-time">on return</div>
+            <div class="cf-dot" style="background:#a3b8cc"></div>
+            <div class="cf-box"><div class="cf-box-code">WELCOME BACK OVERLAY</div><div class="cf-box-label">🪟 Welcome back + "add your bio to unlock more"</div><div class="cf-box-cond">Description nudge + VIP offer combined on return</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="cf-channels"><span class="cf-ch on">📧 Win-back emails</span><span class="cf-ch on">🪟 Welcome-back overlay</span><span class="cf-ch on">🤖 Robot (continues silently)</span><span class="cf-ch off">🛡️ Active Responder</span></div>
+      <div class="cf-goal"><span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-3);flex-shrink:0">Goal →</span> Win back visit → add description + upgrade to VIP</div>
+    </div>
+
+    <!-- Desc panel -->
+    <div id="toi-exp-inact-desc" class="toi-exp-inact-panel" style="display:none">
+      <div class="cf-body">
+        <div style="font-size:12px;color:var(--text-2);margin-bottom:16px">Has description, no photo — dormant. Win-back email highlights waiting messages. Needs photo + upgrade to unlock full experience on return.</div>
+        <div class="cf-timeline">
+          <div class="cf-event">
+            <div class="cf-time">Day 15</div>
+            <div class="cf-dot" style="background:#94a3b8"></div>
+            <div class="cf-box"><div class="cf-box-code">STATUS CHANGE</div><div class="cf-box-label">💤 FREE → FREE_EXPIRED · user went quiet</div><div class="cf-box-cond">Has description — good bio for personalised win-back copy</div></div>
+          </div>
+          <div class="cf-event">
+            <div class="cf-time">Day 30</div>
+            <div class="cf-dot" style="background:#64748b"></div>
+            <div class="cf-box"><div class="cf-box-code">FNL-H-VIP-OFFR</div><div class="cf-box-label">📧 Win-back — "Don't let your matches forget you"</div><div class="cf-box-cond">Urgency framing with social proof from robot messages</div></div>
+          </div>
+          <div class="cf-event">
+            <div class="cf-time">on return</div>
+            <div class="cf-dot" style="background:#a3b8cc"></div>
+            <div class="cf-box"><div class="cf-box-code">WELCOME BACK OVERLAY</div><div class="cf-box-label">🪟 "Add a photo to get 5× more responses" + VIP offer</div><div class="cf-box-cond">Photo nudge + upgrade CTA combined on return</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="cf-channels"><span class="cf-ch on">📧 Win-back emails</span><span class="cf-ch on">🪟 Welcome-back overlay</span><span class="cf-ch on">🤖 Robot (continues silently)</span><span class="cf-ch off">🛡️ Active Responder</span></div>
+      <div class="cf-goal"><span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-3);flex-shrink:0">Goal →</span> Win back visit → add photo + upgrade to VIP</div>
+    </div>
+
+    <!-- Full panel -->
+    <div id="toi-exp-inact-full" class="toi-exp-inact-panel" style="display:none">
+      <div class="cf-body">
+        <div style="font-size:12px;color:var(--text-2);margin-bottom:16px">Complete profile — but has gone dormant. <strong style="color:#475569">Best reactivation candidate in the system.</strong> Profile is ready, Active Responder will fire the moment they return and upgrade. Just need to bring them back.</div>
+        <div class="cf-timeline">
+          <div class="cf-event">
+            <div class="cf-time">Day 15</div>
+            <div class="cf-dot" style="background:#94a3b8"></div>
+            <div class="cf-box"><div class="cf-box-code">STATUS CHANGE</div><div class="cf-box-label">💤 FREE → FREE_EXPIRED · went cold despite full profile</div><div class="cf-box-cond">Highest value dormant user — all signals were green, just disengaged</div></div>
+          </div>
+          <div class="cf-event">
+            <div class="cf-time">Day 30</div>
+            <div class="cf-dot" style="background:#64748b"></div>
+            <div class="cf-box"><div class="cf-box-code">FNL-H-VIP-OFFR</div><div class="cf-box-label">📧 Win-back — "Your matches are waiting — limited offer"</div><div class="cf-box-cond">Strong urgency + special VIP discount for this segment</div></div>
+          </div>
+          <div class="cf-event">
+            <div class="cf-time">on return</div>
+            <div class="cf-dot" style="background:#64748b"></div>
+            <div class="cf-box"><div class="cf-box-code">WELCOME BACK OVERLAY</div><div class="cf-box-label">🪟 Direct VIP conversion offer — no profile nudge needed</div><div class="cf-box-cond">Profile is complete → conversion overlay only, maximum urgency</div></div>
+          </div>
+          <div class="cf-event">
+            <div class="cf-time">on upgrade</div>
+            <div class="cf-dot" style="background:#22c55e"></div>
+            <div class="cf-box"><div class="cf-box-code">ACTIVE RESPONDER FIRES</div><div class="cf-box-label">🛡️ Immediate personalised engagement starts</div><div class="cf-box-cond">Zero delay — profile was ready and waiting</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="cf-channels"><span class="cf-ch on">📧 Win-back emails</span><span class="cf-ch on">🪟 Welcome-back overlay</span><span class="cf-ch on">🤖 Robot (continues silently)</span><span class="cf-ch on" style="color:#15803d">🛡️ Active Responder (on upgrade)</span></div>
+      <div class="cf-goal"><span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:#475569;flex-shrink:0">Goal →</span> Win back visit → convert to <strong>VIP</strong> — Active Responder fires instantly</div>
     </div>
 
   </div>
@@ -3745,10 +3878,18 @@
 
     <div class="lc-arrow">→</div>
 
-    <div class="lc-main-stage" style="border-top-color:#ef4444;background:#fff1f2">
-      <div class="lc-stage-emoji">⏳</div>
-      <div class="lc-stage-name" style="color:#b91c1c">TOI · FREE_EXPIRED</div>
-      <div class="lc-stage-sub">Day 15+<br>Quota frozen · convert or churn</div>
+    <div class="lc-main-stage" style="border-top-color:#f97316;background:#fff7ed">
+      <div class="lc-stage-emoji">🔥</div>
+      <div class="lc-stage-name" style="color:#c2410c">FREE_EXPIRED<br><span style="font-size:11px">Active</span></div>
+      <div class="lc-stage-sub">Day 15+ · still visiting<br>Paywall hit · convert now</div>
+    </div>
+
+    <div class="lc-arrow">→</div>
+
+    <div class="lc-main-stage" style="border-top-color:#94a3b8;background:#f8fafc;opacity:0.8">
+      <div class="lc-stage-emoji">💤</div>
+      <div class="lc-stage-name" style="color:#475569">FREE_EXPIRED<br><span style="font-size:11px">Inactive</span></div>
+      <div class="lc-stage-sub">Day 15+ · stopped visiting<br>Reactivate first</div>
     </div>
 
     <div class="lc-arrow">→</div>
@@ -3774,7 +3915,7 @@
     <div class="lc-toi-header">
       <div>
         <div class="lc-toi-title">👤 TOI — Profile phase · 4 sub-stages per status</div>
-        <div class="lc-toi-desc">Each status has 4 profile completeness states. FREE = days 1–14 · FREE_EXPIRED = day 15+ without VIP conversion.</div>
+        <div class="lc-toi-desc">Each status has 4 profile completeness states. FREE = days 1–14 · FREE_EXPIRED Active = day 15+, still visiting · FREE_EXPIRED Inactive = day 15+, stopped visiting.</div>
       </div>
     </div>
 
@@ -3821,44 +3962,85 @@
         </div>
       </div>
 
-      <!-- FREE_EXPIRED group -->
+      <!-- FREE_EXPIRED Active group -->
       <div class="lc-toi-group">
-        <div class="lc-toi-group-label" style="background:#fee2e2;color:#b91c1c">FREE_EXPIRED — day 15+ · quota no longer refreshes</div>
+        <div class="lc-toi-group-label" style="background:#ffedd5;color:#c2410c">FREE_EXPIRED Active — day 15+ · still logging in</div>
 
         <div class="lc-sub-card" style="border-left-color:#94a3b8">
           <div class="lc-sub-emoji">◩</div>
           <div>
-            <div class="lc-sub-name">FREE_EXPIRED TOI Empty</div>
-            <div class="lc-sub-desc">14 days passed, no VIP. No profile. Hardest to convert.</div>
+            <div class="lc-sub-name">FREE_EXPIRED Active · Empty</div>
+            <div class="lc-sub-desc">Day 15+, still visiting, no profile. Double nudge: fill profile + upgrade.</div>
           </div>
           <span class="lc-sub-pct" style="background:#f1f5f9;color:#64748b">0%</span>
         </div>
 
-        <div class="lc-sub-card" style="border-left-color:#f87171">
+        <div class="lc-sub-card" style="border-left-color:#f97316">
           <div class="lc-sub-emoji">🖼️</div>
           <div>
-            <div class="lc-sub-name">FREE_EXPIRED TOI Pic</div>
-            <div class="lc-sub-desc">14 days passed, no VIP. Has photo, no description.</div>
+            <div class="lc-sub-name">FREE_EXPIRED Active · Pic</div>
+            <div class="lc-sub-desc">Day 15+, still visiting, has photo. Nudge: add description + upgrade.</div>
           </div>
-          <span class="lc-sub-pct" style="background:#fee2e2;color:#b91c1c">40%</span>
+          <span class="lc-sub-pct" style="background:#ffedd5;color:#c2410c">40%</span>
         </div>
 
-        <div class="lc-sub-card" style="border-left-color:#f87171">
+        <div class="lc-sub-card" style="border-left-color:#f97316">
           <div class="lc-sub-emoji">📝</div>
           <div>
-            <div class="lc-sub-name">FREE_EXPIRED TOI Desc</div>
-            <div class="lc-sub-desc">14 days passed, no VIP. Has description, no photo.</div>
+            <div class="lc-sub-name">FREE_EXPIRED Active · Desc</div>
+            <div class="lc-sub-desc">Day 15+, still visiting, has description. Nudge: add photo + upgrade.</div>
           </div>
-          <span class="lc-sub-pct" style="background:#fee2e2;color:#b91c1c">40%</span>
+          <span class="lc-sub-pct" style="background:#ffedd5;color:#c2410c">40%</span>
         </div>
 
         <div class="lc-sub-card" style="border-left-color:#ef4444">
-          <div class="lc-sub-emoji">⚡</div>
+          <div class="lc-sub-emoji">🔥</div>
           <div>
-            <div class="lc-sub-name">FREE_EXPIRED TOI Full</div>
-            <div class="lc-sub-desc">14 days passed, no VIP. Complete profile, blocked by paywall. Highest conversion urgency.</div>
+            <div class="lc-sub-name">FREE_EXPIRED Active · Full</div>
+            <div class="lc-sub-desc">Day 15+, still visiting, complete profile — hitting paywall. Highest conversion urgency in the system.</div>
           </div>
-          <span class="lc-sub-pct" style="background:#fee2e2;color:#b91c1c">100%</span>
+          <span class="lc-sub-pct" style="background:#ffedd5;color:#c2410c">100%</span>
+        </div>
+      </div>
+
+      <!-- FREE_EXPIRED Inactive group -->
+      <div class="lc-toi-group">
+        <div class="lc-toi-group-label" style="background:#f1f5f9;color:#475569">FREE_EXPIRED Inactive — day 15+ · stopped visiting</div>
+
+        <div class="lc-sub-card" style="border-left-color:#94a3b8">
+          <div class="lc-sub-emoji">◩</div>
+          <div>
+            <div class="lc-sub-name">FREE_EXPIRED Inactive · Empty</div>
+            <div class="lc-sub-desc">Day 15+, dormant, no profile. Reanimation email needed before any conversion attempt.</div>
+          </div>
+          <span class="lc-sub-pct" style="background:#f1f5f9;color:#64748b">0%</span>
+        </div>
+
+        <div class="lc-sub-card" style="border-left-color:#94a3b8">
+          <div class="lc-sub-emoji">🖼️</div>
+          <div>
+            <div class="lc-sub-name">FREE_EXPIRED Inactive · Pic</div>
+            <div class="lc-sub-desc">Day 15+, dormant, has photo. Win-back sequence → paywall on return.</div>
+          </div>
+          <span class="lc-sub-pct" style="background:#f1f5f9;color:#64748b">40%</span>
+        </div>
+
+        <div class="lc-sub-card" style="border-left-color:#94a3b8">
+          <div class="lc-sub-emoji">📝</div>
+          <div>
+            <div class="lc-sub-name">FREE_EXPIRED Inactive · Desc</div>
+            <div class="lc-sub-desc">Day 15+, dormant, has description. Win-back sequence → paywall on return.</div>
+          </div>
+          <span class="lc-sub-pct" style="background:#f1f5f9;color:#64748b">40%</span>
+        </div>
+
+        <div class="lc-sub-card" style="border-left-color:#64748b">
+          <div class="lc-sub-emoji">💤</div>
+          <div>
+            <div class="lc-sub-name">FREE_EXPIRED Inactive · Full</div>
+            <div class="lc-sub-desc">Day 15+, dormant, complete profile. Best reanimation candidate — profile ready, just needs to return and convert.</div>
+          </div>
+          <span class="lc-sub-pct" style="background:#f1f5f9;color:#64748b">100%</span>
         </div>
       </div>
 
@@ -4240,6 +4422,12 @@ function switchTOIExp(id, btn) {
   document.querySelectorAll('.toi-exp-btn').forEach(b => b.classList.remove('toi-exp-active'));
   document.getElementById('toi-exp-' + id).style.display = 'block';
   btn.classList.add('toi-exp-active');
+}
+function switchTOIExpInact(id, btn) {
+  document.querySelectorAll('.toi-exp-inact-panel').forEach(p => p.style.display = 'none');
+  document.querySelectorAll('.toi-exp-inact-btn').forEach(b => b.classList.remove('toi-exp-inact-active'));
+  document.getElementById('toi-exp-inact-' + id).style.display = 'block';
+  btn.classList.add('toi-exp-inact-active');
 }
 
 function switchTOI(id, btn) {
