@@ -3748,7 +3748,23 @@ function switchTab(id, btn) {
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('tab-' + id).style.display = 'block';
   btn.classList.add('active');
+  history.replaceState(null, '', '#' + id);
 }
+
+// On load: open tab from URL hash, or default to first tab
+(function () {
+  const hash = window.location.hash.replace('#', '');
+  const panel = hash && document.getElementById('tab-' + hash);
+  if (panel) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.style.display = 'none');
+    panel.style.display = 'block';
+    const btn = document.querySelector(`.tab-btn[onclick*="'${hash}'"]`);
+    if (btn) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    }
+  }
+})();
 </script>
 </body>
 </html>
