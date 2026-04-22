@@ -875,6 +875,29 @@
   .seg-goal { padding: 9px 20px; background: var(--bg); border-top: 1px solid var(--border); font-size: 12px; color: var(--text-2); display: flex; align-items: baseline; gap: 8px; }
   .seg-goal-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-3); flex-shrink: 0; }
 
+  /* ── Lifecycle stages ── */
+  .lc-funnel { display: flex; align-items: center; gap: 0; margin-bottom: 40px; flex-wrap: wrap; }
+  .lc-main-stage { flex: 1; min-width: 90px; background: var(--surface); border-radius: var(--radius-sm); box-shadow: var(--shadow-sm); padding: 16px 14px; text-align: center; position: relative; border-top: 3px solid var(--border); cursor: default; }
+  .lc-main-stage.active-toi { border-top-color: #6366f1; background: #eef2ff; }
+  .lc-stage-emoji { font-size: 20px; margin-bottom: 6px; }
+  .lc-stage-name { font-size: 13px; font-weight: 700; color: var(--text); }
+  .lc-stage-sub { font-size: 11px; color: var(--text-3); margin-top: 3px; line-height: 1.4; }
+  .lc-arrow { font-size: 18px; color: var(--text-3); padding: 0 6px; flex-shrink: 0; }
+  .lc-toi-section { background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow-sm); overflow: hidden; margin-bottom: 40px; border-top: 3px solid #6366f1; }
+  .lc-toi-header { padding: 14px 22px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+  .lc-toi-title { font-size: 14px; font-weight: 700; color: var(--text); }
+  .lc-toi-desc { font-size: 12px; color: var(--text-2); margin-top: 2px; }
+  .lc-toi-groups { display: grid; grid-template-columns: 1fr 1fr; }
+  .lc-toi-group { padding: 18px 20px; }
+  .lc-toi-group:first-child { border-right: 1px solid var(--border); }
+  .lc-toi-group-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; padding: 5px 10px; border-radius: 6px; display: inline-block; }
+  .lc-sub-card { background: var(--bg); border-radius: var(--radius-sm); padding: 11px 14px; margin-bottom: 8px; border-left: 3px solid var(--border); display: flex; align-items: center; gap: 12px; }
+  .lc-sub-card:last-child { margin-bottom: 0; }
+  .lc-sub-emoji { font-size: 18px; flex-shrink: 0; }
+  .lc-sub-name { font-size: 12px; font-weight: 700; color: var(--text); }
+  .lc-sub-desc { font-size: 11px; color: var(--text-3); margin-top: 2px; }
+  .lc-sub-pct { font-size: 11px; font-weight: 700; font-family: 'DM Mono', monospace; margin-left: auto; flex-shrink: 0; padding: 2px 8px; border-radius: 20px; }
+
   .mod-pool-card {
     background: var(--surface);
     border-radius: var(--radius);
@@ -1078,6 +1101,7 @@
   <button class="tab-btn" onclick="switchTab('overlays', this)">🪟 Overlays</button>
   <button class="tab-btn" onclick="switchTab('moderation', this)">🛡️ Moderation</button>
   <button class="tab-btn" onclick="switchTab('segments', this)">🗂️ Current segmentation</button>
+  <button class="tab-btn" onclick="switchTab('lifecycle', this)">📍 Lifecycle stages</button>
   <button class="tab-btn" onclick="switchTab('catalog', this)">📡 Events / Tracking plan</button>
   <button class="tab-btn" onclick="switchTab('audiences', this)">👥 Ideas for audiences</button>
 </div>
@@ -3199,6 +3223,183 @@
 
 </div>
 </div><!-- /tab-moderation -->
+
+<!-- ============================================================ -->
+<!-- TAB: LIFECYCLE STAGES                                        -->
+<!-- ============================================================ -->
+<div id="tab-lifecycle" class="tab-panel" style="display:none">
+<div class="container">
+
+  <p style="font-size:13px;color:var(--text-2);line-height:1.6;margin-bottom:28px;max-width:760px">
+    Every user follows one linear path through the platform. A user is in <strong>exactly one stage</strong> at any given time. Stages change slowly, triggered by milestones — unlike audiences which recompute continuously.
+  </p>
+
+  <!-- Main funnel -->
+  <div class="lc-funnel">
+
+    <div class="lc-main-stage" style="border-top-color:#94a3b8">
+      <div class="lc-stage-emoji">📧</div>
+      <div class="lc-stage-name">SOI</div>
+      <div class="lc-stage-sub">Email submitted,<br>not confirmed</div>
+    </div>
+
+    <div class="lc-arrow">→</div>
+
+    <div class="lc-main-stage" style="border-top-color:#3b82f6">
+      <div class="lc-stage-emoji">✅</div>
+      <div class="lc-stage-name">DOI</div>
+      <div class="lc-stage-sub">Email confirmed,<br>no profile yet</div>
+    </div>
+
+    <div class="lc-arrow">→</div>
+
+    <div class="lc-main-stage active-toi">
+      <div class="lc-stage-emoji">👤</div>
+      <div class="lc-stage-name">TOI</div>
+      <div class="lc-stage-sub">Profile in progress<br><strong style="color:#6366f1">8 sub-stages ↓</strong></div>
+    </div>
+
+    <div class="lc-arrow">→</div>
+
+    <div class="lc-main-stage" style="border-top-color:#f59e0b">
+      <div class="lc-stage-emoji">👑</div>
+      <div class="lc-stage-name">VIP</div>
+      <div class="lc-stage-sub">Paying member,<br>30 msgs/day</div>
+    </div>
+
+    <div class="lc-arrow">→</div>
+
+    <div class="lc-main-stage" style="border-top-color:#94a3b8;opacity:0.7">
+      <div class="lc-stage-emoji">💤</div>
+      <div class="lc-stage-name">EX_VIP</div>
+      <div class="lc-stage-sub">Subscription expired,<br>reactivation target</div>
+    </div>
+
+  </div>
+
+  <!-- TOI expanded -->
+  <div class="lc-toi-section">
+    <div class="lc-toi-header">
+      <div>
+        <div class="lc-toi-title">👤 TOI — Profile phase (8 sub-stages)</div>
+        <div class="lc-toi-desc">Split by message quota status (FREE vs FREE_EXPIRED) × profile completeness. Each combination requires different treatment.</div>
+      </div>
+    </div>
+
+    <div class="lc-toi-groups">
+
+      <!-- FREE group -->
+      <div class="lc-toi-group">
+        <div class="lc-toi-group-label" style="background:#dcfce7;color:#15803d">FREE — quota refreshes daily (10/day)</div>
+
+        <div class="lc-sub-card" style="border-left-color:#94a3b8">
+          <div class="lc-sub-emoji">◩</div>
+          <div>
+            <div class="lc-sub-name">FREE TOI Empty</div>
+            <div class="lc-sub-desc">No photo, no description. Just registered.</div>
+          </div>
+          <span class="lc-sub-pct" style="background:#f1f5f9;color:#64748b">0%</span>
+        </div>
+
+        <div class="lc-sub-card" style="border-left-color:#38bdf8">
+          <div class="lc-sub-emoji">🖼️</div>
+          <div>
+            <div class="lc-sub-name">FREE TOI Pic</div>
+            <div class="lc-sub-desc">Has photo, no description yet.</div>
+          </div>
+          <span class="lc-sub-pct" style="background:#e0f2fe;color:#0369a1">40%</span>
+        </div>
+
+        <div class="lc-sub-card" style="border-left-color:#a78bfa">
+          <div class="lc-sub-emoji">📝</div>
+          <div>
+            <div class="lc-sub-name">FREE TOI Desc</div>
+            <div class="lc-sub-desc">Has description, no photo yet.</div>
+          </div>
+          <span class="lc-sub-pct" style="background:#ede9fe;color:#5b21b6">40%</span>
+        </div>
+
+        <div class="lc-sub-card" style="border-left-color:#22c55e">
+          <div class="lc-sub-emoji">✅</div>
+          <div>
+            <div class="lc-sub-name">FREE TOI Full</div>
+            <div class="lc-sub-desc">Photo + description complete. Qualifies for Active Responder.</div>
+          </div>
+          <span class="lc-sub-pct" style="background:#dcfce7;color:#15803d">100%</span>
+        </div>
+      </div>
+
+      <!-- FREE_EXPIRED group -->
+      <div class="lc-toi-group">
+        <div class="lc-toi-group-label" style="background:#fee2e2;color:#b91c1c">FREE_EXPIRED — 10 lifetime msgs, never refreshes</div>
+
+        <div class="lc-sub-card" style="border-left-color:#94a3b8">
+          <div class="lc-sub-emoji">◩</div>
+          <div>
+            <div class="lc-sub-name">FREE_EXPIRED TOI Empty</div>
+            <div class="lc-sub-desc">Quota gone. No profile. Hardest to convert.</div>
+          </div>
+          <span class="lc-sub-pct" style="background:#f1f5f9;color:#64748b">0%</span>
+        </div>
+
+        <div class="lc-sub-card" style="border-left-color:#f87171">
+          <div class="lc-sub-emoji">🖼️</div>
+          <div>
+            <div class="lc-sub-name">FREE_EXPIRED TOI Pic</div>
+            <div class="lc-sub-desc">Quota gone. Has photo, no description.</div>
+          </div>
+          <span class="lc-sub-pct" style="background:#fee2e2;color:#b91c1c">40%</span>
+        </div>
+
+        <div class="lc-sub-card" style="border-left-color:#f87171">
+          <div class="lc-sub-emoji">📝</div>
+          <div>
+            <div class="lc-sub-name">FREE_EXPIRED TOI Desc</div>
+            <div class="lc-sub-desc">Quota gone. Has description, no photo.</div>
+          </div>
+          <span class="lc-sub-pct" style="background:#fee2e2;color:#b91c1c">40%</span>
+        </div>
+
+        <div class="lc-sub-card" style="border-left-color:#ef4444">
+          <div class="lc-sub-emoji">⚡</div>
+          <div>
+            <div class="lc-sub-name">FREE_EXPIRED TOI Full</div>
+            <div class="lc-sub-desc">Complete profile + blocked by paywall. Highest conversion urgency.</div>
+          </div>
+          <span class="lc-sub-pct" style="background:#fee2e2;color:#b91c1c">100%</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Stage count summary -->
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:8px">
+    <div style="background:var(--surface);border-radius:var(--radius-sm);box-shadow:var(--shadow-sm);padding:12px 20px;display:flex;align-items:center;gap:10px">
+      <span style="font-size:20px">🔢</span>
+      <div>
+        <div style="font-size:18px;font-weight:800;color:var(--text);font-family:'DM Mono',monospace">12</div>
+        <div style="font-size:11px;color:var(--text-3)">total stages</div>
+      </div>
+    </div>
+    <div style="background:var(--surface);border-radius:var(--radius-sm);box-shadow:var(--shadow-sm);padding:12px 20px;display:flex;align-items:center;gap:10px">
+      <span style="font-size:20px">👤</span>
+      <div>
+        <div style="font-size:18px;font-weight:800;color:#6366f1;font-family:'DM Mono',monospace">8</div>
+        <div style="font-size:11px;color:var(--text-3)">TOI sub-stages</div>
+      </div>
+    </div>
+    <div style="background:var(--surface);border-radius:var(--radius-sm);box-shadow:var(--shadow-sm);padding:12px 20px;display:flex;align-items:center;gap:10px">
+      <span style="font-size:20px">⚡</span>
+      <div>
+        <div style="font-size:18px;font-weight:800;color:#ef4444;font-family:'DM Mono',monospace">1</div>
+        <div style="font-size:11px;color:var(--text-3)">stage per user at a time</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div><!-- /tab-lifecycle -->
 
 <!-- ============================================================ -->
 <!-- TAB: USER SEGMENTS                                           -->
