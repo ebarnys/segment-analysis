@@ -4448,6 +4448,41 @@
     </div>
   </div>
 
+  <!-- Idea #2 -->
+  <div style="background:var(--surface);border-radius:var(--radius);box-shadow:var(--shadow-sm);margin-bottom:16px;border-left:4px solid #8b5cf6;overflow:hidden">
+    <div style="padding:16px 20px;display:flex;align-items:flex-start;gap:14px">
+      <div style="font-size:22px;flex-shrink:0;margin-top:1px">👑</div>
+      <div style="flex:1;min-width:0">
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px">
+          <span style="font-size:12px;font-weight:800;font-family:'DM Mono',monospace;color:var(--text-3)">#002</span>
+          <span style="font-size:11px;font-weight:700;padding:2px 9px;border-radius:20px;background:#ede9fe;color:#5b21b6">🏗️ New status</span>
+          <span style="font-size:11px;font-weight:700;padding:2px 9px;border-radius:20px;background:#fee2e2;color:#b91c1c">🔴 High priority</span>
+          <span style="font-size:11px;font-weight:700;padding:2px 9px;border-radius:20px;background:#f1f5f9;color:#475569">✅ Boss approved</span>
+        </div>
+        <div style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px">Introduce dedicated <span style="font-family:'DM Mono',monospace;font-size:14px;background:#ede9fe;color:#5b21b6;padding:1px 7px;border-radius:5px">EX_VIP</span> status</div>
+        <div style="font-size:13px;color:var(--text-2);line-height:1.6;margin-bottom:10px">
+          Right now when a VIP subscription expires, the user drops back to <code style="font-size:11px;background:var(--bg);padding:1px 5px;border-radius:4px">FREE_EXPIRED</code> — which loses all context that they were once a paying member. Christian confirmed this needs to change: <strong>EX_VIP should be a proper separate status</strong> with its own dedicated flow.<br><br>
+          Confirmed behaviour when VIP expires:
+        </div>
+        <div style="font-size:13px;color:var(--text-2);line-height:1.8;margin-bottom:10px;padding-left:4px">
+          <div>▸ FREE period re-activated for <strong>14 days</strong></div>
+          <div>▸ <strong>2 reanimation responder messages</strong> sent</div>
+          <div>▸ After that — flow same as FREE users (but these users should be treated differently)</div>
+        </div>
+        <div style="font-size:13px;color:var(--text-2);line-height:1.6;margin-bottom:10px">
+          The key insight: EX_VIP users <em>already paid once</em> — they know the product, they converted before, and they're the highest rebill probability in the entire database. Mixing them with organic FREE_EXPIRED users wastes that signal.
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <span style="font-size:11px;color:var(--text-3);font-weight:600;background:var(--bg);padding:3px 9px;border-radius:6px">💡 Needs: new status field in system</span>
+          <span style="font-size:11px;color:var(--text-3);font-weight:600;background:var(--bg);padding:3px 9px;border-radius:6px">📧 Needs: dedicated EX_VIP email flow</span>
+          <span style="font-size:11px;color:var(--text-3);font-weight:600;background:var(--bg);padding:3px 9px;border-radius:6px">🪟 Needs: win-back overlay on return</span>
+          <span style="font-size:11px;color:var(--text-3);font-weight:600;background:var(--bg);padding:3px 9px;border-radius:6px">📍 Impact: Lifecycle stages + Current flow tabs</span>
+        </div>
+      </div>
+      <div style="font-size:11px;color:var(--text-3);white-space:nowrap;flex-shrink:0;margin-top:2px">not assigned</div>
+    </div>
+  </div>
+
 </div>
 </div><!-- /tab-ideas -->
 
