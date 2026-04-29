@@ -1138,6 +1138,7 @@
   <button class="tab-btn" onclick="switchTab('lifecycle', this)">📍 Lifecycle stages</button>
   <button class="tab-btn" onclick="switchTab('catalog', this)">📡 Events / Tracking plan</button>
   <button class="tab-btn" onclick="switchTab('audiences', this)">👥 Ideas for audiences</button>
+  <button class="tab-btn" onclick="switchTab('ideas', this)">💡 Idea list</button>
 </div>
 
 <!-- ============================================================ -->
@@ -4412,6 +4413,43 @@
 
 </div>
 </div><!-- /tab-segments -->
+
+<!-- ============================================================ -->
+<!-- TAB: IDEA LIST                                               -->
+<!-- ============================================================ -->
+<div id="tab-ideas" class="tab-panel" style="display:none">
+<div class="container">
+
+  <p style="font-size:13px;color:var(--text-2);line-height:1.6;margin-bottom:24px;max-width:720px">
+    Unstructured backlog of ideas — things worth exploring but not yet assigned to a specific tab or sprint. Each item gets a rough area tag and a priority signal.
+  </p>
+
+  <!-- Idea #1 -->
+  <div style="background:var(--surface);border-radius:var(--radius);box-shadow:var(--shadow-sm);margin-bottom:16px;border-left:4px solid #f59e0b;overflow:hidden">
+    <div style="padding:16px 20px;display:flex;align-items:flex-start;gap:14px">
+      <div style="font-size:22px;flex-shrink:0;margin-top:1px">💳</div>
+      <div style="flex:1;min-width:0">
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px">
+          <span style="font-size:12px;font-weight:800;font-family:'DM Mono',monospace;color:var(--text-3)">#001</span>
+          <span style="font-size:11px;font-weight:700;padding:2px 9px;border-radius:20px;background:#fef3c7;color:#92400e">👥 Audience idea</span>
+          <span style="font-size:11px;font-weight:700;padding:2px 9px;border-radius:20px;background:#fee2e2;color:#b91c1c">🔴 High priority</span>
+        </div>
+        <div style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px">Failed rebill audience</div>
+        <div style="font-size:13px;color:var(--text-2);line-height:1.6;margin-bottom:10px">
+          VIP users whose recurring payment failed — card declined, expired, or insufficient funds. These are already converted paying users who <em>want</em> to stay but hit a technical barrier. Very high intent, very easy win. Needs a dedicated communication flow: immediate email + overlay on next login with clear CTA to update payment method.
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <span style="font-size:11px;color:var(--text-3);font-weight:600;background:var(--bg);padding:3px 9px;border-radius:6px">💡 Potential: very high — already paid once</span>
+          <span style="font-size:11px;color:var(--text-3);font-weight:600;background:var(--bg);padding:3px 9px;border-radius:6px">📧 Needs: rebill-failure email + overlay</span>
+          <span style="font-size:11px;color:var(--text-3);font-weight:600;background:var(--bg);padding:3px 9px;border-radius:6px">⏱ Urgency: within 24–48 h of failed charge</span>
+        </div>
+      </div>
+      <div style="font-size:11px;color:var(--text-3);white-space:nowrap;flex-shrink:0;margin-top:2px">not assigned</div>
+    </div>
+  </div>
+
+</div>
+</div><!-- /tab-ideas -->
 
 <script>
 function switchTOIExp(id, btn) {
