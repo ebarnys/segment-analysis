@@ -1115,6 +1115,30 @@
     color: var(--text-3);
   }
 
+  /* ── Intent Audiences tab ─────────────────── */
+  .intent-card { background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow-sm); margin-bottom: 20px; border-left: 5px solid; overflow: hidden; }
+  .intent-head { padding: 18px 22px 16px; display: flex; align-items: flex-start; gap: 14px; border-bottom: 1px solid var(--border); }
+  .intent-num { font-size: 11px; font-weight: 800; font-family: 'DM Mono', monospace; color: var(--text-3); flex-shrink: 0; padding-top: 3px; min-width: 24px; }
+  .intent-icon { font-size: 28px; flex-shrink: 0; line-height: 1; }
+  .intent-meta { flex: 1; min-width: 0; }
+  .intent-name { font-size: 17px; font-weight: 800; color: var(--text); margin-bottom: 5px; }
+  .intent-badge { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.09em; padding: 2px 9px; border-radius: 4px; display: inline-block; margin-bottom: 7px; }
+  .intent-desc { font-size: 13px; color: var(--text-2); line-height: 1.55; }
+  .intent-body { padding: 16px 22px; display: grid; grid-template-columns: 1fr 1fr; gap: 0 32px; }
+  .intent-section { }
+  .intent-section-label { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.09em; color: var(--text-3); margin-bottom: 8px; margin-top: 4px; }
+  .intent-rule { display: flex; gap: 10px; padding: 6px 0; border-bottom: 1px solid var(--border); font-size: 12px; align-items: flex-start; }
+  .intent-rule:last-child { border-bottom: none; }
+  .intent-rule-sig { color: var(--text-2); flex: 1; line-height: 1.45; }
+  .intent-rule-evt { font-family: 'DM Mono', monospace; font-size: 10.5px; color: var(--text); flex: 1.4; line-height: 1.6; }
+  .intent-excl-list { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 4px; }
+  .intent-excl { font-size: 10.5px; font-family: 'DM Mono', monospace; background: var(--bg); border: 1px solid var(--border); padding: 2px 8px; border-radius: 5px; color: var(--text-3); }
+  .intent-priority { display: flex; align-items: center; flex-wrap: wrap; gap: 4px; margin-bottom: 28px; padding: 14px 18px; background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow-sm); }
+  .intent-prio-pill { font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 20px; }
+  .intent-prio-arrow { font-size: 13px; color: var(--text-3); }
+  .intent-global-excl { background: #fef9c3; border: 1px solid #fde68a; border-radius: 8px; padding: 10px 16px; font-size: 12px; color: #92400e; margin-bottom: 24px; display: flex; gap: 8px; align-items: flex-start; line-height: 1.5; }
+  @media (max-width: 700px) { .intent-body { grid-template-columns: 1fr; } }
+
 </style>
 </head>
 <body>
@@ -1138,6 +1162,7 @@
   <button class="tab-btn" onclick="switchTab('lifecycle', this)">📍 Lifecycle stages</button>
   <button class="tab-btn" onclick="switchTab('catalog', this)">📡 Events / Tracking plan</button>
   <button class="tab-btn" onclick="switchTab('audiences', this)">👥 Ideas for audiences</button>
+  <button class="tab-btn" onclick="switchTab('intent', this)">🎯 Intent audiences</button>
   <button class="tab-btn" onclick="switchTab('ideas', this)">💡 Idea list</button>
 </div>
 
@@ -4413,6 +4438,213 @@
 
 </div>
 </div><!-- /tab-segments -->
+
+<!-- ============================================================ -->
+<!-- TAB: INTENT AUDIENCES                                        -->
+<!-- ============================================================ -->
+<div id="tab-intent" class="tab-panel" style="display:none">
+<div class="container">
+
+  <p style="font-size:13px;color:var(--text-2);line-height:1.6;margin-bottom:20px;max-width:780px">
+    5 mutually exclusive intent audiences — ranked from coldest to hottest conversion lead. A user is in exactly <strong>one</strong> audience at any given time. Assignment is based on <strong>cumulative lifetime behaviour</strong> (from registration). The highest-priority match wins.
+  </p>
+
+  <!-- Priority order bar -->
+  <div class="intent-priority">
+    <span style="font-size:11px;font-weight:700;color:var(--text-3);text-transform:uppercase;letter-spacing:0.07em;margin-right:4px">Priority →</span>
+    <span class="intent-prio-pill" style="background:#fee2e2;color:#b91c1c">⚡ Payment Triers</span>
+    <span class="intent-prio-arrow">›</span>
+    <span class="intent-prio-pill" style="background:#ffedd5;color:#c2410c">🔥 Power Users</span>
+    <span class="intent-prio-arrow">›</span>
+    <span class="intent-prio-pill" style="background:#fef3c7;color:#92400e">🔍 Explorer</span>
+    <span class="intent-prio-arrow">›</span>
+    <span class="intent-prio-pill" style="background:#dbeafe;color:#1e40af">🌤️ Window Shopper</span>
+    <span class="intent-prio-arrow">›</span>
+    <span class="intent-prio-pill" style="background:#f1f5f9;color:#475569">🧊 Won't Pay</span>
+  </div>
+
+  <!-- Global VIP exclusion notice -->
+  <div class="intent-global-excl">
+    <span style="font-size:16px;flex-shrink:0">🚫</span>
+    <div><strong>Global exclusion — VIP users:</strong> Any user with <code style="font-size:11px;background:#fde68a;padding:1px 5px;border-radius:3px">vip_payment_completed ≥ 1</code> is excluded from all 5 audiences. They have already converted and are handled separately.</div>
+  </div>
+
+  <!-- ── #1 Won't Pay ─────────────────────────── -->
+  <div class="intent-card" style="border-left-color:#94a3b8">
+    <div class="intent-head">
+      <div class="intent-num">#1</div>
+      <div class="intent-icon">🧊</div>
+      <div class="intent-meta">
+        <div class="intent-name">Won't Pay</div>
+        <span class="intent-badge" style="background:#f1f5f9;color:#475569">Low intent</span>
+        <div class="intent-desc">On the platform but showing zero interest in paid features. Only passive browsing — never hit a paywall, never opened a payment gate.</div>
+      </div>
+    </div>
+    <div class="intent-body">
+      <div class="intent-section">
+        <div class="intent-section-label">✅ Qualifies when ALL of these are true (lifetime count = 0)</div>
+        <div class="intent-rule"><div class="intent-rule-sig">Never opened VIP payment gate</div><div class="intent-rule-evt">vip_payment_gate_viewed = 0</div></div>
+        <div class="intent-rule"><div class="intent-rule-sig">Never opened coins payment gate</div><div class="intent-rule-evt">coins_payment_gate_viewed = 0</div></div>
+        <div class="intent-rule"><div class="intent-rule-sig">Never saw VIP overlay in messages</div><div class="intent-rule-evt">message_vip_overlay_shown = 0</div></div>
+        <div class="intent-rule"><div class="intent-rule-sig">Never saw VIP overlay in livechat</div><div class="intent-rule-evt">livechat_vip_overlay_shown = 0</div></div>
+        <div class="intent-rule"><div class="intent-rule-sig">Never saw VIP overlay in Perfect Match</div><div class="intent-rule-evt">perfect_match_vip_overlay_shown = 0</div></div>
+        <div class="intent-rule"><div class="intent-rule-sig">Never saw VIP banner in Who Wants Me</div><div class="intent-rule-evt">who_wants_me_vip_banner_viewed = 0</div></div>
+        <div class="intent-rule"><div class="intent-rule-sig">Never clicked "Activate VIP"</div><div class="intent-rule-evt">who_wants_me_activate_vip_clicked = 0</div></div>
+        <div class="intent-rule"><div class="intent-rule-sig">Never hit message limit</div><div class="intent-rule-evt">message_unlock_attempted = 0</div></div>
+        <div class="intent-rule"><div class="intent-rule-sig">Never hit Perfect Match limit</div><div class="intent-rule-evt">perfect_match_limit_reached = 0</div></div>
+        <div class="intent-rule"><div class="intent-rule-sig">Never hit superpower no-credits wall</div><div class="intent-rule-evt">superpower_no_credits_overlay_shown = 0</div></div>
+      </div>
+      <div class="intent-section">
+        <div class="intent-section-label">📋 Typical behaviour</div>
+        <div class="intent-rule"><div class="intent-rule-sig">Browses Nearby</div><div class="intent-rule-evt">page_viewed · nearby_filter_changed · nearby_sort_changed</div></div>
+        <div class="intent-rule"><div class="intent-rule-sig">Views profiles passively</div><div class="intent-rule-evt">profile_detail_viewed · profile_photo_browsed</div></div>
+        <div class="intent-rule"><div class="intent-rule-sig">Sends messages (within free quota)</div><div class="intent-rule-evt">message_sent · flirt_message_sent</div></div>
+        <div class="intent-rule"><div class="intent-rule-sig">Plays Perfect Match (within limit)</div><div class="intent-rule-evt">perfect_match_profile_liked · perfect_match_profile_disliked</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── #2 Window Shopper ─────────────────────── -->
+  <div class="intent-card" style="border-left-color:#3b82f6">
+    <div class="intent-head">
+      <div class="intent-num">#2</div>
+      <div class="intent-icon">🌤️</div>
+      <div class="intent-meta">
+        <div class="intent-name">Window Shopper</div>
+        <span class="intent-badge" style="background:#dbeafe;color:#1e40af">Early interest</span>
+        <div class="intent-desc">Occasionally active. Has encountered paid features and showed first signs of interest — but only once or twice. Exploring slowly, not yet committed.</div>
+      </div>
+    </div>
+    <div class="intent-body">
+      <div class="intent-section">
+        <div class="intent-section-label">✅ Qualifies when AT LEAST ONE of these is true</div>
+        <div class="intent-rule"><div class="intent-rule-sig">Opened payment gate (VIP or coins) — 1×</div><div class="intent-rule-evt">vip_payment_gate_viewed + coins_payment_gate_viewed = 1</div></div>
+        <div class="intent-rule"><div class="intent-rule-sig">Saw any VIP overlay — 1–2×</div><div class="intent-rule-evt">sum of all *_vip_overlay_shown ≥ 1</div></div>
+        <div class="intent-rule"><div class="intent-rule-sig">Clicked "Activate VIP" once</div><div class="intent-rule-evt">who_wants_me_activate_vip_clicked = 1</div></div>
+        <div class="intent-rule"><div class="intent-rule-sig">Hit message limit once</div><div class="intent-rule-evt">message_unlock_attempted = 1</div></div>
+      </div>
+      <div class="intent-section">
+        <div class="intent-section-label">🚫 Not if any of these</div>
+        <div class="intent-excl-list">
+          <span class="intent-excl">vip_payment_initiated ≥ 1</span>
+          <span class="intent-excl">coins_payment_initiated ≥ 1</span>
+          <span class="intent-excl">combined gate views ≥ 2</span>
+        </div>
+        <div class="intent-section-label" style="margin-top:16px">⚠️ Thresholds to calibrate</div>
+        <div style="font-size:12px;color:var(--text-2);line-height:1.5">Gate visit threshold (= 1) should be validated against real conversion data once available.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── #3 Explorer ──────────────────────────── -->
+  <div class="intent-card" style="border-left-color:#f59e0b">
+    <div class="intent-head">
+      <div class="intent-num">#3</div>
+      <div class="intent-icon">🔍</div>
+      <div class="intent-meta">
+        <div class="intent-name">Explorer</div>
+        <span class="intent-badge" style="background:#fef3c7;color:#92400e">Medium intent</span>
+        <div class="intent-desc">Actively using the platform, starting to hit FREE limits regularly. Has visited payment gate multiple times — still window shopping but clearly feeling the friction.</div>
+      </div>
+    </div>
+    <div class="intent-body">
+      <div class="intent-section">
+        <div class="intent-section-label">✅ Qualifies when AT LEAST TWO of these are true</div>
+        <div class="intent-rule"><div class="intent-rule-sig">Payment gate (VIP + coins) 2–3×</div><div class="intent-rule-evt">vip_payment_gate_viewed + coins_payment_gate_viewed = 2–3</div></div>
+        <div class="intent-rule"><div class="intent-rule-sig">Hit message send limit</div><div class="intent-rule-evt">message_unlock_attempted ≥ 1 · message_send_attempted (FREE_EXPIRED) ≥ 1</div></div>
+        <div class="intent-rule"><div class="intent-rule-sig">Hit Perfect Match limit</div><div class="intent-rule-evt">perfect_match_limit_reached ≥ 1</div></div>
+        <div class="intent-rule"><div class="intent-rule-sig">Multiple VIP overlay hits</div><div class="intent-rule-evt">sum of all *_vip_overlay_shown ≥ 3</div></div>
+        <div class="intent-rule"><div class="intent-rule-sig">Opened coins gate + used feature</div><div class="intent-rule-evt">coins_payment_gate_viewed ≥ 1 + superpower_use_clicked ≥ 1</div></div>
+        <div class="intent-rule"><div class="intent-rule-sig">Tried to send livechat message</div><div class="intent-rule-evt">livechat_message_send_attempted ≥ 1</div></div>
+      </div>
+      <div class="intent-section">
+        <div class="intent-section-label">🚫 Not if any of these</div>
+        <div class="intent-excl-list">
+          <span class="intent-excl">vip_payment_initiated ≥ 1</span>
+          <span class="intent-excl">coins_payment_initiated ≥ 1</span>
+          <span class="intent-excl">combined gate views ≥ 4</span>
+        </div>
+        <div class="intent-section-label" style="margin-top:16px">⚠️ Thresholds to calibrate</div>
+        <div style="font-size:12px;color:var(--text-2);line-height:1.5">The "2 of these conditions" rule needs validation. Could be 1 if data shows most Explorers only match one signal.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── #4 Power Users ───────────────────────── -->
+  <div class="intent-card" style="border-left-color:#f97316">
+    <div class="intent-head">
+      <div class="intent-num">#4</div>
+      <div class="intent-icon">🔥</div>
+      <div class="intent-meta">
+        <div class="intent-name">Power Users</div>
+        <span class="intent-badge" style="background:#ffedd5;color:#c2410c">High intent</span>
+        <div class="intent-desc">Highly active, hitting paywalls across multiple features, returning to the payment gate repeatedly. Very close to converting — just needs the right push.</div>
+      </div>
+    </div>
+    <div class="intent-body">
+      <div class="intent-section">
+        <div class="intent-section-label">✅ Qualifies when AT LEAST ONE of these groups is true</div>
+        <div class="intent-rule"><div class="intent-rule-sig">Payment gate (VIP + coins) 4–5×</div><div class="intent-rule-evt">vip_payment_gate_viewed + coins_payment_gate_viewed = 4–5</div></div>
+        <div class="intent-rule"><div class="intent-rule-sig">VIP overlays across 3+ different features</div><div class="intent-rule-evt">message_ + livechat_ + perfect_match_ + who_wants_me_ vip_overlay_shown — at least 3 distinct event types fired</div></div>
+        <div class="intent-rule"><div class="intent-rule-sig">Actively clicked VIP activation</div><div class="intent-rule-evt">who_wants_me_activate_vip_clicked ≥ 2</div></div>
+        <div class="intent-rule"><div class="intent-rule-sig">Tried to buy credits for superpowers</div><div class="intent-rule-evt">superpowers_buy_credits_clicked ≥ 1</div></div>
+        <div class="intent-rule"><div class="intent-rule-sig">Hit no-credits wall on superpowers</div><div class="intent-rule-evt">superpower_no_credits_overlay_shown ≥ 2</div></div>
+        <div class="intent-rule"><div class="intent-rule-sig">Clicked locked profile in Who Wants Me</div><div class="intent-rule-evt">who_wants_me_locked_profile_clicked ≥ 2</div></div>
+      </div>
+      <div class="intent-section">
+        <div class="intent-section-label">🚫 Not if any of these</div>
+        <div class="intent-excl-list">
+          <span class="intent-excl">vip_payment_initiated ≥ 1</span>
+          <span class="intent-excl">coins_payment_initiated ≥ 1</span>
+          <span class="intent-excl">combined gate views ≥ 6</span>
+        </div>
+        <div class="intent-section-label" style="margin-top:16px">⚠️ Thresholds to calibrate</div>
+        <div style="font-size:12px;color:var(--text-2);line-height:1.5">Gate visit boundary between Explorer (2–3) and Power Users (4–5) is a best guess. Adjust once conversion funnel data is available.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── #5 Payment Triers ─────────────────────── -->
+  <div class="intent-card" style="border-left-color:#ef4444">
+    <div class="intent-head">
+      <div class="intent-num">#5</div>
+      <div class="intent-icon">⚡</div>
+      <div class="intent-meta">
+        <div class="intent-name">Payment Triers</div>
+        <span class="intent-badge" style="background:#fee2e2;color:#b91c1c">Want to pay</span>
+        <div class="intent-desc">Tried to pay but couldn't complete it — card failed, process abandoned, or visited the gate so many times intent is unambiguous. Highest priority audience. Needs immediate, frictionless re-engagement.</div>
+      </div>
+    </div>
+    <div class="intent-body">
+      <div class="intent-section">
+        <div class="intent-section-label">✅ Qualifies when AT LEAST ONE of these groups is true</div>
+        <div class="intent-rule"><div class="intent-rule-sig">Started VIP payment + it failed</div><div class="intent-rule-evt">vip_payment_initiated ≥ 1 AND vip_payment_failed ≥ 1</div></div>
+        <div class="intent-rule"><div class="intent-rule-sig">Started VIP payment + abandoned</div><div class="intent-rule-evt">vip_payment_initiated ≥ 1 AND vip_payment_abandoned ≥ 1</div></div>
+        <div class="intent-rule"><div class="intent-rule-sig">Started coins payment + it failed</div><div class="intent-rule-evt">coins_payment_initiated ≥ 1 AND coins_payment_failed ≥ 1</div></div>
+        <div class="intent-rule"><div class="intent-rule-sig">Started coins payment + abandoned</div><div class="intent-rule-evt">coins_payment_initiated ≥ 1 AND coins_payment_abandoned ≥ 1</div></div>
+        <div class="intent-rule"><div class="intent-rule-sig">Visited payment gate 6+ times (VIP + coins combined)</div><div class="intent-rule-evt">vip_payment_gate_viewed + coins_payment_gate_viewed ≥ 6</div></div>
+        <div class="intent-rule"><div class="intent-rule-sig">Visited unfinished payment page</div><div class="intent-rule-evt">vip_payment_support_clicked ≥ 1 (after initiated)</div></div>
+      </div>
+      <div class="intent-section">
+        <div class="intent-section-label">🚫 Global exclusion (already converted)</div>
+        <div class="intent-excl-list">
+          <span class="intent-excl">vip_payment_completed ≥ 1</span>
+          <span class="intent-excl">coins_payment_completed ≥ 1 (for coins flow)</span>
+        </div>
+        <div class="intent-section-label" style="margin-top:16px">💡 Key distinction</div>
+        <div style="font-size:12px;color:var(--text-2);line-height:1.5"><strong>Technical failure</strong> (card declined, gateway error) → <code style="font-size:10.5px;background:var(--bg);padding:1px 4px;border-radius:3px">vip_payment_failed</code> — user wants to pay but can't. Needs help, not persuasion.<br><br>
+        <strong>Voluntary abandon</strong> → <code style="font-size:10.5px;background:var(--bg);padding:1px 4px;border-radius:3px">vip_payment_abandoned</code> — user hesitated at last step. Needs urgency + reassurance.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer note -->
+  <div style="font-size:12px;color:var(--text-3);text-align:center;padding:8px 0 24px;line-height:1.6">
+    All thresholds marked ⚠️ are initial estimates — should be calibrated once real behavioural data from Ackee or equivalent is available.
+  </div>
+
+</div>
+</div><!-- /tab-intent -->
 
 <!-- ============================================================ -->
 <!-- TAB: IDEA LIST                                               -->
